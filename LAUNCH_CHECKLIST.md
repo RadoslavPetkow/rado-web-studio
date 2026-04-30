@@ -21,8 +21,22 @@ Use this before sharing the site with real prospects or sending a production lin
 
 - [ ] Confirm `.env.local` exists only locally and is not committed.
 - [ ] Add `NEXT_PUBLIC_FORMSPREE_ENDPOINT` if using Formspree.
+- [ ] Add `NEXT_PUBLIC_SUPABASE_URL`.
+- [ ] Add `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
 - [ ] Add the same environment variable in Vercel for Preview and Production.
 - [ ] Redeploy after changing Vercel environment variables.
+
+## Supabase Portal Checks
+
+- [ ] Create a Supabase project.
+- [ ] Run `supabase/schema.sql` in SQL Editor.
+- [ ] Register a test user at `/register`.
+- [ ] Confirm a profile row is created.
+- [ ] Log in at `/login`.
+- [ ] Confirm `/dashboard` loads for the user.
+- [ ] Set your profile role to `admin`.
+- [ ] Confirm `/admin` loads for admin.
+- [ ] Confirm a non-admin user is redirected away from `/admin`.
 
 ## Formspree Test
 

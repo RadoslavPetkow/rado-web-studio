@@ -18,6 +18,8 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { siteConfig } from "@/config/site";
 import { trackEvent } from "@/lib/analytics";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
+import { createClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 
 type FormValues = {
@@ -138,6 +140,7 @@ export function ContactForm({ className }: { className?: string }) {
 
     setStatus("loading");
     setStatusMessage("");
+    await saveProjectRequest(values);
 
     if (!formspreeEndpoint) {
       trackEvent("contact_form_mailto_fallback_used", {
@@ -312,6 +315,33 @@ export function ContactForm({ className }: { className?: string }) {
       </div>
     </form>
   );
+}
+
+async function saveProjectRequest(values: FormValues) {
+  if (!isSupabaseConfigured()) {
+    return;
+  }
+
+  try {
+    const supabase = createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    await supabase.from("project_requests").insert({
+      user_id: user?.id ?? null,
+      name: values.fullName,
+      email: values.email,
+      business_name: values.businessName,
+      business_type: values.businessType,
+      service_needed: values.serviceNeeded,
+      budget_range: values.budgetRange,
+      timeline: values.timeline,
+      message: values.message,
+    });
+  } catch {
+    // The visible request flow still works through Formspree or mailto.
+  }
 }
 
 type TextFieldProps = {

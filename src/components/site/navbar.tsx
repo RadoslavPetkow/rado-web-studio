@@ -1,11 +1,16 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, LayoutDashboard, Shield } from "lucide-react";
 
+import { LogoutButton } from "@/components/auth/logout-button";
 import { TrackedLink } from "@/components/site/tracked-link";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
+import { createClient } from "@/lib/supabase/server";
 
-export function Navbar() {
+export async function Navbar() {
+  const authState = await getAuthState();
+
   return (
     <header className="sticky top-0 z-50 border-b border-zinc-200/70 bg-white/85 backdrop-blur-xl">
       <nav className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -31,15 +36,78 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <Button asChild className="h-10 rounded-lg bg-zinc-950">
-            <TrackedLink href="/contact" eventName="navbar_contact_cta_click">
-              <span className="hidden sm:inline">Start a project</span>
-              <span className="sm:hidden">Contact</span>
-              <ArrowRight className="size-4" />
-            </TrackedLink>
-          </Button>
+          {authState.isLoggedIn ? (
+            <>
+              {authState.isAdmin ? (
+                <Button
+                  asChild
+                  variant="outline"
+                  className="hidden h-10 rounded-lg bg-white sm:inline-flex"
+                >
+                  <Link href="/admin">
+                    <Shield className="size-4" />
+                    Admin
+                  </Link>
+                </Button>
+              ) : null}
+              <Button asChild className="h-10 rounded-lg bg-zinc-950">
+                <Link href="/dashboard">
+                  <LayoutDashboard className="size-4" />
+                  <span className="hidden sm:inline">Dashboard</span>
+                </Link>
+              </Button>
+              <LogoutButton />
+            </>
+          ) : (
+            <>
+              <Button
+                asChild
+                variant="outline"
+                className="hidden h-10 rounded-lg bg-white sm:inline-flex"
+              >
+                <Link href="/login">Login</Link>
+              </Button>
+              <Button asChild className="h-10 rounded-lg bg-zinc-950">
+                <TrackedLink href="/contact" eventName="navbar_contact_cta_click">
+                  <span className="hidden sm:inline">Start a project</span>
+                  <span className="sm:hidden">Contact</span>
+                  <ArrowRight className="size-4" />
+                </TrackedLink>
+              </Button>
+            </>
+          )}
         </div>
       </nav>
     </header>
   );
+}
+
+async function getAuthState() {
+  if (!isSupabaseConfigured()) {
+    return { isLoggedIn: false, isAdmin: false };
+  }
+
+  try {
+    const supabase = await createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      return { isLoggedIn: false, isAdmin: false };
+    }
+
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("id", user.id)
+      .maybeSingle();
+
+    return {
+      isLoggedIn: true,
+      isAdmin: profile?.role === "admin",
+    };
+  } catch {
+    return { isLoggedIn: false, isAdmin: false };
+  }
 }
