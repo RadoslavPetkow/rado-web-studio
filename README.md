@@ -139,6 +139,31 @@ Project updates are handled by a server action that verifies the current user is
 
 Clients see status updates in `/dashboard` and `/dashboard/projects/[id]`. The project detail page explains the current stage in plain language, for example whether work is waiting to start, in progress, waiting for client feedback, or completed.
 
+## Project Messages
+
+Each converted project has a simple message thread on the project detail page.
+
+Clients can:
+
+- View messages for projects assigned to their own account.
+- Send messages only on their own projects.
+- See admin replies labeled as `Rado Web Studio`.
+
+Admins can:
+
+- View messages on any project from `/admin/projects/[id]`.
+- Reply to any project thread.
+- See client messages labeled with the client name or email when available.
+
+Message sending is handled by a server action that verifies the current user, checks whether the user is an admin or owns the project, rejects empty messages, and limits messages to 2000 characters. Supabase Row Level Security also protects message reads and inserts.
+
+Limitations in this MVP:
+
+- No realtime updates yet.
+- No file uploads yet.
+- No email notifications yet.
+- New messages appear after the page refreshes/revalidates.
+
 ## Formspree Setup
 
 1. Create a Formspree account and form.
@@ -237,3 +262,6 @@ Use [LAUNCH_CHECKLIST.md](./LAUNCH_CHECKLIST.md) for the full launch pass.
 14. Log in as the client and confirm the project appears in `/dashboard`.
 15. As admin, open `Manage project`, update the status, and save.
 16. Log in as the client and confirm the updated status appears in `/dashboard/projects/[id]`.
+17. As the client, send a message from `/dashboard/projects/[id]`.
+18. As admin, open the same project in `/admin/projects/[id]` and reply.
+19. Confirm a different client cannot open or message that project.

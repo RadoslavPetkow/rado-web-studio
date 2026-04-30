@@ -4,6 +4,8 @@ import { notFound, redirect } from "next/navigation";
 import { ArrowLeft, CalendarDays, Save, UserRound } from "lucide-react";
 
 import { updateProjectDetails } from "@/app/admin/actions";
+import { addProjectMessage } from "@/app/project-messages/actions";
+import { ProjectMessageThread } from "@/components/portal/project-message-thread";
 import { Footer } from "@/components/site/footer";
 import { Navbar } from "@/components/site/navbar";
 import { SetupNotice } from "@/components/site/setup-notice";
@@ -88,6 +90,40 @@ export default async function AdminProjectPage({
     .select("full_name,email,company_name,phone")
     .eq("id", project.client_id)
     .maybeSingle();
+
+  const { data: messages } = await supabase
+    .from("messages")
+    .select("id,sender_id,message,created_at")
+    .eq("project_id", project.id)
+    .order("created_at", { ascending: true });
+
+  const senderIds = Array.from(
+    new Set((messages || []).map((item) => item.sender_id).filter(Boolean))
+  );
+  const { data: senderProfiles } = senderIds.length
+    ? await supabase
+        .from("profiles")
+        .select("id,full_name,email,role")
+        .in("id", senderIds)
+    : { data: [] };
+  const senderById = new Map(
+    (senderProfiles || []).map((sender) => [sender.id, sender])
+  );
+  const projectMessages =
+    messages?.map((item) => {
+      const sender = senderById.get(item.sender_id);
+      const isCurrentUser = item.sender_id === user.id;
+      const isAdminSender = sender?.role === "admin";
+
+      return {
+        id: item.id,
+        senderLabel: getAdminSenderLabel({ sender, isCurrentUser }),
+        message: item.message,
+        createdAt: item.created_at,
+        isCurrentUser,
+        isAdminSender,
+      };
+    }) || [];
 
   return (
     <AdminProjectShell
@@ -238,6 +274,13 @@ export default async function AdminProjectPage({
               </Card>
             </div>
           </section>
+
+          <ProjectMessageThread
+            context="admin"
+            projectId={project.id}
+            messages={projectMessages}
+            action={addProjectMessage}
+          />
         </div>
       }
     />
@@ -287,4 +330,22 @@ function formatDate(value?: string | null) {
     dateStyle: "medium",
     timeStyle: "short",
   }).format(new Date(value));
+}
+
+function getAdminSenderLabel({
+  sender,
+  isCurrentUser,
+}: {
+  sender?: {
+    full_name?: string | null;
+    email?: string | null;
+    role?: string | null;
+  };
+  isCurrentUser: boolean;
+}) {
+  if (sender?.role === "admin") {
+    return isCurrentUser ? "You / Admin" : "Rado Web Studio / Admin";
+  }
+
+  return sender?.full_name || sender?.email || "Client";
 }

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { ArrowLeft, CalendarDays, MessageSquare } from "lucide-react";
+import { ArrowLeft, CalendarDays } from "lucide-react";
 
+import { addProjectMessage } from "@/app/project-messages/actions";
+import { ProjectMessageThread } from "@/components/portal/project-message-thread";
 import { Footer } from "@/components/site/footer";
 import { Navbar } from "@/components/site/navbar";
 import { SetupNotice } from "@/components/site/setup-notice";
@@ -30,10 +32,13 @@ export const metadata: Metadata = {
 
 export default async function ProjectDetailsPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{ type?: string; message?: string }>;
 }) {
   const { id } = await params;
+  const { type, message } = await searchParams;
   const isConfigured = isSupabaseConfigured();
 
   if (!isConfigured) {
@@ -58,6 +63,26 @@ export default async function ProjectDetailsPage({
   if (!project) {
     notFound();
   }
+
+  const { data: messages } = await supabase
+    .from("messages")
+    .select("id,sender_id,message,created_at")
+    .eq("project_id", project.id)
+    .order("created_at", { ascending: true });
+
+  const projectMessages =
+    messages?.map((item) => {
+      const isCurrentUser = item.sender_id === user.id;
+
+      return {
+        id: item.id,
+        senderLabel: isCurrentUser ? "You" : "Rado Web Studio",
+        message: item.message,
+        createdAt: item.created_at,
+        isCurrentUser,
+        isAdminSender: !isCurrentUser,
+      };
+    }) || [];
 
   return (
     <ProjectShell
@@ -97,6 +122,8 @@ export default async function ProjectDetailsPage({
             </div>
           </div>
 
+          {message ? <ProjectNotice type={type} message={message} /> : null}
+
           <section className="grid gap-5 lg:grid-cols-[1fr_0.45fr]">
             <Card className="rounded-2xl border-zinc-200 bg-white p-2 shadow-sm">
               <CardHeader>
@@ -131,18 +158,15 @@ export default async function ProjectDetailsPage({
                   </div>
                 </CardContent>
               </Card>
-
-              <Card className="rounded-2xl border-zinc-200 bg-zinc-950 p-2 text-white shadow-sm">
-                <CardHeader>
-                  <MessageSquare className="size-5 text-emerald-300" />
-                  <CardTitle>Messages</CardTitle>
-                  <CardDescription className="text-zinc-300">
-                    A simple project message thread will be added here later.
-                  </CardDescription>
-                </CardHeader>
-              </Card>
             </div>
           </section>
+
+          <ProjectMessageThread
+            context="client"
+            projectId={project.id}
+            messages={projectMessages}
+            action={addProjectMessage}
+          />
         </div>
       }
     />
@@ -172,6 +196,28 @@ function ProjectShell({ main }: { main: React.ReactNode }) {
         {main}
       </main>
       <Footer />
+    </div>
+  );
+}
+
+function ProjectNotice({
+  type,
+  message,
+}: {
+  type?: string;
+  message: string;
+}) {
+  const isSuccess = type === "success";
+
+  return (
+    <div
+      className={`rounded-2xl border p-4 text-sm ${
+        isSuccess
+          ? "border-emerald-200 bg-emerald-50 text-emerald-950"
+          : "border-amber-200 bg-amber-50 text-amber-950"
+      }`}
+    >
+      {message}
     </div>
   );
 }
