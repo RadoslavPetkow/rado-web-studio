@@ -3,7 +3,7 @@ export const siteConfig = {
   email: "radigoig@gmail.com",
   url: "https://radowebstudio.com",
   description:
-    "Premium websites, AI automations, chatbots, client systems, and custom software for small and medium businesses.",
+    "Modern, fast, mobile-friendly websites and digital systems for small businesses that want more trust, more inquiries, and a stronger online presence.",
   nav: [
     { label: "Home", href: "/" },
     { label: "Services", href: "/#services" },
@@ -13,46 +13,46 @@ export const siteConfig = {
     { label: "Contact", href: "/contact" },
   ],
   valuePoints: [
-    "Strategy-first builds",
-    "Fast, responsive interfaces",
-    "Automation-ready foundations",
-    "Built to grow with your business",
+    "Built for trust and inquiries",
+    "Fast mobile-first websites",
+    "Clear service presentation",
+    "Future-ready digital systems",
   ],
   services: [
     {
-      title: "Websites and Landing Pages",
+      title: "Business Websites and Landing Pages",
       description:
-        "Premium marketing pages that make your offer clear, build trust quickly, and guide visitors toward action.",
+        "Modern websites and focused landing pages that present your business clearly, load fast, and help visitors contact you with confidence.",
       icon: "monitor",
     },
     {
-      title: "AI Automations",
+      title: "Online Stores",
       description:
-        "Practical automations for lead handling, follow-ups, internal workflows, and repetitive business tasks.",
+        "Clean store setups for small businesses that want product pages, categories, cart, checkout, and a reliable path to online sales.",
       icon: "sparkles",
     },
     {
-      title: "Chatbots and Assistants",
+      title: "Client Portals and Dashboards",
       description:
-        "Helpful AI chat experiences for customer questions, lead capture, support triage, and service education.",
+        "Login systems, client dashboards, admin panels, project tracking, messaging, and business workflows for companies that need more than a website.",
       icon: "messages",
     },
     {
-      title: "Client Systems",
+      title: "AI Automations and Chatbots",
       description:
-        "Simple portals, booking flows, dashboards, and tools that keep teams and customers aligned.",
+        "Practical automations, chatbots, and internal workflows that help with lead handling, customer questions, follow-ups, and repetitive tasks.",
       icon: "layout",
     },
     {
-      title: "Custom Software",
+      title: "Custom Web Apps",
       description:
-        "Focused software solutions for the parts of your business that off-the-shelf tools cannot quite solve.",
+        "Focused software for operations, customer management, internal tools, databases, and workflows that standard website builders cannot solve well.",
       icon: "code",
     },
     {
-      title: "Product Consulting",
+      title: "Maintenance and Improvements",
       description:
-        "Clear guidance on what to build first, what to skip, and how to turn business goals into a realistic roadmap.",
+        "Ongoing support, small updates, performance checks, SEO improvements, and landing page refinements after the first launch.",
       icon: "compass",
     },
   ],
@@ -140,40 +140,121 @@ export const siteConfig = {
   ],
   pricing: [
     {
-      name: "Launch",
-      price: "From EUR 900",
+      name: "Starter Landing Page",
+      price: "From €249",
       description:
-        "For a business that needs a credible online presence and a clear path for visitors to inquire.",
+        "A clean and professional one-page website designed to present your business clearly and turn visitors into inquiries.",
+      bestFor:
+        "Barbers, beauty salons, car washes, fitness coaches, small shops, private teachers, and local service providers.",
       features: [
-        "1-5 essential pages or one focused landing page",
-        "Offer and CTA structure built for inquiries",
-        "Responsive design for mobile-first visitors",
-        "Basic SEO and launch checklist",
+        "1 professional landing page",
+        "Modern custom design",
+        "Mobile-friendly layout",
+        "Hero, services, about, offer/pricing, testimonials, contact",
+        "Contact form and Google Maps integration",
+        "Basic SEO setup, fast loading speed, and online deployment",
       ],
     },
     {
-      name: "Growth",
-      price: "From EUR 1,800",
+      name: "Business Website",
+      price: "From €399",
       description:
-        "For businesses ready to turn the website into a stronger lead-generation and operations tool.",
+        "A complete business website for companies that want to look more professional, explain their services clearly, and receive more customer inquiries.",
+      bestFor:
+        "Recommended for small businesses that need a more complete online presence.",
       features: [
-        "Custom website structure around your services",
-        "Request form and lead qualification flow",
-        "AI or automation roadmap for follow-up",
-        "Analytics-ready setup for future improvement",
+        "3-5 pages: homepage, services, about, gallery/portfolio, contact",
+        "Contact form and Google Maps",
+        "Mobile-friendly design",
+        "Clear service presentation",
+        "Basic SEO setup",
+        "Online deployment",
       ],
       featured: true,
     },
     {
-      name: "Custom",
-      price: "Scoped project",
+      name: "Pro Business Website",
+      price: "From €599",
       description:
-        "For companies that need a tailored system, portal, automation, or software workflow beyond a website.",
+        "A more advanced business website for companies that want stronger presentation, better structure, and a more serious digital presence.",
+      bestFor:
+        "Businesses that want more pages, stronger structure, analytics, and room for growth.",
       features: [
-        "Product architecture and scope definition",
-        "Custom UI, workflows, and system planning",
-        "Integration and automation planning",
-        "Roadmap for Supabase, auth, and backend phases",
+        "5-8 pages with more detailed design",
+        "Stronger service presentation",
+        "Blog or news section",
+        "Better SEO structure",
+        "Analytics setup and performance optimization",
+        "More revisions and optional simple admin/content management setup",
+      ],
+    },
+    {
+      name: "Online Store",
+      price: "From €999",
+      description:
+        "A practical online store setup for businesses that want to start selling products online with a clean and reliable system.",
+      bestFor: "Small businesses that want to sell products online.",
+      features: [
+        "Product pages and product categories",
+        "Shopping cart and checkout setup",
+        "Payment provider integration where possible",
+        "Basic store management",
+        "Mobile-friendly design",
+        "Basic SEO setup and online deployment",
+      ],
+    },
+    {
+      name: "Custom Web App / Client Portal",
+      price: "From €1499",
+      description:
+        "Custom software for businesses that need more than a website — portals, dashboards, internal tools, automation systems, and client management platforms.",
+      bestFor:
+        "Businesses that need login, dashboards, databases, messaging, workflows, or internal tools.",
+      features: [
+        "Login system, client dashboard, and admin dashboard",
+        "Client messaging, file uploads, and project tracking",
+        "Database and custom workflows",
+        "Internal business tools",
+        "AI or automation features where relevant",
+        "Custom quote after a short consultation",
+      ],
+    },
+  ],
+  maintenancePlans: [
+    {
+      name: "Basic Care",
+      price: "€39/month",
+      description: "Simple support for keeping a small website healthy.",
+      features: [
+        "Website health check",
+        "Small text changes",
+        "Help with domain/hosting issues",
+        "Basic support",
+      ],
+    },
+    {
+      name: "Standard Care",
+      price: "€59/month",
+      description: "A practical monthly plan for regular small improvements.",
+      features: [
+        "Up to 2 hours of changes per month",
+        "Content updates",
+        "Small new sections",
+        "Monitoring for issues",
+        "Monthly summary",
+      ],
+      featured: true,
+    },
+    {
+      name: "Premium Care",
+      price: "€99/month",
+      description: "Priority improvement support for stronger ongoing growth.",
+      features: [
+        "Up to 4 hours of work per month",
+        "SEO improvements",
+        "Landing page improvements",
+        "Performance checks",
+        "Priority support",
       ],
     },
   ],
@@ -181,6 +262,7 @@ export const siteConfig = {
     services: [
       "Business website",
       "Landing page",
+      "Online store",
       "AI automation",
       "Chatbot",
       "Custom software",
@@ -202,31 +284,41 @@ export const siteConfig = {
     ],
   },
   reasons: [
-    "You get both product thinking and implementation, not just pixels on a screen.",
-    "The first version stays focused so you can launch quickly and improve with confidence.",
-    "Every section is written and designed around business clarity, trust, and action.",
-    "The technical foundation is ready for future auth, database, payments, and automations.",
+    "You get a focused modern developer who can handle design, frontend, forms, deployment, backend foundations, and client portal direction.",
+    "The first version stays clear and realistic, so your business can launch professionally without unnecessary agency overhead.",
+    "Every section is written and designed around trust, speed, mobile experience, and customer inquiries.",
+    "The technical foundation can grow into logins, dashboards, databases, automations, and custom workflows when the business needs it.",
   ],
   faqs: [
     {
-      question: "Can you start with just a landing page?",
+      question: "How much does a website cost?",
       answer:
-        "Yes. A focused landing page is often the best first step when you need to validate an offer, generate leads, or improve your current online presence.",
+        "Small business websites usually start from €249 for a landing page. A more complete business website usually starts from €399. More advanced websites, online stores, and custom systems are quoted individually depending on the number of pages and features.",
     },
     {
-      question: "Do you build AI automations and chatbots too?",
+      question: "Are domain and hosting included?",
       answer:
-        "Yes, but the first phase stays practical. We identify useful workflows first, then build automations that save time or improve customer communication.",
+        "Domain, hosting, paid tools, and third-party services are not included in the base price. I help you choose and configure them.",
     },
     {
-      question: "Will this be ready for Supabase later?",
+      question: "How long does it take to build a website?",
       answer:
-        "Yes. This foundation is intentionally frontend-only for now, but the structure is ready for future authentication, database, dashboards, and backend logic.",
+        "A simple landing page can usually be completed in a few days after the content is ready. A business website usually takes 1-2 weeks, depending on the number of pages, revisions, and features.",
     },
     {
-      question: "How long does a typical project take?",
+      question: "Do you offer support after the website is finished?",
       answer:
-        "A focused landing page can often move quickly. Larger websites or custom systems depend on scope, content readiness, and integrations.",
+        "Yes. I offer monthly maintenance plans starting from €39/month for small updates, monitoring, support, and improvements.",
+    },
+    {
+      question: "Can you build something more complex than a website?",
+      answer:
+        "Yes. I can build custom web apps, client portals, dashboards, login systems, admin panels, databases, file upload systems, messaging systems, and automation tools. These projects start from €1499 and are quoted individually.",
+    },
+    {
+      question: "Do you guarantee more clients?",
+      answer:
+        "No one can honestly guarantee sales, but a professional website can improve trust, presentation, speed, mobile experience, and the chance that visitors contact the business.",
     },
   ],
 };

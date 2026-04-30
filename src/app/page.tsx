@@ -75,15 +75,16 @@ function HeroSection() {
             variant="outline"
             className="mb-6 border-emerald-900/15 bg-emerald-50 text-emerald-900"
           >
-            Premium digital services for growing businesses
+            Modern websites for small businesses in Bulgaria and Europe
           </Badge>
           <h1 className="max-w-4xl text-5xl font-semibold tracking-tight text-zinc-950 sm:text-6xl lg:text-7xl">
-            Modern websites and smart systems for businesses ready to grow.
+            Professional websites and digital systems built for trust, speed,
+            and customer inquiries.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-600">
-            {siteConfig.name} helps small and medium businesses build polished
-            websites, landing pages, AI automations, chatbots, client systems,
-            and custom software solutions.
+            {siteConfig.name} builds modern, fast, mobile-friendly websites and
+            practical digital systems for small businesses that want a stronger
+            online presence without unnecessary agency overhead.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg" className="h-12 rounded-lg bg-zinc-950">
@@ -114,17 +115,17 @@ function HeroSection() {
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <p className="text-sm text-zinc-400">Studio focus</p>
-                  <p className="mt-1 text-xl font-semibold">Launch-ready growth stack</p>
+                  <p className="mt-1 text-xl font-semibold">Small business launch stack</p>
                 </div>
                 <Workflow className="size-6 text-emerald-300" />
               </div>
 
               <div className="mt-8 grid gap-3">
                 {[
-                  "Clear offer and conversion path",
-                  "Fast mobile-first interface",
-                  "Automation and AI roadmap",
-                  "Future-ready app foundation",
+                  "Clear services and contact flow",
+                  "Fast mobile-first website",
+                  "Forms, maps, SEO basics, deployment",
+                  "Room for portals and custom systems",
                 ].map((item) => (
                   <div
                     key={item}
@@ -140,12 +141,12 @@ function HeroSection() {
 
               <div className="mt-8 grid grid-cols-2 gap-3">
                 <div className="rounded-lg bg-white p-4 text-zinc-950">
-                  <p className="text-3xl font-semibold">SMB</p>
-                  <p className="mt-1 text-sm text-zinc-600">Built for real business needs</p>
+                  <p className="text-3xl font-semibold">€249+</p>
+                  <p className="mt-1 text-sm text-zinc-600">Accessible starting point</p>
                 </div>
                 <div className="rounded-lg bg-emerald-300 p-4 text-emerald-950">
-                  <p className="text-3xl font-semibold">AI</p>
-                  <p className="mt-1 text-sm text-emerald-950/75">Automation-ready from day one</p>
+                  <p className="text-3xl font-semibold">Pro</p>
+                  <p className="mt-1 text-sm text-emerald-950/75">Premium execution, focused scope</p>
                 </div>
               </div>
             </div>
@@ -180,8 +181,8 @@ function ServicesSection() {
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading
           eyebrow="Services"
-          title="Digital work that connects strategy, design, and execution."
-          description="The goal is not to add more technology for its own sake. It is to build the pieces that make your business easier to understand, easier to buy from, and easier to operate."
+          title="Websites, stores, and systems that make your business easier to trust."
+          description="The goal is not to add technology for its own sake. It is to build the right digital pieces so customers understand what you do, why they should trust you, and how to contact or buy from you."
         />
 
         <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -303,11 +304,11 @@ function PricingSection() {
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading
           eyebrow="Pricing preview"
-          title="Clear investment ranges tied to business outcomes."
-          description="The right scope depends on how much clarity, lead generation, automation, and custom workflow your first version needs."
+          title="Structured packages with clear starting prices in EUR."
+          description="Accessible compared to a larger agency, but still serious, polished, and built around business results. Final scope is confirmed after a short consultation."
         />
 
-        <div className="mt-12 grid gap-4 lg:grid-cols-3">
+        <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {siteConfig.pricing.map((plan, index) => (
             <FadeIn key={plan.name} delay={index * 0.04}>
               <Card
@@ -322,7 +323,7 @@ function PricingSection() {
                     <CardTitle className="text-xl">{plan.name}</CardTitle>
                     {plan.featured ? (
                       <Badge className="rounded-lg bg-emerald-300 text-emerald-950">
-                        Popular
+                        Recommended
                       </Badge>
                     ) : null}
                   </div>
@@ -332,6 +333,15 @@ function PricingSection() {
                   >
                     {plan.description}
                   </CardDescription>
+                  <p
+                    className={`mt-4 rounded-lg border p-3 text-sm leading-6 ${
+                      plan.featured
+                        ? "border-white/10 bg-white/5 text-zinc-200"
+                        : "border-zinc-200 bg-white text-zinc-600"
+                    }`}
+                  >
+                    Best for: {plan.bestFor}
+                  </p>
                 </CardHeader>
                 <CardContent>
                   <ul className="grid gap-3">
@@ -373,6 +383,56 @@ function PricingSection() {
             </FadeIn>
           ))}
         </div>
+
+        <div className="mt-10 rounded-2xl border border-zinc-200 bg-zinc-50 p-5 text-sm leading-6 text-zinc-600">
+          Domain, hosting, paid tools, and third-party services are not
+          included in the base price. I help you choose and configure them.
+        </div>
+
+        <div className="mt-16">
+          <SectionHeading
+            eyebrow="Monthly care"
+            title="Maintenance plans after launch."
+            description="For businesses that want small updates, support, monitoring, and steady improvements without starting a new project every time."
+          />
+
+          <div className="mt-10 grid gap-4 lg:grid-cols-3">
+            {siteConfig.maintenancePlans.map((plan, index) => (
+              <FadeIn key={plan.name} delay={index * 0.04}>
+                <Card
+                  className={`h-full rounded-lg p-2 shadow-sm ${
+                    plan.featured
+                      ? "border-emerald-700 bg-white shadow-xl shadow-emerald-950/10"
+                      : "border-zinc-200 bg-zinc-50"
+                  }`}
+                >
+                  <CardHeader>
+                    <div className="flex items-center justify-between gap-4">
+                      <CardTitle className="text-xl">{plan.name}</CardTitle>
+                      {plan.featured ? (
+                        <Badge className="rounded-lg bg-emerald-100 text-emerald-900">
+                          Practical choice
+                        </Badge>
+                      ) : null}
+                    </div>
+                    <p className="mt-4 text-3xl font-semibold">{plan.price}</p>
+                    <CardDescription>{plan.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="grid gap-3">
+                      {plan.features.map((feature) => (
+                        <li key={feature} className="flex gap-3 text-sm text-zinc-700">
+                          <Check className="mt-0.5 size-4 shrink-0 text-emerald-700" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -384,8 +444,8 @@ function WhyChooseSection() {
       <div className="mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
         <SectionHeading
           eyebrow="Why choose Rado Web Studio"
-          title="A practical partner for the full shape of a digital project."
-          description="Small and medium businesses need clear thinking, polished execution, and systems that can evolve. That is the center of this studio."
+          title="A focused web studio for small businesses that need serious execution."
+          description="You get the clarity and care of a direct developer relationship, with modern technical capability across websites, deployment, forms, dashboards, databases, and future client portals."
         />
         <div className="grid gap-4 sm:grid-cols-2">
           {siteConfig.reasons.map((reason, index) => (
@@ -408,8 +468,8 @@ function FaqSection() {
       <div className="mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-[0.8fr_1.2fr]">
         <SectionHeading
           eyebrow="FAQ"
-          title="Questions before the first build."
-          description="A few useful answers for the first phase of the Rado Web Studio website and future client conversations."
+          title="Common pricing and project questions."
+          description="Clear answers about website costs, timelines, support, and what is included before we agree on scope."
         />
         <Accordion type="single" collapsible className="rounded-lg border border-zinc-200 bg-zinc-50 p-4">
           {siteConfig.faqs.map((item) => (
@@ -438,13 +498,13 @@ function ContactSection() {
               Request a project
             </Badge>
             <h2 className="max-w-3xl text-3xl font-semibold tracking-tight sm:text-5xl">
-              Tell me what would make your business easier to find, trust, and
-              buy from.
+              Tell me what your business needs to look more professional and
+              receive better inquiries.
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-300 sm:text-lg">
               Use the form to share your business type, service need, budget,
-              and timeline. If Formspree is not configured yet, it opens a
-              ready-to-send email instead.
+              and timeline. I will suggest a realistic scope, starting price,
+              and next step based on what will help your business most.
             </p>
             <Button
               asChild

@@ -20,17 +20,18 @@ const siteUrl = new URL(siteConfig.url);
 export const metadata: Metadata = {
   metadataBase: siteUrl,
   title: {
-    default: `${siteConfig.name} | Websites, AI Automations and Custom Software`,
+    default: `${siteConfig.name} | Websites and Digital Systems for Small Businesses`,
     template: `%s | ${siteConfig.name}`,
   },
   description:
-    "Rado Web Studio builds modern websites, landing pages, AI automations, chatbots, client systems, and custom software for small and medium businesses.",
+    "Rado Web Studio builds modern, fast, mobile-friendly websites and digital systems for small businesses that want more trust, more inquiries, and a professional online presence.",
   keywords: [
     "Rado Web Studio",
     "small business websites",
     "landing page design",
-    "AI automation for business",
-    "business chatbot",
+    "website development Bulgaria",
+    "business website Europe",
+    "online store development",
     "custom software development",
     "website redesign",
   ],
@@ -42,9 +43,9 @@ export const metadata: Metadata = {
   publisher: siteConfig.name,
   category: "Digital services",
   openGraph: {
-    title: `${siteConfig.name} | Websites, AI Automations and Custom Software`,
+    title: `${siteConfig.name} | Websites and Digital Systems for Small Businesses`,
     description:
-      "Premium digital services for small and medium businesses that need a clearer website, smarter workflows, and a practical path to launch.",
+      "Modern websites, online stores, client portals, and custom web systems built for trust, speed, and customer inquiries.",
     url: "/",
     type: "website",
     locale: "en_US",
@@ -52,9 +53,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | Websites, AI Automations and Custom Software`,
+    title: `${siteConfig.name} | Websites and Digital Systems for Small Businesses`,
     description:
-      "Modern websites, landing pages, AI automations, chatbots, and custom software for growing businesses.",
+      "Modern websites, online stores, client portals, and custom software for small businesses.",
   },
 };
 

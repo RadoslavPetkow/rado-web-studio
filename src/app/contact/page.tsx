@@ -13,20 +13,20 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: "Request a Project",
   description:
-    "Request a website, landing page, AI automation, chatbot, or custom software project from Rado Web Studio.",
+    "Request a professional business website, landing page, online store, client portal, or custom software project from Rado Web Studio.",
   alternates: {
     canonical: "/contact",
   },
   openGraph: {
     title: "Request a Project | Rado Web Studio",
     description:
-      "Share your business goals and request a practical digital project scope from Rado Web Studio.",
+      "Share your business goals and request a practical website or digital system scope from Rado Web Studio.",
     url: "/contact",
   },
   twitter: {
     title: "Request a Project | Rado Web Studio",
     description:
-      "Request a website, landing page, AI automation, chatbot, or custom software project.",
+      "Request a business website, landing page, online store, client portal, or custom software project.",
   },
 };
 
@@ -45,12 +45,12 @@ export default function ContactPage() {
                 Project request
               </Badge>
               <h1 className="max-w-4xl text-5xl font-semibold tracking-tight sm:text-6xl">
-                Tell me what you want to build.
+                Tell me what your business needs online.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-600">
-                Share the business context, the service you need, and what a
-                successful first version should accomplish. I will use that to
-                suggest a focused next step.
+                Share your business context, the service you need, and what a
+                successful first version should accomplish. I will suggest a
+                focused scope, realistic starting price, and next step.
               </p>
             </FadeIn>
             <FadeIn delay={0.08}>
@@ -93,7 +93,9 @@ export default function ContactPage() {
                 <p className="mt-3 text-sm leading-6 text-zinc-600">
                   You can also send the project details directly. Include your
                   business, service needed, budget range, timeline, and what you
-                  want the first version to achieve.
+                  want the first version to achieve. Domain, hosting, paid
+                  tools, and third-party services are handled separately, and I
+                  can help choose and configure them.
                 </p>
                 <Link
                   href={`mailto:${siteConfig.email}`}
