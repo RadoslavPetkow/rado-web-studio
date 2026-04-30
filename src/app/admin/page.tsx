@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { BriefcaseBusiness, Inbox, UsersRound } from "lucide-react";
+import { AlertCircle, BriefcaseBusiness, Inbox, UsersRound } from "lucide-react";
 
+import {
+  convertProjectRequestToProject,
+  updateProjectRequestStatus,
+} from "@/app/admin/actions";
 import { Footer } from "@/components/site/footer";
 import { Navbar } from "@/components/site/navbar";
 import { SetupNotice } from "@/components/site/setup-notice";
 import { StatusBadge } from "@/components/site/status-badge";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -26,7 +31,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function AdminPage() {
+export default async function AdminPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ type?: string; message?: string }>;
+}) {
+  const { type, message } = await searchParams;
   const isConfigured = isSupabaseConfigured();
 
   if (!isConfigured) {
@@ -56,7 +66,7 @@ export default async function AdminPage() {
     await Promise.all([
       supabase
         .from("project_requests")
-        .select("id,name,email,business_name,service_needed,budget_range,timeline,status,created_at")
+        .select("id,name,email,business_name,business_type,service_needed,budget_range,timeline,message,status,created_at")
         .order("created_at", { ascending: false })
         .limit(8),
       supabase
@@ -87,10 +97,12 @@ export default async function AdminPage() {
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-7 text-zinc-600">
               Review incoming requests, active projects, and client accounts.
-              Editing workflows can be added once the first real admin process
-              is clear.
+              Convert qualified requests into client projects once the client
+              has registered with the same email address.
             </p>
           </section>
+
+          {message ? <AdminNotice type={type} message={message} /> : null}
 
           <section className="grid gap-5 lg:grid-cols-3">
             <SummaryCard
@@ -119,6 +131,10 @@ export default async function AdminPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
+                <div className="mb-5 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-950">
+                  To convert a request into a project, the client must first
+                  register with the same email address used in the request.
+                </div>
                 {requests?.length ? (
                   <div className="grid gap-3">
                     {requests.map((request) => (
@@ -142,6 +158,82 @@ export default async function AdminPage() {
                           {request.budget_range || "Budget not specified"} ·{" "}
                           {request.timeline || "Timeline flexible"}
                         </p>
+                        <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
+                          <RequestDetail label="Email" value={request.email} />
+                          <RequestDetail
+                            label="Business"
+                            value={request.business_name}
+                          />
+                          <RequestDetail
+                            label="Business type"
+                            value={request.business_type}
+                          />
+                          <RequestDetail
+                            label="Created"
+                            value={formatDate(request.created_at)}
+                          />
+                        </dl>
+                        <div className="mt-4 rounded-lg border border-zinc-200 bg-white p-4">
+                          <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
+                            Message
+                          </p>
+                          <p className="mt-2 whitespace-pre-line text-sm leading-6 text-zinc-700">
+                            {request.message || "No message provided."}
+                          </p>
+                        </div>
+                        <div className="mt-4 flex flex-col gap-2 sm:flex-row">
+                          <form action={updateProjectRequestStatus}>
+                            <input
+                              type="hidden"
+                              name="requestId"
+                              value={request.id}
+                            />
+                            <input
+                              type="hidden"
+                              name="status"
+                              value="reviewed"
+                            />
+                            <Button
+                              type="submit"
+                              variant="outline"
+                              className="h-10 w-full rounded-lg bg-white sm:w-auto"
+                            >
+                              Mark as reviewed
+                            </Button>
+                          </form>
+                          <form action={updateProjectRequestStatus}>
+                            <input
+                              type="hidden"
+                              name="requestId"
+                              value={request.id}
+                            />
+                            <input
+                              type="hidden"
+                              name="status"
+                              value="rejected"
+                            />
+                            <Button
+                              type="submit"
+                              variant="destructive"
+                              className="h-10 w-full rounded-lg sm:w-auto"
+                            >
+                              Reject request
+                            </Button>
+                          </form>
+                          <form action={convertProjectRequestToProject}>
+                            <input
+                              type="hidden"
+                              name="requestId"
+                              value={request.id}
+                            />
+                            <Button
+                              type="submit"
+                              className="h-10 w-full rounded-lg bg-zinc-950 sm:w-auto"
+                            >
+                              Convert to project
+                            </Button>
+                          </form>
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -218,6 +310,46 @@ export default async function AdminPage() {
   );
 }
 
+function AdminNotice({
+  type,
+  message,
+}: {
+  type?: string;
+  message: string;
+}) {
+  const isSuccess = type === "success";
+
+  return (
+    <div
+      className={`flex gap-3 rounded-2xl border p-4 text-sm ${
+        isSuccess
+          ? "border-emerald-200 bg-emerald-50 text-emerald-950"
+          : "border-amber-200 bg-amber-50 text-amber-950"
+      }`}
+    >
+      <AlertCircle className="mt-0.5 size-4 shrink-0" />
+      <p>{message}</p>
+    </div>
+  );
+}
+
+function RequestDetail({
+  label,
+  value,
+}: {
+  label: string;
+  value?: string | null;
+}) {
+  return (
+    <div>
+      <dt className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
+        {label}
+      </dt>
+      <dd className="mt-1 text-zinc-700">{value || "Not provided"}</dd>
+    </div>
+  );
+}
+
 function AdminShell({ main }: { main: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-zinc-50 text-zinc-950">
@@ -265,4 +397,15 @@ function EmptyAdminState({ text }: { text: string }) {
       {text}
     </div>
   );
+}
+
+function formatDate(value?: string | null) {
+  if (!value) {
+    return "Not provided";
+  }
+
+  return new Intl.DateTimeFormat("en", {
+    dateStyle: "medium",
+    timeStyle: "short",
+  }).format(new Date(value));
 }

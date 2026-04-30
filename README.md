@@ -86,6 +86,26 @@ where email = 'your-email@example.com';
 
 After that, log out and log back in. The navbar will show the Admin link.
 
+## Admin Request Review Workflow
+
+Admins can review project requests at `/admin`.
+
+Available request actions:
+
+- Mark as reviewed: updates `project_requests.status` to `reviewed`.
+- Reject request: updates `project_requests.status` to `rejected`.
+- Convert to project: creates a row in `projects` and updates the request status to `converted`.
+
+Conversion requires a registered client profile with the same email address used in the original request. If no matching profile exists, no project is created. Ask the client to create an account first, then convert the request again.
+
+When a request is converted:
+
+- The project is assigned to the matching profile id.
+- The project title is based on the requested service and business name.
+- The service type and budget range come from the request.
+- The description includes the original message, business type, timeline, and contact email.
+- The new project starts with status `new`.
+
 ## Formspree Setup
 
 1. Create a Formspree account and form.
@@ -178,3 +198,7 @@ Use [LAUNCH_CHECKLIST.md](./LAUNCH_CHECKLIST.md) for the full launch pass.
 8. Change your profile role to `admin` in Supabase.
 9. Confirm `/admin` loads.
 10. Log out and confirm `/dashboard` redirects to `/login`.
+11. As admin, mark a request as reviewed.
+12. As admin, reject a test request.
+13. Register a client with the same email as a request and convert that request into a project.
+14. Log in as the client and confirm the project appears in `/dashboard`.

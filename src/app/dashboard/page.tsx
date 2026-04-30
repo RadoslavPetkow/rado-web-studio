@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ArrowRight, FolderKanban, MessageSquare, UserRound } from "lucide-react";
+import {
+  ArrowRight,
+  CalendarDays,
+  FolderKanban,
+  MessageSquare,
+  UserRound,
+} from "lucide-react";
 
 import { Footer } from "@/components/site/footer";
 import { Navbar } from "@/components/site/navbar";
@@ -116,7 +122,7 @@ export default async function DashboardPage() {
                     {projects.map((project) => (
                       <div
                         key={project.id}
-                        className="rounded-lg border border-zinc-200 bg-zinc-50 p-4"
+                        className="rounded-xl border border-zinc-200 bg-zinc-50 p-5"
                       >
                         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                           <div>
@@ -129,11 +135,30 @@ export default async function DashboardPage() {
                           </div>
                           <StatusBadge status={project.status} />
                         </div>
+                        <div className="mt-4 grid gap-3 text-sm text-zinc-600 sm:grid-cols-2">
+                          <div className="flex gap-2">
+                            <CalendarDays className="mt-0.5 size-4 shrink-0 text-emerald-700" />
+                            <span>{formatDate(project.created_at)}</span>
+                          </div>
+                          <p>
+                            Budget: {project.budget_range || "Not specified"}
+                          </p>
+                        </div>
                         {project.description ? (
-                          <p className="mt-3 text-sm leading-6 text-zinc-600">
+                          <p className="mt-4 line-clamp-3 text-sm leading-6 text-zinc-600">
                             {project.description}
                           </p>
                         ) : null}
+                        <Button
+                          asChild
+                          variant="outline"
+                          className="mt-5 h-10 rounded-lg bg-white"
+                        >
+                          <Link href={`/dashboard/projects/${project.id}`}>
+                            View project details
+                            <ArrowRight className="size-4" />
+                          </Link>
+                        </Button>
                       </div>
                     ))}
                   </div>
@@ -214,4 +239,14 @@ function EmptyState({ text }: { text: string }) {
       {text}
     </div>
   );
+}
+
+function formatDate(value?: string | null) {
+  if (!value) {
+    return "Not provided";
+  }
+
+  return new Intl.DateTimeFormat("en", {
+    dateStyle: "medium",
+  }).format(new Date(value));
 }
