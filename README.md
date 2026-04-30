@@ -106,6 +106,39 @@ When a request is converted:
 - The description includes the original message, business type, timeline, and contact email.
 - The new project starts with status `new`.
 
+## Admin Project Management
+
+Admins can manage converted projects from `/admin`.
+
+Project cards show:
+
+- Project title
+- Linked client name or email
+- Service type
+- Status
+- Budget range
+- Created and updated timestamps
+- Short description preview
+
+Click `Manage project` to open `/admin/projects/[id]`. Admins can update:
+
+- Title
+- Service type
+- Budget range
+- Status
+- Description
+
+Allowed project statuses:
+
+- `new`
+- `in_progress`
+- `waiting_for_client`
+- `completed`
+
+Project updates are handled by a server action that verifies the current user is authenticated and has `profiles.role = admin` before making changes. Clients cannot access the admin edit route and cannot update project status.
+
+Clients see status updates in `/dashboard` and `/dashboard/projects/[id]`. The project detail page explains the current stage in plain language, for example whether work is waiting to start, in progress, waiting for client feedback, or completed.
+
 ## Formspree Setup
 
 1. Create a Formspree account and form.
@@ -202,3 +235,5 @@ Use [LAUNCH_CHECKLIST.md](./LAUNCH_CHECKLIST.md) for the full launch pass.
 12. As admin, reject a test request.
 13. Register a client with the same email as a request and convert that request into a project.
 14. Log in as the client and confirm the project appears in `/dashboard`.
+15. As admin, open `Manage project`, update the status, and save.
+16. Log in as the client and confirm the updated status appears in `/dashboard/projects/[id]`.

@@ -6,6 +6,14 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 
 type RequestStatus = "reviewed" | "rejected";
+const allowedProjectStatuses = [
+  "new",
+  "in_progress",
+  "waiting_for_client",
+  "completed",
+] as const;
+
+type ProjectStatus = (typeof allowedProjectStatuses)[number];
 
 async function requireAdmin() {
   const supabase = await createClient();
@@ -149,6 +157,69 @@ export async function convertProjectRequestToProject(formData: FormData) {
   redirect(
     `/admin?type=success&message=${encodeURIComponent(
       `Project created for ${clientProfile.email}.`
+    )}`
+  );
+}
+
+export async function updateProjectDetails(formData: FormData) {
+  const supabase = await requireAdmin();
+  const projectId = formData.get("projectId");
+  const title = formData.get("title");
+  const serviceType = formData.get("serviceType");
+  const budgetRange = formData.get("budgetRange");
+  const status = formData.get("status");
+  const description = formData.get("description");
+
+  if (!projectId || typeof projectId !== "string") {
+    throw new Error("Missing project id.");
+  }
+
+  if (!title || typeof title !== "string" || !title.trim()) {
+    redirect(
+      `/admin/projects/${projectId}?type=error&message=${encodeURIComponent(
+        "Project title is required."
+      )}`
+    );
+  }
+
+  if (
+    typeof status !== "string" ||
+    !allowedProjectStatuses.includes(status as ProjectStatus)
+  ) {
+    redirect(
+      `/admin/projects/${projectId}?type=error&message=${encodeURIComponent(
+        "Invalid project status."
+      )}`
+    );
+  }
+
+  const { error } = await supabase
+    .from("projects")
+    .update({
+      title: title.trim(),
+      service_type: typeof serviceType === "string" ? serviceType.trim() : null,
+      budget_range: typeof budgetRange === "string" ? budgetRange.trim() : null,
+      status,
+      description: typeof description === "string" ? description.trim() : null,
+      updated_at: new Date().toISOString(),
+    })
+    .eq("id", projectId);
+
+  if (error) {
+    redirect(
+      `/admin/projects/${projectId}?type=error&message=${encodeURIComponent(
+        error.message
+      )}`
+    );
+  }
+
+  revalidatePath("/admin");
+  revalidatePath(`/admin/projects/${projectId}`);
+  revalidatePath("/dashboard");
+  revalidatePath(`/dashboard/projects/${projectId}`);
+  redirect(
+    `/admin/projects/${projectId}?type=success&message=${encodeURIComponent(
+      "Project updated successfully."
     )}`
   );
 }

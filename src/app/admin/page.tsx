@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { AlertCircle, BriefcaseBusiness, Inbox, UsersRound } from "lucide-react";
 
@@ -67,19 +68,19 @@ export default async function AdminPage({
       supabase
         .from("project_requests")
         .select("id,name,email,business_name,business_type,service_needed,budget_range,timeline,message,status,created_at")
-        .order("created_at", { ascending: false })
-        .limit(8),
+        .order("created_at", { ascending: false }),
       supabase
         .from("projects")
-        .select("id,title,service_type,status,budget_range,created_at")
-        .order("created_at", { ascending: false })
-        .limit(8),
+        .select("id,client_id,title,service_type,description,status,budget_range,created_at,updated_at")
+        .order("created_at", { ascending: false }),
       supabase
         .from("profiles")
         .select("id,full_name,email,company_name,role,created_at")
-        .order("created_at", { ascending: false })
-        .limit(8),
+        .order("created_at", { ascending: false }),
     ]);
+  const clientById = new Map(
+    (clients || []).map((client) => [client.id, client])
+  );
 
   return (
     <AdminShell
@@ -258,15 +259,49 @@ export default async function AdminPage({
                         key={project.id}
                         className="rounded-lg border border-zinc-200 p-4"
                       >
-                        <div className="flex items-center justify-between gap-3">
-                          <p className="text-sm font-semibold text-zinc-950">
-                            {project.title}
-                          </p>
+                        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                          <div>
+                            <p className="text-sm font-semibold text-zinc-950">
+                              {project.title}
+                            </p>
+                            <p className="mt-1 text-sm text-zinc-500">
+                              {getClientLabel(clientById.get(project.client_id))}
+                            </p>
+                          </div>
                           <StatusBadge status={project.status} />
                         </div>
-                        <p className="mt-2 text-sm text-zinc-500">
-                          {project.service_type || "Digital project"}
-                        </p>
+                        <dl className="mt-4 grid gap-3 text-sm">
+                          <RequestDetail
+                            label="Service"
+                            value={project.service_type || "Digital project"}
+                          />
+                          <RequestDetail
+                            label="Budget"
+                            value={project.budget_range}
+                          />
+                          <RequestDetail
+                            label="Created"
+                            value={formatDate(project.created_at)}
+                          />
+                          <RequestDetail
+                            label="Updated"
+                            value={formatDate(project.updated_at)}
+                          />
+                        </dl>
+                        {project.description ? (
+                          <p className="mt-4 line-clamp-3 text-sm leading-6 text-zinc-600">
+                            {project.description}
+                          </p>
+                        ) : null}
+                        <Button
+                          asChild
+                          variant="outline"
+                          className="mt-5 h-10 rounded-lg bg-white"
+                        >
+                          <Link href={`/admin/projects/${project.id}`}>
+                            Manage project
+                          </Link>
+                        </Button>
                       </div>
                     ))
                   ) : (
@@ -408,4 +443,17 @@ function formatDate(value?: string | null) {
     dateStyle: "medium",
     timeStyle: "short",
   }).format(new Date(value));
+}
+
+function getClientLabel(
+  client?: {
+    full_name?: string | null;
+    email?: string | null;
+  }
+) {
+  if (!client) {
+    return "Client profile not found";
+  }
+
+  return client.full_name || client.email || "Unnamed client";
 }

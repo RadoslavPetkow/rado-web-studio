@@ -88,6 +88,10 @@ export default async function ProjectDetailsPage({
                 <p className="mt-4 text-base leading-7 text-zinc-600">
                   {project.service_type || "Digital project"}
                 </p>
+                <div className="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm leading-6 text-emerald-950">
+                  <p className="font-semibold">Current stage</p>
+                  <p className="mt-1">{getStageDescription(project.status)}</p>
+                </div>
               </div>
               <StatusBadge status={project.status} />
             </div>
@@ -143,6 +147,21 @@ export default async function ProjectDetailsPage({
       }
     />
   );
+}
+
+function getStageDescription(status?: string | null) {
+  switch (status) {
+    case "new":
+      return "Your project has been created and is waiting to be started.";
+    case "in_progress":
+      return "Work is currently in progress.";
+    case "waiting_for_client":
+      return "I am waiting for your feedback, content, or approval.";
+    case "completed":
+      return "This project is marked as completed.";
+    default:
+      return "Project status will be updated here as the work moves forward.";
+  }
 }
 
 function ProjectShell({ main }: { main: React.ReactNode }) {
