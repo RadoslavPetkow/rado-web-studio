@@ -66,6 +66,7 @@ export default function ContactPage() {
                       "I review your project details.",
                       "I suggest the best solution.",
                       "We agree on scope, price, and timeline.",
+                      "Before any paid work begins, we clarify scope, timeline and expectations.",
                       "I build and share progress.",
                       "You review, approve and launch.",
                     ].map((item) => (

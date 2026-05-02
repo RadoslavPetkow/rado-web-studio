@@ -296,8 +296,8 @@ export function ContactForm({ className }: { className?: string }) {
 
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm leading-6 text-zinc-500">
-          Your information is only used to respond to your project request. No
-          spam.
+          Your information is used only to review and respond to your request.
+          No spam, no selling of data.
         </p>
         <Button
           type="submit"

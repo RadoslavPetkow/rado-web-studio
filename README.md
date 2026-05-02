@@ -2,7 +2,7 @@
 
 Premium marketing website and early client portal foundation for Rado Web Studio, built with Next.js App Router, TypeScript, Tailwind CSS, shadcn/ui, Lucide React, Framer Motion, Supabase, Vercel Analytics, and Speed Insights.
 
-This version includes the public marketing site, Supabase Auth foundation, protected client/admin dashboards, converted project management, simple project messages, and database/RLS schema. Payments, file uploads, realtime, and notifications are intentionally not included yet.
+This version includes the public marketing site, Supabase Auth foundation, protected client/admin dashboards, converted project management, simple project messages, privacy/terms pages, and database/RLS schema. Payments, file uploads, realtime, and notifications are intentionally not included yet.
 
 ## Local Setup
 
@@ -250,6 +250,18 @@ The project includes:
 
 The thank-you page is intentionally excluded from indexing.
 
+## Privacy, Terms, And Paid Work
+
+The site includes simple launch-ready trust pages:
+
+- `/privacy`: explains contact form data, portal account data, project/message data, how data is used, and that data is not sold.
+- `/terms`: explains services offered, project scope, communication, client responsibilities, payment handling, and simple limitations.
+- `/start`: provides a public project start checklist for business information, brand assets, website content, access details, feedback, revisions, and launch preparation.
+
+Payments are not handled inside the app yet. Paid project terms, deposits, invoices, bank transfer details, and formal agreements can be handled separately before work begins.
+
+These pages are written in simple English for an early-stage business website and are not legal advice.
+
 ## Production Testing Checklist
 
 Before sharing the site with real prospects:
@@ -261,11 +273,13 @@ Before sharing the site with real prospects:
 5. Test the mailto fallback with Formspree disabled.
 6. Check mobile layout for all main pages.
 7. Check `/robots.txt` and `/sitemap.xml`.
-8. Confirm Vercel Analytics and Speed Insights are active after deployment.
-9. Register a test portal user.
-10. Promote your own profile to `admin` in Supabase.
-11. Confirm `/dashboard` works for a client user.
-12. Confirm `/admin` redirects non-admin users and works for admin users.
+8. Check `/privacy`, `/terms`, and `/start`.
+9. Confirm footer links to Contact, Privacy Policy, Terms of Service, and Project Start Checklist work.
+10. Confirm Vercel Analytics and Speed Insights are active after deployment.
+11. Register a test portal user.
+12. Promote your own profile to `admin` in Supabase.
+13. Confirm `/dashboard` works for a client user.
+14. Confirm `/admin` redirects non-admin users and works for admin users.
 
 Use [LAUNCH_CHECKLIST.md](./LAUNCH_CHECKLIST.md) for the full launch pass.
 

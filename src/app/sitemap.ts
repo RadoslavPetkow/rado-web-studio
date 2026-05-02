@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { siteConfig } from "@/config/site";
 
-const routes = ["", "/projects", "/contact"];
+const routes = ["", "/projects", "/contact", "/start", "/privacy", "/terms"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date();

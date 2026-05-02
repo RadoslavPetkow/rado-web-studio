@@ -41,13 +41,39 @@ export function Footer() {
             </div>
             <div>
               <p className="text-sm font-semibold text-zinc-950">Contact</p>
-              <Link
-                href={`mailto:${siteConfig.email}`}
-                className="mt-4 flex items-center gap-2 text-sm text-zinc-600 transition-colors hover:text-zinc-950"
-              >
-                <Mail className="size-4" />
-                {siteConfig.email}
-              </Link>
+              <div className="mt-4 grid gap-3">
+                <Link
+                  href="/contact"
+                  className="text-sm text-zinc-600 transition-colors hover:text-zinc-950"
+                >
+                  Contact
+                </Link>
+                <Link
+                  href="/privacy"
+                  className="text-sm text-zinc-600 transition-colors hover:text-zinc-950"
+                >
+                  Privacy Policy
+                </Link>
+                <Link
+                  href="/terms"
+                  className="text-sm text-zinc-600 transition-colors hover:text-zinc-950"
+                >
+                  Terms of Service
+                </Link>
+                <Link
+                  href="/start"
+                  className="text-sm text-zinc-600 transition-colors hover:text-zinc-950"
+                >
+                  Project Start Checklist
+                </Link>
+                <Link
+                  href={`mailto:${siteConfig.email}`}
+                  className="flex items-center gap-2 text-sm text-zinc-600 transition-colors hover:text-zinc-950"
+                >
+                  <Mail className="size-4" />
+                  {siteConfig.email}
+                </Link>
+              </div>
             </div>
           </div>
         </div>
