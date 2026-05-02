@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { formatDateTime } from "@/lib/portal-activity";
 import { cn } from "@/lib/utils";
 
 type MessageContext = "client" | "admin";
@@ -41,9 +42,9 @@ export function ProjectMessageThread({
       <CardHeader>
         <CardTitle>{isAdminContext ? "Project messages" : "Messages"}</CardTitle>
         <CardDescription>
-          {isAdminContext
-            ? "Reply to the client and keep important project updates in one place."
-            : "Send project questions, feedback, content notes, or approval updates here."}
+          {messages.length} {messages.length === 1 ? "message" : "messages"}.
+          Messages are saved to this project. This MVP does not use realtime
+          yet, so refresh the page to see new replies.
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-5">
@@ -72,12 +73,13 @@ export function ProjectMessageThread({
                     {item.senderLabel}
                   </p>
                   <time
+                    dateTime={item.createdAt || undefined}
                     className={cn(
                       "text-xs",
                       item.isAdminSender ? "text-zinc-300" : "text-zinc-500"
                     )}
                   >
-                    {formatDate(item.createdAt)}
+                    {formatDateTime(item.createdAt)}
                   </time>
                 </div>
                 <p
@@ -93,7 +95,10 @@ export function ProjectMessageThread({
           </div>
         ) : (
           <div className="rounded-xl border border-dashed border-zinc-300 bg-zinc-50 p-5 text-sm leading-6 text-zinc-600">
-            No messages yet. Start the thread with a short project update.
+            <p className="font-medium text-zinc-950">No messages yet</p>
+            <p className="mt-1">
+              Start the thread with a short project update, question, or reply.
+            </p>
           </div>
         )}
 
@@ -128,15 +133,4 @@ export function ProjectMessageThread({
       </CardContent>
     </Card>
   );
-}
-
-function formatDate(value?: string | null) {
-  if (!value) {
-    return "Not provided";
-  }
-
-  return new Intl.DateTimeFormat("en", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  }).format(new Date(value));
 }

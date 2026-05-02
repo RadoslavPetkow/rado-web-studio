@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import {
   ArrowRight,
   CalendarDays,
+  Clock3,
   FolderKanban,
   MessageSquare,
   UserRound,
@@ -23,6 +24,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
+import { formatDateTime, getProjectMessageActivity } from "@/lib/portal-activity";
 import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
@@ -65,6 +67,15 @@ export default async function DashboardPage() {
         .order("created_at", { ascending: false })
         .limit(5),
     ]);
+  const projectIds = (projects || []).map((project) => project.id);
+  const { data: projectMessages } = projectIds.length
+    ? await supabase
+        .from("messages")
+        .select("project_id,message,created_at")
+        .in("project_id", projectIds)
+        .order("created_at", { ascending: false })
+    : { data: [] };
+  const activityByProject = getProjectMessageActivity(projectMessages || []);
 
   return (
     <DashboardShell
@@ -119,48 +130,77 @@ export default async function DashboardPage() {
               <CardContent>
                 {projects?.length ? (
                   <div className="grid gap-3">
-                    {projects.map((project) => (
-                      <div
-                        key={project.id}
-                        className="rounded-xl border border-zinc-200 bg-zinc-50 p-5"
-                      >
-                        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                          <div>
-                            <h2 className="font-semibold text-zinc-950">
-                              {project.title}
-                            </h2>
-                            <p className="mt-1 text-sm text-zinc-600">
-                              {project.service_type || "Digital project"}
-                            </p>
-                          </div>
-                          <StatusBadge status={project.status} />
-                        </div>
-                        <div className="mt-4 grid gap-3 text-sm text-zinc-600 sm:grid-cols-2">
-                          <div className="flex gap-2">
-                            <CalendarDays className="mt-0.5 size-4 shrink-0 text-emerald-700" />
-                            <span>{formatDate(project.created_at)}</span>
-                          </div>
-                          <p>
-                            Budget: {project.budget_range || "Not specified"}
-                          </p>
-                        </div>
-                        {project.description ? (
-                          <p className="mt-4 line-clamp-3 text-sm leading-6 text-zinc-600">
-                            {project.description}
-                          </p>
-                        ) : null}
-                        <Button
-                          asChild
-                          variant="outline"
-                          className="mt-5 h-10 rounded-lg bg-white"
+                    {projects.map((project) => {
+                      const activity = activityByProject.get(project.id);
+
+                      return (
+                        <div
+                          key={project.id}
+                          className="rounded-xl border border-zinc-200 bg-zinc-50 p-5"
                         >
-                          <Link href={`/dashboard/projects/${project.id}`}>
-                            View project details
-                            <ArrowRight className="size-4" />
-                          </Link>
-                        </Button>
-                      </div>
-                    ))}
+                          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                            <div>
+                              <h2 className="font-semibold text-zinc-950">
+                                {project.title}
+                              </h2>
+                              <p className="mt-1 text-sm text-zinc-600">
+                                {project.service_type || "Digital project"}
+                              </p>
+                            </div>
+                            <StatusBadge status={project.status} />
+                          </div>
+                          <div className="mt-4 grid gap-3 text-sm text-zinc-600 sm:grid-cols-2">
+                            <ProjectCardDetail
+                              icon="calendar"
+                              label="Created"
+                              value={formatDateTime(project.created_at)}
+                            />
+                            <ProjectCardDetail
+                              icon="clock"
+                              label="Updated"
+                              value={formatDateTime(project.updated_at)}
+                            />
+                            <ProjectCardDetail
+                              label="Budget"
+                              value={project.budget_range || "Not specified"}
+                            />
+                            <ProjectCardDetail
+                              label="Messages"
+                              value={`${activity?.count || 0} total`}
+                            />
+                          </div>
+                          <div className="mt-4 rounded-lg border border-zinc-200 bg-white p-4">
+                            <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
+                              Last message
+                            </p>
+                            <p className="mt-2 line-clamp-2 text-sm leading-6 text-zinc-700">
+                              {activity?.lastMessagePreview ||
+                                "No messages yet."}
+                            </p>
+                            {activity?.lastMessageAt ? (
+                              <p className="mt-2 text-xs text-zinc-500">
+                                {formatDateTime(activity.lastMessageAt)}
+                              </p>
+                            ) : null}
+                          </div>
+                          {project.description ? (
+                            <p className="mt-4 line-clamp-3 text-sm leading-6 text-zinc-600">
+                              {project.description}
+                            </p>
+                          ) : null}
+                          <Button
+                            asChild
+                            variant="outline"
+                            className="mt-5 h-10 rounded-lg bg-white"
+                          >
+                            <Link href={`/dashboard/projects/${project.id}`}>
+                              View project details
+                              <ArrowRight className="size-4" />
+                            </Link>
+                          </Button>
+                        </div>
+                      );
+                    })}
                   </div>
                 ) : (
                   <EmptyState text="No projects yet. Submit a request and approved work can be added here." />
@@ -208,8 +248,8 @@ export default async function DashboardPage() {
                   <MessageSquare className="size-5 text-emerald-300" />
                   <CardTitle>Messages</CardTitle>
                   <CardDescription className="text-zinc-300">
-                    A simple project message thread will live here in a later
-                    portal iteration.
+                    Open a project to read or send messages. New replies appear
+                    after refresh in this MVP.
                   </CardDescription>
                 </CardHeader>
               </Card>
@@ -241,12 +281,29 @@ function EmptyState({ text }: { text: string }) {
   );
 }
 
-function formatDate(value?: string | null) {
-  if (!value) {
-    return "Not provided";
-  }
+function ProjectCardDetail({
+  icon,
+  label,
+  value,
+}: {
+  icon?: "calendar" | "clock";
+  label: string;
+  value: string;
+}) {
+  const Icon =
+    icon === "calendar" ? CalendarDays : icon === "clock" ? Clock3 : null;
 
-  return new Intl.DateTimeFormat("en", {
-    dateStyle: "medium",
-  }).format(new Date(value));
+  return (
+    <div className="flex gap-2">
+      {Icon ? (
+        <Icon className="mt-0.5 size-4 shrink-0 text-emerald-700" />
+      ) : null}
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
+          {label}
+        </p>
+        <p className="mt-1 text-zinc-700">{value}</p>
+      </div>
+    </div>
+  );
 }

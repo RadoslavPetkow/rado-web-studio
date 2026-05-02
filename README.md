@@ -2,7 +2,7 @@
 
 Premium marketing website and early client portal foundation for Rado Web Studio, built with Next.js App Router, TypeScript, Tailwind CSS, shadcn/ui, Lucide React, Framer Motion, Supabase, Vercel Analytics, and Speed Insights.
 
-This version includes the public marketing site, Supabase Auth foundation, protected client/admin dashboard shells, and database/RLS schema. Payments, file uploads, and full chat workflows are intentionally not included yet.
+This version includes the public marketing site, Supabase Auth foundation, protected client/admin dashboards, converted project management, simple project messages, and database/RLS schema. Payments, file uploads, realtime, and notifications are intentionally not included yet.
 
 ## Local Setup
 
@@ -117,7 +117,10 @@ Project cards show:
 - Service type
 - Status
 - Budget range
-- Created and updated timestamps
+- Updated timestamp
+- Last project message preview when available
+- Last project message timestamp when available
+- Total message count
 - Short description preview
 
 Click `Manage project` to open `/admin/projects/[id]`. Admins can update:
@@ -137,7 +140,19 @@ Allowed project statuses:
 
 Project updates are handled by a server action that verifies the current user is authenticated and has `profiles.role = admin` before making changes. Clients cannot access the admin edit route and cannot update project status.
 
-Clients see status updates in `/dashboard` and `/dashboard/projects/[id]`. The project detail page explains the current stage in plain language, for example whether work is waiting to start, in progress, waiting for client feedback, or completed.
+Clients see status updates in `/dashboard` and `/dashboard/projects/[id]`. Client project cards show the project title, status, service type, budget range, created and updated timestamps, last message preview, last message timestamp, total message count, and a link to view project details. The project detail page explains the current stage in plain language, for example whether work is waiting to start, in progress, waiting for client feedback, or completed.
+
+## Project Activity Overview
+
+The client and admin dashboards summarize recent activity from the existing `messages` table. The dashboard does not subscribe to realtime events. It reads message rows during the server render, counts messages per project, and displays the newest message as a short preview.
+
+Activity fields:
+
+- Last message preview: whitespace is normalized and long messages are shortened.
+- Last message timestamp: shown with medium date and short time formatting.
+- Message count: total readable messages for that project.
+
+Supabase Row Level Security still controls what each user can read. Clients only see activity for projects assigned to their account. Admins can see all project activity.
 
 ## Project Messages
 
@@ -163,6 +178,16 @@ Limitations in this MVP:
 - No file uploads yet.
 - No email notifications yet.
 - New messages appear after the page refreshes/revalidates.
+
+To test last message previews:
+
+1. Log in as an admin and open `/admin/projects/[id]`.
+2. Send a message on the project thread.
+3. Return to `/admin` and confirm the project card shows the preview, timestamp, and count.
+4. Log in as the linked client and open `/dashboard`.
+5. Confirm the same project card shows the preview, timestamp, and count.
+6. Send a client reply from `/dashboard/projects/[id]`.
+7. Refresh `/dashboard` and `/admin` to confirm the newest reply becomes the preview.
 
 ## Formspree Setup
 
@@ -258,6 +283,9 @@ Use [LAUNCH_CHECKLIST.md](./LAUNCH_CHECKLIST.md) for the full launch pass.
 10. Log out and confirm `/dashboard` redirects to `/login`.
 11. As admin, mark a request as reviewed.
 12. As admin, reject a test request.
+13. Convert a request into a project.
+14. Send messages as both admin and client.
+15. Confirm `/dashboard` and `/admin` show last message previews, timestamps, and total message counts after refresh.
 13. Register a client with the same email as a request and convert that request into a project.
 14. Log in as the client and confirm the project appears in `/dashboard`.
 15. As admin, open `Manage project`, update the status, and save.

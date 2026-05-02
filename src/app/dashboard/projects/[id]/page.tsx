@@ -19,6 +19,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
+import { formatDateTime } from "@/lib/portal-activity";
 import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
@@ -153,7 +154,7 @@ export default async function ProjectDetailsPage({
                     <p className="font-medium text-zinc-950">Created</p>
                     <p className="mt-1 flex gap-2">
                       <CalendarDays className="size-4 text-emerald-700" />
-                      {formatDate(project.created_at)}
+                      {formatDateTime(project.created_at)}
                     </p>
                   </div>
                 </CardContent>
@@ -220,15 +221,4 @@ function ProjectNotice({
       {message}
     </div>
   );
-}
-
-function formatDate(value?: string | null) {
-  if (!value) {
-    return "Not provided";
-  }
-
-  return new Intl.DateTimeFormat("en", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  }).format(new Date(value));
 }

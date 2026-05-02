@@ -23,6 +23,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
+import { formatDateTime } from "@/lib/portal-activity";
 import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
@@ -267,8 +268,8 @@ export default async function AdminProjectPage({
                   <CardTitle>Project metadata</CardTitle>
                 </CardHeader>
                 <CardContent className="grid gap-3 text-sm text-zinc-600">
-                  <p>Created: {formatDate(project.created_at)}</p>
-                  <p>Updated: {formatDate(project.updated_at)}</p>
+                  <p>Created: {formatDateTime(project.created_at)}</p>
+                  <p>Updated: {formatDateTime(project.updated_at)}</p>
                   <p>Project ID: {project.id}</p>
                 </CardContent>
               </Card>
@@ -319,17 +320,6 @@ function AdminProjectNotice({
       {message}
     </div>
   );
-}
-
-function formatDate(value?: string | null) {
-  if (!value) {
-    return "Not provided";
-  }
-
-  return new Intl.DateTimeFormat("en", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  }).format(new Date(value));
 }
 
 function getAdminSenderLabel({

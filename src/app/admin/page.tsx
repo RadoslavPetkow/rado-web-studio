@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { AlertCircle, BriefcaseBusiness, Inbox, UsersRound } from "lucide-react";
+import {
+  AlertCircle,
+  ArrowRight,
+  BriefcaseBusiness,
+  Inbox,
+  MessageSquare,
+  UsersRound,
+} from "lucide-react";
 
 import {
   convertProjectRequestToProject,
@@ -22,6 +29,7 @@ import {
 } from "@/components/ui/card";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { createClient } from "@/lib/supabase/server";
+import { formatDateTime, getProjectMessageActivity } from "@/lib/portal-activity";
 
 export const metadata: Metadata = {
   title: "Admin",
@@ -81,6 +89,15 @@ export default async function AdminPage({
   const clientById = new Map(
     (clients || []).map((client) => [client.id, client])
   );
+  const projectIds = (projects || []).map((project) => project.id);
+  const { data: projectMessages } = projectIds.length
+    ? await supabase
+        .from("messages")
+        .select("project_id,message,created_at")
+        .in("project_id", projectIds)
+        .order("created_at", { ascending: false })
+    : { data: [] };
+  const activityByProject = getProjectMessageActivity(projectMessages || []);
 
   return (
     <AdminShell
@@ -171,7 +188,7 @@ export default async function AdminPage({
                           />
                           <RequestDetail
                             label="Created"
-                            value={formatDate(request.created_at)}
+                            value={formatDateTime(request.created_at)}
                           />
                         </dl>
                         <div className="mt-4 rounded-lg border border-zinc-200 bg-white p-4">
@@ -254,56 +271,78 @@ export default async function AdminPage({
                 </CardHeader>
                 <CardContent className="grid gap-3">
                   {projects?.length ? (
-                    projects.map((project) => (
-                      <div
-                        key={project.id}
-                        className="rounded-lg border border-zinc-200 p-4"
-                      >
-                        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                          <div>
-                            <p className="text-sm font-semibold text-zinc-950">
-                              {project.title}
-                            </p>
-                            <p className="mt-1 text-sm text-zinc-500">
-                              {getClientLabel(clientById.get(project.client_id))}
-                            </p>
-                          </div>
-                          <StatusBadge status={project.status} />
-                        </div>
-                        <dl className="mt-4 grid gap-3 text-sm">
-                          <RequestDetail
-                            label="Service"
-                            value={project.service_type || "Digital project"}
-                          />
-                          <RequestDetail
-                            label="Budget"
-                            value={project.budget_range}
-                          />
-                          <RequestDetail
-                            label="Created"
-                            value={formatDate(project.created_at)}
-                          />
-                          <RequestDetail
-                            label="Updated"
-                            value={formatDate(project.updated_at)}
-                          />
-                        </dl>
-                        {project.description ? (
-                          <p className="mt-4 line-clamp-3 text-sm leading-6 text-zinc-600">
-                            {project.description}
-                          </p>
-                        ) : null}
-                        <Button
-                          asChild
-                          variant="outline"
-                          className="mt-5 h-10 rounded-lg bg-white"
+                    projects.map((project) => {
+                      const activity = activityByProject.get(project.id);
+
+                      return (
+                        <div
+                          key={project.id}
+                          className="rounded-lg border border-zinc-200 p-4"
                         >
-                          <Link href={`/admin/projects/${project.id}`}>
-                            Manage project
-                          </Link>
-                        </Button>
-                      </div>
-                    ))
+                          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                            <div>
+                              <p className="text-sm font-semibold text-zinc-950">
+                                {project.title}
+                              </p>
+                              <p className="mt-1 text-sm text-zinc-500">
+                                {getClientLabel(
+                                  clientById.get(project.client_id)
+                                )}
+                              </p>
+                            </div>
+                            <StatusBadge status={project.status} />
+                          </div>
+                          <dl className="mt-4 grid gap-3 text-sm">
+                            <RequestDetail
+                              label="Service"
+                              value={project.service_type || "Digital project"}
+                            />
+                            <RequestDetail
+                              label="Budget"
+                              value={project.budget_range}
+                            />
+                            <RequestDetail
+                              label="Updated"
+                              value={formatDateTime(project.updated_at)}
+                            />
+                            <RequestDetail
+                              label="Messages"
+                              value={`${activity?.count || 0} total`}
+                            />
+                          </dl>
+                          <div className="mt-4 rounded-lg border border-zinc-200 bg-zinc-50 p-4">
+                            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-zinc-500">
+                              <MessageSquare className="size-3.5" />
+                              Last message
+                            </div>
+                            <p className="mt-2 line-clamp-2 text-sm leading-6 text-zinc-700">
+                              {activity?.lastMessagePreview ||
+                                "No messages yet."}
+                            </p>
+                            {activity?.lastMessageAt ? (
+                              <p className="mt-2 text-xs text-zinc-500">
+                                {formatDateTime(activity.lastMessageAt)}
+                              </p>
+                            ) : null}
+                          </div>
+                          {project.description ? (
+                            <p className="mt-4 line-clamp-3 text-sm leading-6 text-zinc-600">
+                              {project.description}
+                            </p>
+                          ) : null}
+                          <Button
+                            asChild
+                            variant="outline"
+                            className="mt-5 h-10 rounded-lg bg-white"
+                          >
+                            <Link href={`/admin/projects/${project.id}`}>
+                              Manage project
+                              <ArrowRight className="size-4" />
+                            </Link>
+                          </Button>
+                        </div>
+                      );
+                    })
                   ) : (
                     <EmptyAdminState text="No projects yet." />
                   )}
@@ -432,17 +471,6 @@ function EmptyAdminState({ text }: { text: string }) {
       {text}
     </div>
   );
-}
-
-function formatDate(value?: string | null) {
-  if (!value) {
-    return "Not provided";
-  }
-
-  return new Intl.DateTimeFormat("en", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  }).format(new Date(value));
 }
 
 function getClientLabel(
