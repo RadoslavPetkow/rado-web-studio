@@ -106,6 +106,13 @@ const checklistSections = [
   },
 ];
 
+const compactRequestFlow = [
+  "Submit a request",
+  "Clarify fit and scope",
+  "Create portal account",
+  "Track progress in the project workspace",
+];
+
 export default function StartPage() {
   return (
     <div className="min-h-screen bg-zinc-50 text-zinc-950">
@@ -207,20 +214,41 @@ export default function StartPage() {
                       what is needed during the first project conversation.
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="flex flex-col gap-3 sm:flex-row">
-                    <Button asChild className="h-11 rounded-lg bg-zinc-950">
-                      <Link href="/contact">
-                        Start a project
-                        <ArrowRight className="size-4" />
-                      </Link>
-                    </Button>
-                    <Button
-                      asChild
-                      variant="outline"
-                      className="h-11 rounded-lg bg-white"
-                    >
-                      <Link href="/projects">View demo projects</Link>
-                    </Button>
+                  <CardContent className="grid gap-5">
+                    <div className="rounded-xl border border-emerald-200 bg-white p-4">
+                      <p className="text-sm font-semibold text-emerald-950">
+                        How the request becomes a portal project
+                      </p>
+                      <div className="mt-4 grid gap-3">
+                        {compactRequestFlow.map((item, index) => (
+                          <div key={item} className="flex gap-3 text-sm">
+                            <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-xs font-semibold text-emerald-900">
+                              {index + 1}
+                            </span>
+                            <span className="text-zinc-700">{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-4 text-sm leading-6 text-zinc-600">
+                        The portal is used only for approved projects, so first
+                        we confirm that the project is a good fit.
+                      </p>
+                    </div>
+                    <div className="flex flex-col gap-3 sm:flex-row">
+                      <Button asChild className="h-11 rounded-lg bg-zinc-950">
+                        <Link href="/contact">
+                          Start a project
+                          <ArrowRight className="size-4" />
+                        </Link>
+                      </Button>
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="h-11 rounded-lg bg-white"
+                      >
+                        <Link href="/projects">View demo projects</Link>
+                      </Button>
+                    </div>
                   </CardContent>
                 </Card>
               </FadeIn>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Mail } from "lucide-react";
+import { ArrowRight, CheckCircle2, Mail, Workflow } from "lucide-react";
 
 import { ContactForm } from "@/components/site/contact-form";
 import { FadeIn } from "@/components/site/fade-in";
@@ -9,6 +9,16 @@ import { Navbar } from "@/components/site/navbar";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { siteConfig } from "@/config/site";
+
+const requestFlowSteps = [
+  "I review your request.",
+  "I reply with questions or a suggested direction.",
+  "We clarify scope, timeline and expectations.",
+  "If the project moves forward, you create a client portal account.",
+  "I create your project workspace.",
+  "We communicate and track progress inside the portal.",
+  "We review, polish and launch.",
+];
 
 export const metadata: Metadata = {
   title: "Request a Project",
@@ -56,26 +66,24 @@ export default function ContactPage() {
             <FadeIn delay={0.08}>
               <Card className="rounded-lg border-zinc-200 bg-zinc-950 p-2 text-white shadow-xl shadow-zinc-950/10">
                 <CardHeader>
-                  <CardTitle>
-                    What happens after you send a request?
-                  </CardTitle>
+                  <Workflow className="size-5 text-emerald-300" />
+                  <CardTitle>What happens after you submit a request?</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="grid gap-4 text-sm text-zinc-200">
-                    {[
-                      "I review your project details.",
-                      "I suggest the best solution.",
-                      "We agree on scope, price, and timeline.",
-                      "Before any paid work begins, we clarify scope, timeline and expectations.",
-                      "I build and share progress.",
-                      "You review, approve and launch.",
-                    ].map((item) => (
+                    {requestFlowSteps.map((item, index) => (
                       <li key={item} className="flex gap-3">
-                        <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-emerald-300" />
+                        <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-emerald-200">
+                          {index + 1}
+                        </span>
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
+                  <div className="mt-5 rounded-lg border border-white/10 bg-white/5 p-4 text-sm leading-6 text-zinc-200">
+                    The portal is used only for approved projects, so first we
+                    confirm that the project is a good fit.
+                  </div>
                 </CardContent>
               </Card>
             </FadeIn>
@@ -108,6 +116,33 @@ export default function ContactPage() {
               </div>
             </FadeIn>
           </div>
+        </section>
+
+        <section className="px-4 pb-16 sm:px-6 lg:px-8">
+          <FadeIn className="mx-auto w-full max-w-7xl">
+            <Card className="rounded-2xl border-zinc-200 bg-white p-2 shadow-sm">
+              <CardHeader>
+                <CardTitle>Request first, portal after approval</CardTitle>
+              </CardHeader>
+              <CardContent className="grid gap-4 text-sm leading-6 text-zinc-600 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+                <p>
+                  The first step is a simple request. After we confirm the
+                  project is a good fit, the client portal becomes the project
+                  workspace for details, messages, progress, and review.
+                </p>
+                <div className="grid gap-2 rounded-xl border border-zinc-200 bg-zinc-50 p-4">
+                  {["Request", "Clarify", "Approve", "Portal workspace"].map(
+                    (item) => (
+                      <div key={item} className="flex items-center gap-3">
+                        <CheckCircle2 className="size-4 text-emerald-700" />
+                        <span className="font-medium text-zinc-800">{item}</span>
+                      </div>
+                    )
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          </FadeIn>
         </section>
       </main>
       <Footer />

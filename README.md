@@ -258,6 +258,8 @@ The site includes simple launch-ready trust pages:
 - `/terms`: explains services offered, project scope, communication, client responsibilities, payment handling, and simple limitations.
 - `/start`: provides a public project start checklist for business information, brand assets, website content, access details, feedback, revisions, and launch preparation.
 
+The public contact page also explains the request-to-portal flow: a visitor submits a request, the project fit and scope are clarified, approved clients create a portal account, and the project workspace is then used for communication and progress tracking.
+
 Payments are not handled inside the app yet. Paid project terms, deposits, invoices, bank transfer details, and formal agreements can be handled separately before work begins.
 
 These pages are written in simple English for an early-stage business website and are not legal advice.
