@@ -217,11 +217,11 @@ function ProcessSection() {
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading
           eyebrow="How I work"
-          title="A focused process from idea to launch."
-          description="Every project starts with clarity. The first version should feel premium, useful, and realistic to maintain."
+          title="From first request to project launch."
+          description="The workflow is designed to make the next step clear before any paid work begins. First we confirm fit and scope, then approved projects move into a client portal workspace."
         />
 
-        <div className="mt-12 grid gap-4 lg:grid-cols-4">
+        <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {siteConfig.process.map((item, index) => (
             <FadeIn key={item.step} delay={index * 0.04}>
               <Card className="h-full rounded-lg border-zinc-200 bg-zinc-50 p-2">
@@ -237,6 +237,41 @@ function ProcessSection() {
               </Card>
             </FadeIn>
           ))}
+        </div>
+
+        <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:justify-center">
+          <Button asChild size="lg" className="h-12 rounded-lg bg-zinc-950">
+            <TrackedLink
+              href="/contact"
+              eventName="process_cta_click"
+              eventProperties={{
+                location: "homepage_process",
+                label: "Start with a request",
+                destination: "/contact",
+              }}
+            >
+              Start with a request
+              <ArrowRight className="size-4" />
+            </TrackedLink>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="h-12 rounded-lg bg-white"
+          >
+            <TrackedLink
+              href="/start"
+              eventName="process_cta_click"
+              eventProperties={{
+                location: "homepage_process",
+                label: "See what to prepare",
+                destination: "/start",
+              }}
+            >
+              See what to prepare
+            </TrackedLink>
+          </Button>
         </div>
       </div>
     </section>

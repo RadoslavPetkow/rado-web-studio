@@ -59,27 +59,39 @@ export const siteConfig = {
   process: [
     {
       step: "01",
-      title: "Discover",
+      title: "Request",
       description:
-        "We clarify your offer, audience, goals, existing tools, and the best first version to launch.",
+        "You send a project request with your business context, service need, timeline, and goals.",
     },
     {
       step: "02",
-      title: "Design",
+      title: "Review",
       description:
-        "I create a clean user journey, polished interface direction, and practical content structure.",
+        "I review your business goals, current needs, and what the first useful version should achieve.",
     },
     {
       step: "03",
-      title: "Build",
+      title: "Scope",
       description:
-        "The project is developed with modern, maintainable code and responsive behavior across devices.",
+        "We clarify scope, timeline, expectations, communication, and what should be included before paid work begins.",
     },
     {
       step: "04",
-      title: "Launch and Improve",
+      title: "Portal",
       description:
-        "We ship the first version, review performance, and plan the next improvements based on real needs.",
+        "Approved projects get a client portal workspace for project details, messages, status, and progress.",
+    },
+    {
+      step: "05",
+      title: "Build",
+      description:
+        "I build the agreed version, share progress, and keep communication organized inside the portal.",
+    },
+    {
+      step: "06",
+      title: "Launch",
+      description:
+        "We review, polish, test the essentials, and launch with a clear next-improvement path.",
     },
   ],
   demoProjects: [
