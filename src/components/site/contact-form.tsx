@@ -193,12 +193,12 @@ export function ContactForm({
     <form
       onSubmit={handleSubmit}
       className={cn(
-        "rounded-2xl border border-zinc-200 bg-white p-4 shadow-xl shadow-zinc-950/5 sm:p-6",
+        "rounded-3xl border border-zinc-200/80 bg-[linear-gradient(145deg,#ffffff_0%,#f8fafc_54%,#ecfdf5_140%)] p-4 shadow-2xl shadow-zinc-950/10 sm:p-6",
         className
       )}
       noValidate
     >
-      <div className="grid gap-5 md:grid-cols-2">
+      <div className="grid gap-5 md:grid-cols-2 md:gap-6">
         <TextField
           id="fullName"
           label={formCopy.fields.fullName}
@@ -261,14 +261,16 @@ export function ContactForm({
         />
       </div>
 
-      <div className="mt-5 grid gap-2">
-        <Label htmlFor="message">{formCopy.fields.message}</Label>
+      <div className="mt-6 grid gap-2.5">
+        <Label htmlFor="message" className="text-sm font-semibold text-zinc-800">
+          {formCopy.fields.message}
+        </Label>
         <Textarea
           id="message"
           value={values.message}
           onChange={(event) => updateField("message", event.target.value)}
           placeholder={formCopy.placeholders.message}
-          className="min-h-32 resize-y bg-white"
+          className="min-h-36 resize-y border-zinc-300 bg-white/90 text-zinc-950 placeholder:text-zinc-500 focus-visible:border-emerald-500 focus-visible:ring-emerald-500/25"
           aria-invalid={Boolean(errors.message)}
         />
         {errors.message ? (
@@ -294,15 +296,15 @@ export function ContactForm({
         </div>
       ) : null}
 
-      <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm leading-6 text-zinc-500">
+      <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-sm leading-6 text-zinc-600">
           {formCopy.trust}
         </p>
         <Button
           type="submit"
           size="lg"
           disabled={status === "loading"}
-          className="h-12 rounded-lg bg-zinc-950 px-5"
+          className="h-12 rounded-lg bg-zinc-950 px-5 text-white shadow-lg shadow-zinc-950/15 transition-all hover:-translate-y-0.5 hover:bg-emerald-900 hover:shadow-emerald-950/20 focus-visible:ring-emerald-500/35"
         >
           {status === "loading" ? (
             <Loader2 className="size-4 animate-spin" />
@@ -365,8 +367,10 @@ function TextField({
   autoComplete,
 }: TextFieldProps) {
   return (
-    <div className="grid gap-2">
-      <Label htmlFor={id}>{label}</Label>
+    <div className="grid gap-2.5">
+      <Label htmlFor={id} className="text-sm font-semibold text-zinc-800">
+        {label}
+      </Label>
       <Input
         id={id}
         type={type}
@@ -374,7 +378,7 @@ function TextField({
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
         autoComplete={autoComplete}
-        className="h-11 bg-white"
+        className="h-12 border-zinc-300 bg-white/90 text-zinc-950 placeholder:text-zinc-500 focus-visible:border-emerald-500 focus-visible:ring-emerald-500/25"
         aria-invalid={Boolean(error)}
       />
       {error ? <p className="text-sm text-red-600">{error}</p> : null}
@@ -402,12 +406,14 @@ function SelectField({
   onChange,
 }: SelectFieldProps) {
   return (
-    <div className="grid gap-2">
-      <Label htmlFor={id}>{label}</Label>
+    <div className="grid gap-2.5">
+      <Label htmlFor={id} className="text-sm font-semibold text-zinc-800">
+        {label}
+      </Label>
       <Select value={value} onValueChange={onChange}>
         <SelectTrigger
           id={id}
-          className="h-11 w-full bg-white"
+          className="h-12 w-full border-zinc-300 bg-white/90 text-zinc-950 data-[placeholder]:text-zinc-500 focus:ring-emerald-500/25"
           aria-invalid={Boolean(error)}
         >
           <SelectValue placeholder={placeholder} />

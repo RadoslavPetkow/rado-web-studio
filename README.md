@@ -314,6 +314,8 @@ The public marketing site was visually redesigned after early feedback that the 
 
 The redesign focuses on making Rado Web Studio feel like a serious modern digital studio: clean and readable, but with more depth, hierarchy, and agency-style presentation.
 
+A follow-up UI polish pass fixed hero and project mockup overlap issues, tightened trust badge alignment, improved the contact form surface and field focus states, and refined navbar/language switcher hover states so the public site feels more stable across desktop, tablet, and mobile.
+
 ## Production Testing Checklist
 
 Before sharing the site with real prospects:

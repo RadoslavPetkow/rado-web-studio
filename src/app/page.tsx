@@ -104,7 +104,7 @@ function HeroSection({ dictionary, locale, localized }: Required<PublicPageProps
     <section className="relative overflow-hidden border-b border-white/10 bg-zinc-950 text-white">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(16,185,129,0.24),transparent_32%),radial-gradient(circle_at_88%_8%,rgba(14,165,233,0.16),transparent_32%),linear-gradient(135deg,#09090b_0%,#18181b_48%,#064e3b_130%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.045)_1px,transparent_1px)] bg-[size:54px_54px] opacity-40" />
-      <div className="mx-auto grid min-h-[calc(100vh-4rem)] w-full max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8">
+      <div className="mx-auto grid min-h-[calc(100vh-4rem)] w-full max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8 xl:gap-16">
         <FadeIn className="relative z-10">
           <Badge
             variant="outline"
@@ -150,14 +150,16 @@ function HeroSection({ dictionary, locale, localized }: Required<PublicPageProps
         </FadeIn>
 
         <FadeIn delay={0.1} className="relative z-10">
-          <div className="relative rounded-3xl border border-white/10 bg-white/10 p-3 shadow-2xl shadow-zinc-950/40 backdrop-blur">
-            <div className="absolute -left-8 top-20 hidden rounded-2xl border border-white/10 bg-zinc-950/85 p-4 shadow-2xl backdrop-blur lg:block">
-              <p className="text-xs font-medium text-zinc-400">{hero.priceLabel}</p>
-              <p className="mt-1 text-2xl font-semibold text-white">€249+</p>
-            </div>
-            <div className="absolute -right-5 bottom-16 hidden rounded-2xl border border-emerald-300/30 bg-emerald-300 p-4 text-emerald-950 shadow-2xl shadow-emerald-950/20 lg:block">
-              <p className="text-xs font-semibold">{hero.proLabel}</p>
-              <p className="mt-1 text-lg font-semibold">Portal-ready</p>
+          <div className="relative rounded-3xl border border-white/10 bg-white/10 p-3 shadow-2xl shadow-zinc-950/40 backdrop-blur sm:p-4">
+            <div className="mb-3 grid gap-3 sm:grid-cols-2">
+              <div className="rounded-2xl border border-white/10 bg-zinc-950/85 p-4 shadow-xl shadow-zinc-950/20 backdrop-blur">
+                <p className="text-xs font-medium text-zinc-400">{hero.priceLabel}</p>
+                <p className="mt-1 text-2xl font-semibold text-white">€249+</p>
+              </div>
+              <div className="rounded-2xl border border-emerald-300/30 bg-emerald-300 p-4 text-emerald-950 shadow-xl shadow-emerald-950/20">
+                <p className="text-xs font-semibold">{hero.proLabel}</p>
+                <p className="mt-1 text-lg font-semibold">{hero.stackItems[0]}</p>
+              </div>
             </div>
             <div className="rounded-2xl border border-white/10 bg-zinc-950/92 p-5 text-white">
               <div className="flex items-center justify-between gap-4">
@@ -215,14 +217,14 @@ function HeroSection({ dictionary, locale, localized }: Required<PublicPageProps
 function ValuePointsSection({ dictionary }: { dictionary: Dictionary }) {
   return (
     <section className="bg-zinc-950 px-4 pb-10 sm:px-6 lg:px-8">
-      <div className="mx-auto grid w-full max-w-7xl gap-3 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
+      <div className="mx-auto grid w-full max-w-7xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {dictionary.home.valuePoints.map((point) => (
           <div
             key={point}
-            className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-3 text-white"
+            className="flex min-h-16 items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-3 text-center text-white shadow-lg shadow-zinc-950/10"
           >
-            <BadgeCheck className="size-5 text-emerald-300" />
-            <span className="text-sm font-medium text-zinc-200">{point}</span>
+            <BadgeCheck className="size-5 shrink-0 text-emerald-300" />
+            <span className="text-sm font-medium leading-5 text-zinc-200">{point}</span>
           </div>
         ))}
       </div>
@@ -234,7 +236,7 @@ function ServicesSection({ dictionary }: { dictionary: Dictionary }) {
   const heading = dictionary.home.servicesHeading;
 
   return (
-    <section id="services" className="scroll-mt-24 bg-[linear-gradient(180deg,#f4f4f5_0%,#ffffff_55%,#ecfdf5_130%)] px-4 py-24 sm:px-6 lg:px-8">
+    <section id="services" className="scroll-mt-24 bg-[linear-gradient(180deg,#f4f4f5_0%,#ffffff_55%,#ecfdf5_130%)] px-4 py-24 sm:px-6 lg:px-8 lg:py-28">
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading
           eyebrow={heading.eyebrow}
@@ -273,7 +275,7 @@ function ProcessSection({ dictionary, locale, localized }: Required<PublicPagePr
   const ctas = dictionary.home.processCtas;
 
   return (
-    <section id="process" className="relative scroll-mt-24 overflow-hidden bg-zinc-950 px-4 py-24 text-white sm:px-6 lg:px-8">
+    <section id="process" className="relative scroll-mt-24 overflow-hidden bg-zinc-950 px-4 py-24 text-white sm:px-6 lg:px-8 lg:py-28">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_10%,rgba(16,185,129,0.18),transparent_34%),radial-gradient(circle_at_90%_55%,rgba(14,165,233,0.12),transparent_30%)]" />
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading
@@ -349,7 +351,7 @@ function DemoProjectsSection({ dictionary, locale, localized }: Required<PublicP
   const heading = dictionary.home.projectsHeading;
 
   return (
-    <section id="projects" className="scroll-mt-24 bg-[linear-gradient(180deg,#ffffff_0%,#f4f4f5_100%)] px-4 py-24 sm:px-6 lg:px-8">
+    <section id="projects" className="scroll-mt-24 bg-[linear-gradient(180deg,#ffffff_0%,#f4f4f5_100%)] px-4 py-24 sm:px-6 lg:px-8 lg:py-28">
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading
           eyebrow={heading.eyebrow}
@@ -419,7 +421,7 @@ function PricingSection({ dictionary, locale, localized }: Required<PublicPagePr
   const icons = [Layers3, Sparkles, Plug, LayoutDashboard, Bot, LifeBuoy, CalendarClock];
 
   return (
-    <section id="pricing" className="scroll-mt-24 bg-zinc-950 px-4 py-24 text-white sm:px-6 lg:px-8">
+    <section id="pricing" className="scroll-mt-24 bg-zinc-950 px-4 py-24 text-white sm:px-6 lg:px-8 lg:py-28">
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading
           eyebrow={heading.eyebrow}
