@@ -94,26 +94,36 @@ function getHref(locale: Locale, localized: boolean, path: string) {
 
 function HeroSection({ dictionary, locale, localized }: Required<PublicPageProps>) {
   const hero = dictionary.home.hero;
+  const heroVisualItems = [
+    dictionary.services[0],
+    dictionary.services[2],
+    dictionary.services[3],
+  ];
 
   return (
-    <section className="relative overflow-hidden border-b border-zinc-200 bg-white">
-      <div className="absolute inset-x-0 top-0 h-80 bg-[radial-gradient(circle_at_50%_0%,rgba(16,185,129,0.16),transparent_55%)]" />
-      <div className="mx-auto grid min-h-[calc(100vh-4rem)] w-full max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
+    <section className="relative overflow-hidden border-b border-white/10 bg-zinc-950 text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(16,185,129,0.24),transparent_32%),radial-gradient(circle_at_88%_8%,rgba(14,165,233,0.16),transparent_32%),linear-gradient(135deg,#09090b_0%,#18181b_48%,#064e3b_130%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.045)_1px,transparent_1px)] bg-[size:54px_54px] opacity-40" />
+      <div className="mx-auto grid min-h-[calc(100vh-4rem)] w-full max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8">
         <FadeIn className="relative z-10">
           <Badge
             variant="outline"
-            className="mb-6 border-emerald-900/15 bg-emerald-50 text-emerald-900"
+            className="mb-6 border-white/10 bg-white/10 text-emerald-200"
           >
             {hero.badge}
           </Badge>
-          <h1 className="max-w-4xl text-5xl font-semibold tracking-tight text-zinc-950 sm:text-6xl lg:text-7xl">
+          <h1 className="max-w-4xl text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
             {hero.title}
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-600">
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-300">
             {hero.description}
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Button asChild size="lg" className="h-12 rounded-lg bg-zinc-950">
+            <Button
+              asChild
+              size="lg"
+              className="h-12 rounded-lg bg-emerald-300 text-emerald-950 shadow-lg shadow-emerald-950/30 hover:bg-emerald-200"
+            >
               <TrackedLink href={getHref(locale, localized, "/contact")} eventName="hero_cta_click">
                 {hero.primaryCta}
                 <ArrowRight className="size-4" />
@@ -123,7 +133,7 @@ function HeroSection({ dictionary, locale, localized }: Required<PublicPageProps
               asChild
               size="lg"
               variant="outline"
-              className="h-12 rounded-lg border-zinc-300 bg-white"
+              className="h-12 rounded-lg border-white/15 bg-white/10 text-white hover:bg-white/15"
             >
               <TrackedLink
                 href={getHref(locale, localized, "/projects")}
@@ -133,15 +143,23 @@ function HeroSection({ dictionary, locale, localized }: Required<PublicPageProps
               </TrackedLink>
             </Button>
           </div>
-          <p className="mt-4 flex items-center gap-2 text-sm font-medium text-zinc-500">
-            <PhoneCall className="size-4 text-emerald-700" />
+          <p className="mt-4 flex items-center gap-2 text-sm font-medium text-zinc-300">
+            <PhoneCall className="size-4 text-emerald-300" />
             {hero.note}
           </p>
         </FadeIn>
 
         <FadeIn delay={0.1} className="relative z-10">
-          <div className="rounded-2xl border border-zinc-200 bg-white p-3 shadow-2xl shadow-zinc-950/10">
-            <div className="rounded-xl border border-zinc-200 bg-zinc-950 p-5 text-white">
+          <div className="relative rounded-3xl border border-white/10 bg-white/10 p-3 shadow-2xl shadow-zinc-950/40 backdrop-blur">
+            <div className="absolute -left-8 top-20 hidden rounded-2xl border border-white/10 bg-zinc-950/85 p-4 shadow-2xl backdrop-blur lg:block">
+              <p className="text-xs font-medium text-zinc-400">{hero.priceLabel}</p>
+              <p className="mt-1 text-2xl font-semibold text-white">€249+</p>
+            </div>
+            <div className="absolute -right-5 bottom-16 hidden rounded-2xl border border-emerald-300/30 bg-emerald-300 p-4 text-emerald-950 shadow-2xl shadow-emerald-950/20 lg:block">
+              <p className="text-xs font-semibold">{hero.proLabel}</p>
+              <p className="mt-1 text-lg font-semibold">Portal-ready</p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-zinc-950/92 p-5 text-white">
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <p className="text-sm text-zinc-400">{hero.studioFocus}</p>
@@ -151,27 +169,39 @@ function HeroSection({ dictionary, locale, localized }: Required<PublicPageProps
               </div>
 
               <div className="mt-8 grid gap-3">
-                {hero.stackItems.map((item) => (
+                {heroVisualItems.map((item, index) => {
+                  const Icon = serviceIcons[item.icon as keyof typeof serviceIcons] ?? Workflow;
+
+                  return (
                   <div
-                    key={item}
-                    className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 p-4"
+                    key={item.title}
+                    className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-lg shadow-zinc-950/20"
                   >
-                    <span className="flex size-8 items-center justify-center rounded-lg bg-emerald-400/15 text-emerald-200">
-                      <Check className="size-4" />
+                    <span className="flex size-10 items-center justify-center rounded-xl bg-emerald-300/15 text-emerald-200">
+                      <Icon className="size-5" />
                     </span>
-                    <span className="text-sm text-zinc-100">{item}</span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-semibold text-zinc-50">{item.title}</p>
+                      <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/10">
+                        <span
+                          className="block h-full rounded-full bg-emerald-300"
+                          style={{ width: `${72 + index * 8}%` }}
+                        />
+                      </div>
+                    </div>
                   </div>
-                ))}
+                  );
+                })}
               </div>
 
               <div className="mt-8 grid grid-cols-2 gap-3">
-                <div className="rounded-lg bg-white p-4 text-zinc-950">
-                  <p className="text-3xl font-semibold">€249+</p>
-                  <p className="mt-1 text-sm text-zinc-600">{hero.priceLabel}</p>
+                <div className="rounded-2xl border border-white/10 bg-white p-4 text-zinc-950">
+                  <p className="text-3xl font-semibold">6</p>
+                  <p className="mt-1 text-sm text-zinc-600">{dictionary.home.processHeading.eyebrow}</p>
                 </div>
-                <div className="rounded-lg bg-emerald-300 p-4 text-emerald-950">
-                  <p className="text-3xl font-semibold">Pro</p>
-                  <p className="mt-1 text-sm text-emerald-950/75">{hero.proLabel}</p>
+                <div className="rounded-2xl bg-emerald-300 p-4 text-emerald-950">
+                  <p className="text-3xl font-semibold">MVP</p>
+                  <p className="mt-1 text-sm text-emerald-950/75">{hero.stackItems[0]}</p>
                 </div>
               </div>
             </div>
@@ -184,15 +214,15 @@ function HeroSection({ dictionary, locale, localized }: Required<PublicPageProps
 
 function ValuePointsSection({ dictionary }: { dictionary: Dictionary }) {
   return (
-    <section className="bg-white py-6">
+    <section className="bg-zinc-950 px-4 pb-10 sm:px-6 lg:px-8">
       <div className="mx-auto grid w-full max-w-7xl gap-3 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
         {dictionary.home.valuePoints.map((point) => (
           <div
             key={point}
-            className="flex items-center gap-3 rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-3"
+            className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-3 text-white"
           >
-            <BadgeCheck className="size-5 text-emerald-700" />
-            <span className="text-sm font-medium text-zinc-700">{point}</span>
+            <BadgeCheck className="size-5 text-emerald-300" />
+            <span className="text-sm font-medium text-zinc-200">{point}</span>
           </div>
         ))}
       </div>
@@ -204,7 +234,7 @@ function ServicesSection({ dictionary }: { dictionary: Dictionary }) {
   const heading = dictionary.home.servicesHeading;
 
   return (
-    <section id="services" className="scroll-mt-24 px-4 py-24 sm:px-6 lg:px-8">
+    <section id="services" className="scroll-mt-24 bg-[linear-gradient(180deg,#f4f4f5_0%,#ffffff_55%,#ecfdf5_130%)] px-4 py-24 sm:px-6 lg:px-8">
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading
           eyebrow={heading.eyebrow}
@@ -218,9 +248,9 @@ function ServicesSection({ dictionary }: { dictionary: Dictionary }) {
 
             return (
               <FadeIn key={service.title} delay={index * 0.03}>
-                <Card className="h-full rounded-lg border-zinc-200 bg-white p-2 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-zinc-950/5">
+                <Card className="h-full rounded-2xl border-zinc-200/80 bg-white/90 p-2 shadow-xl shadow-zinc-950/5 transition-all hover:-translate-y-1 hover:border-emerald-200 hover:shadow-2xl hover:shadow-emerald-950/10">
                   <CardHeader>
-                    <div className="mb-4 flex size-11 items-center justify-center rounded-lg bg-zinc-950 text-white">
+                    <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-zinc-950 text-white shadow-lg shadow-zinc-950/15">
                       <Icon className="size-5" />
                     </div>
                     <CardTitle className="text-lg">{service.title}</CardTitle>
@@ -243,24 +273,27 @@ function ProcessSection({ dictionary, locale, localized }: Required<PublicPagePr
   const ctas = dictionary.home.processCtas;
 
   return (
-    <section id="process" className="scroll-mt-24 bg-white px-4 py-24 sm:px-6 lg:px-8">
+    <section id="process" className="relative scroll-mt-24 overflow-hidden bg-zinc-950 px-4 py-24 text-white sm:px-6 lg:px-8">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_10%,rgba(16,185,129,0.18),transparent_34%),radial-gradient(circle_at_90%_55%,rgba(14,165,233,0.12),transparent_30%)]" />
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading
           eyebrow={heading.eyebrow}
           title={heading.title}
           description={heading.description}
+          tone="dark"
         />
 
-        <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="relative mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-6">
+          <div className="absolute left-8 right-8 top-10 hidden h-px bg-gradient-to-r from-transparent via-emerald-300/30 to-transparent xl:block" />
           {dictionary.process.map((item, index) => (
             <FadeIn key={item.step} delay={index * 0.04}>
-              <Card className="h-full rounded-lg border-zinc-200 bg-zinc-50 p-2">
+              <Card className="relative z-10 h-full rounded-2xl border-white/10 bg-white/[0.06] p-2 text-white shadow-xl shadow-zinc-950/20 backdrop-blur xl:col-span-1">
                 <CardHeader>
-                  <span className="font-mono text-sm font-semibold text-emerald-700">
-                    {item.step}
+                  <span className="flex size-11 items-center justify-center rounded-xl border border-emerald-300/25 bg-emerald-300/15 font-mono text-sm font-semibold text-emerald-200">
+                    {String(index + 1).padStart(2, "0")}
                   </span>
-                  <CardTitle className="text-xl">{item.title}</CardTitle>
-                  <CardDescription className="leading-6">
+                  <CardTitle className="text-lg text-white xl:text-base">{item.title}</CardTitle>
+                  <CardDescription className="leading-6 text-zinc-300">
                     {item.description}
                   </CardDescription>
                 </CardHeader>
@@ -270,7 +303,11 @@ function ProcessSection({ dictionary, locale, localized }: Required<PublicPagePr
         </div>
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:justify-center">
-          <Button asChild size="lg" className="h-12 rounded-lg bg-zinc-950">
+          <Button
+            asChild
+            size="lg"
+            className="h-12 rounded-lg bg-emerald-300 text-emerald-950 shadow-lg shadow-emerald-950/20 hover:bg-emerald-200"
+          >
             <TrackedLink
               href={getHref(locale, localized, "/contact")}
               eventName="process_cta_click"
@@ -288,7 +325,7 @@ function ProcessSection({ dictionary, locale, localized }: Required<PublicPagePr
             asChild
             size="lg"
             variant="outline"
-            className="h-12 rounded-lg bg-white"
+            className="h-12 rounded-lg border-white/15 bg-white/10 text-white hover:bg-white/15"
           >
             <TrackedLink
               href={getHref(locale, localized, "/start")}
@@ -312,7 +349,7 @@ function DemoProjectsSection({ dictionary, locale, localized }: Required<PublicP
   const heading = dictionary.home.projectsHeading;
 
   return (
-    <section id="projects" className="scroll-mt-24 px-4 py-24 sm:px-6 lg:px-8">
+    <section id="projects" className="scroll-mt-24 bg-[linear-gradient(180deg,#ffffff_0%,#f4f4f5_100%)] px-4 py-24 sm:px-6 lg:px-8">
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading
           eyebrow={heading.eyebrow}
@@ -323,7 +360,7 @@ function DemoProjectsSection({ dictionary, locale, localized }: Required<PublicP
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {dictionary.demoProjects.map((project, index) => (
             <FadeIn key={project.title} delay={index * 0.04}>
-              <Card className="h-full overflow-hidden rounded-2xl border-zinc-200 bg-white p-2 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-zinc-950/5">
+              <Card className="h-full overflow-hidden rounded-3xl border-white bg-white p-2 shadow-2xl shadow-zinc-950/10 transition-all hover:-translate-y-1 hover:shadow-emerald-950/15">
                 <ProjectMockup project={project} labels={dictionary.projectMockup} />
                 <CardHeader>
                   <Badge variant="secondary" className="mb-4 w-fit rounded-lg bg-zinc-100">
@@ -362,7 +399,7 @@ function DemoProjectsSection({ dictionary, locale, localized }: Required<PublicP
           <Button
             asChild
             size="lg"
-            className="h-12 rounded-lg bg-zinc-950"
+            className="h-12 rounded-lg bg-zinc-950 shadow-lg shadow-zinc-950/15"
           >
             <Link href={getHref(locale, localized, "/projects")}>
               {heading.viewAll}
@@ -382,12 +419,13 @@ function PricingSection({ dictionary, locale, localized }: Required<PublicPagePr
   const icons = [Layers3, Sparkles, Plug, LayoutDashboard, Bot, LifeBuoy, CalendarClock];
 
   return (
-    <section id="pricing" className="scroll-mt-24 bg-white px-4 py-24 sm:px-6 lg:px-8">
+    <section id="pricing" className="scroll-mt-24 bg-zinc-950 px-4 py-24 text-white sm:px-6 lg:px-8">
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading
           eyebrow={heading.eyebrow}
           title={heading.title}
           description={heading.description}
+          tone="dark"
         />
 
         <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -397,10 +435,10 @@ function PricingSection({ dictionary, locale, localized }: Required<PublicPagePr
             return (
             <FadeIn key={plan.name} delay={index * 0.04}>
               <Card
-                className={`h-full rounded-lg p-2 shadow-sm ${
+                className={`h-full rounded-3xl p-2 shadow-xl transition-all hover:-translate-y-1 ${
                   isFeatured
-                    ? "border-zinc-950 bg-zinc-950 text-white shadow-xl shadow-zinc-950/15"
-                    : "border-zinc-200 bg-zinc-50"
+                    ? "border-emerald-300/50 bg-white text-zinc-950 shadow-emerald-950/20"
+                    : "border-white/10 bg-white/[0.06] text-white shadow-zinc-950/20"
                 }`}
               >
                 <CardHeader>
@@ -416,15 +454,15 @@ function PricingSection({ dictionary, locale, localized }: Required<PublicPagePr
                   </div>
                   <p className="mt-4 text-3xl font-semibold">{plan.price}</p>
                   <CardDescription
-                    className={isFeatured ? "text-zinc-300" : undefined}
+                    className={isFeatured ? "text-zinc-600" : "text-zinc-300"}
                   >
                     {plan.description}
                   </CardDescription>
                   <p
                     className={`mt-4 rounded-lg border p-3 text-sm leading-6 ${
                       isFeatured
-                        ? "border-white/10 bg-white/5 text-zinc-200"
-                        : "border-zinc-200 bg-white text-zinc-600"
+                        ? "border-zinc-200 bg-zinc-50 text-zinc-600"
+                        : "border-white/10 bg-white/5 text-zinc-300"
                     }`}
                   >
                     {locale === "bg" ? "Подходящо за" : locale === "it" ? "Ideale per" : "Best for"}: {plan.bestFor}
@@ -436,10 +474,10 @@ function PricingSection({ dictionary, locale, localized }: Required<PublicPagePr
                       <li key={feature} className="flex gap-3 text-sm">
                         <Check
                           className={`mt-0.5 size-4 shrink-0 ${
-                            isFeatured ? "text-emerald-300" : "text-emerald-700"
+                            isFeatured ? "text-emerald-700" : "text-emerald-300"
                           }`}
                         />
-                        <span className={isFeatured ? "text-zinc-100" : "text-zinc-700"}>
+                        <span className={isFeatured ? "text-zinc-700" : "text-zinc-200"}>
                           {feature}
                         </span>
                       </li>
@@ -452,8 +490,8 @@ function PricingSection({ dictionary, locale, localized }: Required<PublicPagePr
                     variant={isFeatured ? "secondary" : "outline"}
                     className={
                       isFeatured
-                        ? "h-11 w-full rounded-lg bg-white text-zinc-950 hover:bg-zinc-100"
-                        : "h-11 w-full rounded-lg bg-white"
+                        ? "h-11 w-full rounded-lg bg-zinc-950 text-white hover:bg-zinc-800"
+                        : "h-11 w-full rounded-lg border-white/15 bg-white/10 text-white hover:bg-white/15"
                     }
                   >
                     <TrackedLink
@@ -472,11 +510,11 @@ function PricingSection({ dictionary, locale, localized }: Required<PublicPagePr
           })}
         </div>
 
-        <div className="mt-10 rounded-2xl border border-zinc-200 bg-zinc-50 p-5 text-sm leading-6 text-zinc-600">
+        <div className="mt-10 rounded-2xl border border-white/10 bg-white/[0.06] p-5 text-sm leading-6 text-zinc-300">
           {heading.includedNote}
         </div>
 
-        <div className="mt-8 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
+        <div className="mt-8 rounded-3xl border border-white/10 bg-white p-6 text-zinc-950 shadow-2xl shadow-zinc-950/25">
           <div className="grid gap-6 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
             <div>
               <Badge
@@ -509,7 +547,7 @@ function PricingSection({ dictionary, locale, localized }: Required<PublicPagePr
                 return (
                   <div
                     key={factor.title}
-                    className="rounded-lg border border-zinc-200 bg-zinc-50 p-4"
+                    className="rounded-2xl border border-zinc-200 bg-zinc-50 p-4"
                   >
                     <Icon className="size-5 text-emerald-700" />
                     <p className="mt-3 text-sm font-semibold text-zinc-950">
@@ -530,6 +568,7 @@ function PricingSection({ dictionary, locale, localized }: Required<PublicPagePr
             eyebrow="Monthly care"
             title={maintenance.title}
             description={maintenance.description}
+            tone="dark"
           />
 
           <div className="mt-10 grid gap-4 lg:grid-cols-3">
@@ -541,8 +580,8 @@ function PricingSection({ dictionary, locale, localized }: Required<PublicPagePr
                 <Card
                   className={`h-full rounded-lg p-2 shadow-sm ${
                     isFeatured
-                      ? "border-emerald-700 bg-white shadow-xl shadow-emerald-950/10"
-                      : "border-zinc-200 bg-zinc-50"
+                      ? "border-emerald-300/50 bg-white text-zinc-950 shadow-xl shadow-emerald-950/10"
+                      : "border-white/10 bg-white/[0.06] text-white"
                   }`}
                 >
                   <CardHeader>
@@ -555,13 +594,18 @@ function PricingSection({ dictionary, locale, localized }: Required<PublicPagePr
                       ) : null}
                     </div>
                     <p className="mt-4 text-3xl font-semibold">{plan.price}</p>
-                    <CardDescription>{plan.description}</CardDescription>
+                    <CardDescription className={isFeatured ? "text-zinc-600" : "text-zinc-300"}>
+                      {plan.description}
+                    </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <ul className="grid gap-3">
                       {plan.features.map((feature) => (
-                        <li key={feature} className="flex gap-3 text-sm text-zinc-700">
-                          <Check className="mt-0.5 size-4 shrink-0 text-emerald-700" />
+                        <li
+                          key={feature}
+                          className={`flex gap-3 text-sm ${isFeatured ? "text-zinc-700" : "text-zinc-200"}`}
+                        >
+                          <Check className={`mt-0.5 size-4 shrink-0 ${isFeatured ? "text-emerald-700" : "text-emerald-300"}`} />
                           {feature}
                         </li>
                       ))}
@@ -582,7 +626,7 @@ function WhyChooseSection({ dictionary }: { dictionary: Dictionary }) {
   const heading = dictionary.home.why;
 
   return (
-    <section className="px-4 py-24 sm:px-6 lg:px-8">
+    <section className="bg-white px-4 py-24 sm:px-6 lg:px-8">
       <div className="mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
         <SectionHeading
           eyebrow={heading.eyebrow}
@@ -592,7 +636,7 @@ function WhyChooseSection({ dictionary }: { dictionary: Dictionary }) {
         <div className="grid gap-4 sm:grid-cols-2">
           {dictionary.reasons.map((reason, index) => (
             <FadeIn key={reason} delay={index * 0.04}>
-              <div className="rounded-lg border border-zinc-200 bg-white p-6 shadow-sm">
+              <div className="h-full rounded-2xl border border-zinc-200 bg-white p-6 shadow-xl shadow-zinc-950/5">
                 <Bot className="mb-5 size-6 text-emerald-700" />
                 <p className="text-base leading-7 text-zinc-700">{reason}</p>
               </div>
@@ -608,14 +652,14 @@ function FaqSection({ dictionary }: { dictionary: Dictionary }) {
   const heading = dictionary.home.faq;
 
   return (
-    <section id="faq" className="scroll-mt-24 bg-white px-4 py-24 sm:px-6 lg:px-8">
+    <section id="faq" className="scroll-mt-24 bg-zinc-100 px-4 py-24 sm:px-6 lg:px-8">
       <div className="mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-[0.8fr_1.2fr]">
         <SectionHeading
           eyebrow={heading.eyebrow}
           title={heading.title}
           description={heading.description}
         />
-        <Accordion type="single" collapsible className="rounded-lg border border-zinc-200 bg-zinc-50 p-4">
+        <Accordion type="single" collapsible className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-xl shadow-zinc-950/5">
           {dictionary.faqs.map((item) => (
             <AccordionItem key={item.question} value={item.question}>
               <AccordionTrigger className="text-base">
@@ -636,10 +680,11 @@ function ContactSection({ dictionary, locale, localized }: Required<PublicPagePr
   const contact = dictionary.home.contact;
 
   return (
-    <section id="contact" className="scroll-mt-24 px-4 py-24 sm:px-6 lg:px-8">
+    <section id="contact" className="relative scroll-mt-24 overflow-hidden bg-zinc-950 px-4 py-24 text-white sm:px-6 lg:px-8">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(16,185,129,0.2),transparent_32%),linear-gradient(135deg,#064e3b_0%,#09090b_55%)]" />
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
         <FadeIn>
-          <div className="rounded-2xl bg-zinc-950 px-6 py-10 text-white sm:px-10">
+          <div className="relative rounded-3xl border border-white/10 bg-white/[0.07] px-6 py-10 text-white shadow-2xl shadow-zinc-950/30 backdrop-blur sm:px-10">
             <Badge className="mb-5 rounded-lg bg-emerald-300 text-emerald-950">
               {contact.badge}
             </Badge>
@@ -661,7 +706,7 @@ function ContactSection({ dictionary, locale, localized }: Required<PublicPagePr
             </Button>
           </div>
         </FadeIn>
-        <FadeIn delay={0.08}>
+        <FadeIn delay={0.08} className="relative">
           <ContactForm dictionary={dictionary} locale={locale} localized={localized} />
         </FadeIn>
       </div>

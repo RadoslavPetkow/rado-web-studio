@@ -60,22 +60,27 @@ export function ProjectsPageContent({
     <div className="min-h-screen bg-zinc-50 text-zinc-950">
       <Navbar dictionary={dictionary} locale={locale} localized={localized} showLanguageSwitcher />
       <main>
-        <section className="border-b border-zinc-200 bg-white px-4 py-20 sm:px-6 lg:px-8">
-          <FadeIn className="mx-auto w-full max-w-7xl">
+        <section className="relative overflow-hidden border-b border-white/10 bg-zinc-950 px-4 py-20 text-white sm:px-6 lg:px-8">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.24),transparent_32%),radial-gradient(circle_at_88%_12%,rgba(14,165,233,0.15),transparent_34%)]" />
+          <FadeIn className="relative mx-auto w-full max-w-7xl">
             <Badge
               variant="outline"
-              className="mb-5 border-emerald-900/15 bg-emerald-50 text-emerald-900"
+              className="mb-5 border-white/10 bg-white/10 text-emerald-200"
             >
               {copy.badge}
             </Badge>
             <h1 className="max-w-4xl text-5xl font-semibold tracking-tight sm:text-6xl">
               {copy.title}
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-600">
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-300">
               {copy.description}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg" className="h-12 rounded-lg bg-zinc-950">
+              <Button
+                asChild
+                size="lg"
+                className="h-12 rounded-lg bg-emerald-300 text-emerald-950 shadow-lg shadow-emerald-950/25 hover:bg-emerald-200"
+              >
                 <TrackedLink
                   href={href("/contact")}
                   eventName="project_card_cta_click"
@@ -92,11 +97,11 @@ export function ProjectsPageContent({
           </FadeIn>
         </section>
 
-        <section className="px-4 py-16 sm:px-6 lg:px-8">
+        <section className="bg-[linear-gradient(180deg,#f4f4f5_0%,#ffffff_55%,#ecfdf5_130%)] px-4 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto grid w-full max-w-7xl gap-5">
             {dictionary.demoProjects.map((project, index) => (
               <FadeIn key={project.slug} delay={index * 0.04}>
-                <Card className="overflow-hidden rounded-2xl border-zinc-200 bg-white p-2 shadow-sm">
+                <Card className="overflow-hidden rounded-3xl border-white bg-white p-2 shadow-2xl shadow-zinc-950/10">
                   <CardHeader className="gap-6 xl:grid xl:grid-cols-[0.9fr_1.1fr] xl:items-start">
                     <ProjectMockup project={project} labels={dictionary.projectMockup} />
                     <div>
@@ -144,7 +149,7 @@ export function ProjectsPageContent({
                           {copy.idealFor}: {project.idealFor}
                         </p>
                       </div>
-                      <Button asChild className="h-11 rounded-lg bg-zinc-950">
+                      <Button asChild className="h-11 rounded-lg bg-zinc-950 shadow-lg shadow-zinc-950/15">
                         <TrackedLink
                           href={`${href("/contact")}?project=${project.slug}`}
                           eventName="project_card_cta_click"
@@ -182,7 +187,7 @@ function InfoBlock({
   const Icon = icon === "problem" ? Target : Lightbulb;
 
   return (
-    <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-5">
+    <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-5">
       <Icon className="size-5 text-emerald-700" />
       <p className="mt-4 text-sm font-semibold text-zinc-950">{title}</p>
       <p className="mt-2 text-sm leading-6 text-zinc-600">{description}</p>

@@ -13,10 +13,10 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: Locale }) {
 
   return (
     <div
-      className="flex items-center gap-1 rounded-lg border border-zinc-200 bg-white p-1"
+      className="flex items-center gap-1 rounded-lg border border-white/10 bg-white/10 p-1"
       aria-label="Language selector"
     >
-      <Languages className="ml-2 size-4 text-zinc-500" aria-hidden="true" />
+      <Languages className="ml-2 size-4 text-zinc-300" aria-hidden="true" />
       {locales.map((locale) => (
         <Link
           key={locale}
@@ -24,8 +24,8 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: Locale }) {
           className={cn(
             "rounded-md px-2.5 py-1.5 text-xs font-semibold transition-colors",
             locale === currentLocale
-              ? "bg-zinc-950 text-white"
-              : "text-zinc-600 hover:bg-zinc-100 hover:text-zinc-950"
+              ? "bg-white text-zinc-950"
+              : "text-zinc-200 hover:bg-white/10 hover:text-white"
           )}
           aria-current={locale === currentLocale ? "page" : undefined}
         >

@@ -308,6 +308,12 @@ Payments are not handled inside the app yet. Paid project terms, deposits, invoi
 
 These pages are written in simple English for an early-stage business website and are not legal advice.
 
+## Survey-Driven Visual Polish
+
+The public marketing site was visually redesigned after early feedback that the first version felt too plain. The updated public UI uses stronger light/dark section contrast, a darker premium navigation/footer, richer hero visuals, more polished demo project mockups, deeper pricing cards, and stronger CTA areas while keeping the copy, multilingual routes, contact flow, and portal functionality intact.
+
+The redesign focuses on making Rado Web Studio feel like a serious modern digital studio: clean and readable, but with more depth, hierarchy, and agency-style presentation.
+
 ## Production Testing Checklist
 
 Before sharing the site with real prospects:

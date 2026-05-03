@@ -31,13 +31,13 @@ export async function Navbar({
   const anchorHref = (hash: string) => (localized ? `/${locale}${hash}` : `/${hash}`);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-zinc-200/70 bg-white/85 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-zinc-950/88 text-white shadow-lg shadow-zinc-950/10 backdrop-blur-xl">
       <nav className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href={href("") || "/"} className="flex items-center gap-3" aria-label={nav.home}>
-          <span className="flex size-9 items-center justify-center rounded-lg bg-zinc-950 text-sm font-semibold text-white">
+          <span className="flex size-9 items-center justify-center rounded-lg bg-white text-sm font-semibold text-zinc-950 shadow-sm shadow-emerald-300/20">
             RW
           </span>
-          <span className="text-sm font-semibold tracking-tight text-zinc-950 sm:text-base">
+          <span className="text-sm font-semibold tracking-tight text-white sm:text-base">
             {siteConfig.name}
           </span>
         </Link>
@@ -54,7 +54,7 @@ export async function Navbar({
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-950"
+              className="text-sm font-medium text-zinc-300 transition-colors hover:text-white"
             >
               {item.label}
             </Link>
@@ -71,7 +71,7 @@ export async function Navbar({
                 <Button
                   asChild
                   variant="outline"
-                  className="hidden h-10 rounded-lg bg-white sm:inline-flex"
+                  className="hidden h-10 rounded-lg border-white/15 bg-white/10 text-white hover:bg-white/15 sm:inline-flex"
                 >
                   <Link href="/admin">
                     <Shield className="size-4" />
@@ -79,7 +79,7 @@ export async function Navbar({
                   </Link>
                 </Button>
               ) : null}
-              <Button asChild className="h-10 rounded-lg bg-zinc-950">
+              <Button asChild className="h-10 rounded-lg bg-white text-zinc-950 hover:bg-zinc-100">
                 <Link href="/dashboard">
                   <LayoutDashboard className="size-4" />
                   <span className="hidden sm:inline">{nav.dashboard}</span>
@@ -92,11 +92,11 @@ export async function Navbar({
               <Button
                 asChild
                 variant="outline"
-                className="hidden h-10 rounded-lg bg-white sm:inline-flex"
+                className="hidden h-10 rounded-lg border-white/15 bg-white/10 text-white hover:bg-white/15 sm:inline-flex"
               >
                 <Link href="/login">{nav.login}</Link>
               </Button>
-              <Button asChild className="h-10 rounded-lg bg-zinc-950">
+              <Button asChild className="h-10 rounded-lg bg-emerald-300 text-emerald-950 shadow-lg shadow-emerald-950/20 hover:bg-emerald-200">
                 <TrackedLink href={href("/contact")} eventName="navbar_contact_cta_click">
                   <span className="hidden sm:inline">{nav.cta}</span>
                   <span className="sm:hidden">{nav.mobileCta}</span>

@@ -53,24 +53,25 @@ export function ContactPageContent({
     <div className="min-h-screen bg-zinc-50 text-zinc-950">
       <Navbar dictionary={dictionary} locale={locale} localized={localized} showLanguageSwitcher />
       <main>
-        <section className="border-b border-zinc-200 bg-white px-4 py-20 sm:px-6 lg:px-8">
-          <div className="mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-[1fr_0.8fr] lg:items-end">
+        <section className="relative overflow-hidden border-b border-white/10 bg-zinc-950 px-4 py-20 text-white sm:px-6 lg:px-8">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.23),transparent_34%),radial-gradient(circle_at_88%_10%,rgba(14,165,233,0.14),transparent_32%)]" />
+          <div className="relative mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-[1fr_0.8fr] lg:items-end">
             <FadeIn>
               <Badge
                 variant="outline"
-                className="mb-5 border-emerald-900/15 bg-emerald-50 text-emerald-900"
+                className="mb-5 border-white/10 bg-white/10 text-emerald-200"
               >
                 {copy.badge}
               </Badge>
               <h1 className="max-w-4xl text-5xl font-semibold tracking-tight sm:text-6xl">
                 {copy.title}
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-600">
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-300">
                 {copy.description}
               </p>
             </FadeIn>
             <FadeIn delay={0.08}>
-              <Card className="rounded-lg border-zinc-200 bg-zinc-950 p-2 text-white shadow-xl shadow-zinc-950/10">
+              <Card className="rounded-2xl border-white/10 bg-white/[0.06] p-2 text-white shadow-2xl shadow-zinc-950/25 backdrop-blur">
                 <CardHeader>
                   <Workflow className="size-5 text-emerald-300" />
                   <CardTitle>{copy.flowTitle}</CardTitle>
@@ -95,13 +96,13 @@ export function ContactPageContent({
           </div>
         </section>
 
-        <section className="px-4 py-16 sm:px-6 lg:px-8">
+        <section className="bg-[linear-gradient(180deg,#f4f4f5_0%,#ffffff_100%)] px-4 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto grid w-full max-w-7xl gap-8 lg:grid-cols-[1fr_0.42fr] lg:items-start">
             <FadeIn>
               <ContactForm dictionary={dictionary} locale={locale} localized={localized} />
             </FadeIn>
             <FadeIn delay={0.08}>
-              <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
+              <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-xl shadow-zinc-950/5">
                 <Mail className="size-6 text-emerald-700" />
                 <h2 className="mt-5 text-xl font-semibold">{copy.emailTitle}</h2>
                 <p className="mt-3 text-sm leading-6 text-zinc-600">
@@ -124,7 +125,7 @@ export function ContactPageContent({
 
         <section className="px-4 pb-16 sm:px-6 lg:px-8">
           <FadeIn className="mx-auto w-full max-w-7xl">
-            <Card className="rounded-2xl border-zinc-200 bg-white p-2 shadow-sm">
+            <Card className="rounded-3xl border-zinc-200 bg-white p-2 shadow-xl shadow-zinc-950/5">
               <CardHeader>
                 <CardTitle>{copy.portalTitle}</CardTitle>
               </CardHeader>

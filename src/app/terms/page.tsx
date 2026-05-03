@@ -58,24 +58,25 @@ export function TermsPageContent({
     <div className="min-h-screen bg-zinc-50 text-zinc-950">
       <Navbar dictionary={dictionary} locale={locale} localized={localized} showLanguageSwitcher />
       <main>
-        <section className="border-b border-zinc-200 bg-white px-4 py-20 sm:px-6 lg:px-8">
-          <FadeIn className="mx-auto w-full max-w-4xl">
+        <section className="relative overflow-hidden border-b border-white/10 bg-zinc-950 px-4 py-20 text-white sm:px-6 lg:px-8">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(16,185,129,0.22),transparent_34%),radial-gradient(circle_at_88%_8%,rgba(14,165,233,0.12),transparent_32%)]" />
+          <FadeIn className="relative mx-auto w-full max-w-4xl">
             <Badge
               variant="outline"
-              className="mb-5 border-emerald-900/15 bg-emerald-50 text-emerald-900"
+              className="mb-5 border-white/10 bg-white/10 text-emerald-200"
             >
               {copy.badge}
             </Badge>
             <h1 className="text-5xl font-semibold tracking-tight sm:text-6xl">
               {copy.title}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-zinc-600">
+            <p className="mt-6 text-lg leading-8 text-zinc-300">
               {copy.description}
             </p>
           </FadeIn>
         </section>
 
-        <section className="px-4 py-16 sm:px-6 lg:px-8">
+        <section className="bg-[linear-gradient(180deg,#f4f4f5_0%,#ffffff_100%)] px-4 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto grid w-full max-w-4xl gap-5">
             <Card className="rounded-2xl border-emerald-200 bg-emerald-50 p-2 shadow-sm">
               <CardHeader>
@@ -90,7 +91,7 @@ export function TermsPageContent({
             {copy.sections.map((section) => (
               <Card
                 key={section.title}
-                className="rounded-2xl border-zinc-200 bg-white p-2 shadow-sm"
+                className="rounded-2xl border-zinc-200 bg-white p-2 shadow-xl shadow-zinc-950/5"
               >
                 <CardHeader>
                   <CardTitle>{section.title}</CardTitle>

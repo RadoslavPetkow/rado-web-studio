@@ -23,26 +23,26 @@ export function Footer({
   const anchorHref = (hash: string) => (localized ? `/${locale}${hash}` : `/${hash}`);
 
   return (
-    <footer className="border-t border-zinc-200 bg-white">
-      <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+    <footer className="border-t border-white/10 bg-zinc-950 text-white">
+      <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <div className="max-w-md">
             <div className="flex items-center gap-3">
-              <span className="flex size-9 items-center justify-center rounded-lg bg-zinc-950 text-sm font-semibold text-white">
+              <span className="flex size-9 items-center justify-center rounded-lg bg-emerald-300 text-sm font-semibold text-emerald-950">
                 RW
               </span>
-              <span className="font-semibold tracking-tight text-zinc-950">
+              <span className="font-semibold tracking-tight text-white">
                 {siteConfig.name}
               </span>
             </div>
-            <p className="mt-4 text-sm leading-6 text-zinc-600">
+            <p className="mt-4 text-sm leading-6 text-zinc-400">
               {footer.description}
             </p>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 md:gap-12">
             <div>
-              <p className="text-sm font-semibold text-zinc-950">{footer.navigate}</p>
+              <p className="text-sm font-semibold text-white">{footer.navigate}</p>
               <div className="mt-4 grid gap-3">
                 {[
                   { label: nav.home, href: href("") || "/" },
@@ -55,7 +55,7 @@ export function Footer({
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="text-sm text-zinc-600 transition-colors hover:text-zinc-950"
+                    className="text-sm text-zinc-400 transition-colors hover:text-white"
                   >
                     {item.label}
                   </Link>
@@ -63,41 +63,41 @@ export function Footer({
               </div>
             </div>
             <div>
-              <p className="text-sm font-semibold text-zinc-950">{footer.contact}</p>
+              <p className="text-sm font-semibold text-white">{footer.contact}</p>
               <div className="mt-4 grid gap-3">
                 <Link
                   href={href("/contact")}
-                  className="text-sm font-semibold text-zinc-950 transition-colors hover:text-emerald-800"
+                  className="text-sm font-semibold text-emerald-200 transition-colors hover:text-emerald-100"
                 >
                   {footer.bookCall}
                 </Link>
                 <Link
                   href={href("/contact")}
-                  className="text-sm text-zinc-600 transition-colors hover:text-zinc-950"
+                  className="text-sm text-zinc-400 transition-colors hover:text-white"
                 >
                   {footer.contact}
                 </Link>
                 <Link
                   href={href("/privacy")}
-                  className="text-sm text-zinc-600 transition-colors hover:text-zinc-950"
+                  className="text-sm text-zinc-400 transition-colors hover:text-white"
                 >
                   {footer.privacy}
                 </Link>
                 <Link
                   href={href("/terms")}
-                  className="text-sm text-zinc-600 transition-colors hover:text-zinc-950"
+                  className="text-sm text-zinc-400 transition-colors hover:text-white"
                 >
                   {footer.terms}
                 </Link>
                 <Link
                   href={href("/start")}
-                  className="text-sm text-zinc-600 transition-colors hover:text-zinc-950"
+                  className="text-sm text-zinc-400 transition-colors hover:text-white"
                 >
                   {footer.start}
                 </Link>
                 <Link
                   href={`mailto:${siteConfig.email}`}
-                  className="flex items-center gap-2 text-sm text-zinc-600 transition-colors hover:text-zinc-950"
+                  className="flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white"
                 >
                   <Mail className="size-4" />
                   {siteConfig.email}
@@ -107,7 +107,7 @@ export function Footer({
           </div>
         </div>
 
-        <Separator className="my-8" />
+        <Separator className="my-8 bg-white/10" />
 
         <div className="flex flex-col gap-2 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
           <p>

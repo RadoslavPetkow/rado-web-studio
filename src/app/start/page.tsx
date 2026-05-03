@@ -65,22 +65,27 @@ export function StartPageContent({
     <div className="min-h-screen bg-zinc-50 text-zinc-950">
       <Navbar dictionary={dictionary} locale={locale} localized={localized} showLanguageSwitcher />
       <main>
-        <section className="border-b border-zinc-200 bg-white px-4 py-20 sm:px-6 lg:px-8">
-          <FadeIn className="mx-auto w-full max-w-5xl">
+        <section className="relative overflow-hidden border-b border-white/10 bg-zinc-950 px-4 py-20 text-white sm:px-6 lg:px-8">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.23),transparent_34%),radial-gradient(circle_at_88%_10%,rgba(14,165,233,0.14),transparent_32%)]" />
+          <FadeIn className="relative mx-auto w-full max-w-5xl">
             <Badge
               variant="outline"
-              className="mb-5 border-emerald-900/15 bg-emerald-50 text-emerald-900"
+              className="mb-5 border-white/10 bg-white/10 text-emerald-200"
             >
               {copy.badge}
             </Badge>
             <h1 className="max-w-4xl text-5xl font-semibold tracking-tight sm:text-6xl">
               {copy.title}
             </h1>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-zinc-600">
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-zinc-300">
               {copy.description}
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg" className="h-12 rounded-lg bg-zinc-950">
+              <Button
+                asChild
+                size="lg"
+                className="h-12 rounded-lg bg-emerald-300 text-emerald-950 shadow-lg shadow-emerald-950/25 hover:bg-emerald-200"
+              >
                 <Link href={href("/contact")}>
                   {copy.primaryCta}
                   <ArrowRight className="size-4" />
@@ -90,7 +95,7 @@ export function StartPageContent({
                 asChild
                 size="lg"
                 variant="outline"
-                className="h-12 rounded-lg border-zinc-300 bg-white"
+                className="h-12 rounded-lg border-white/15 bg-white/10 text-white hover:bg-white/15"
               >
                 <Link href={href("/projects")}>{copy.secondaryCta}</Link>
               </Button>
@@ -98,10 +103,10 @@ export function StartPageContent({
           </FadeIn>
         </section>
 
-        <section className="px-4 py-16 sm:px-6 lg:px-8">
+        <section className="bg-[linear-gradient(180deg,#f4f4f5_0%,#ffffff_100%)] px-4 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto grid w-full max-w-7xl gap-8">
             <FadeIn>
-              <Card className="rounded-2xl border-zinc-200 bg-zinc-950 p-2 text-white shadow-xl shadow-zinc-950/10">
+              <Card className="rounded-3xl border-zinc-200 bg-zinc-950 p-2 text-white shadow-2xl shadow-zinc-950/15">
                 <CardHeader>
                   <ClipboardCheck className="size-6 text-emerald-300" />
                   <CardTitle>{copy.beforeTitle}</CardTitle>
@@ -205,7 +210,7 @@ function ChecklistCard({
   items: readonly string[];
 }) {
   return (
-    <Card className="h-full rounded-2xl border-zinc-200 bg-white p-2 shadow-sm">
+    <Card className="h-full rounded-2xl border-zinc-200 bg-white p-2 shadow-xl shadow-zinc-950/5">
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         <CardDescription className="leading-6">{description}</CardDescription>
