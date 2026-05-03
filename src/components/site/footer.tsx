@@ -3,8 +3,25 @@ import { Mail } from "lucide-react";
 
 import { Separator } from "@/components/ui/separator";
 import { siteConfig } from "@/config/site";
+import { en } from "@/i18n/dictionaries/en";
+import type { Dictionary } from "@/i18n/get-dictionary";
+import type { Locale } from "@/i18n/locales";
+import { defaultLocale, localizedPath } from "@/i18n/locales";
 
-export function Footer() {
+export function Footer({
+  locale = defaultLocale,
+  dictionary = en,
+  localized = false,
+}: {
+  locale?: Locale;
+  dictionary?: Dictionary;
+  localized?: boolean;
+}) {
+  const footer = dictionary.footer;
+  const nav = dictionary.nav;
+  const href = (path: string) => (localized ? localizedPath(locale, path) : path);
+  const anchorHref = (hash: string) => (localized ? `/${locale}${hash}` : `/${hash}`);
+
   return (
     <footer className="border-t border-zinc-200 bg-white">
       <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -19,16 +36,22 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-4 text-sm leading-6 text-zinc-600">
-              Modern websites, AI automations, chatbots, client systems, and
-              custom software foundations for growing businesses.
+              {footer.description}
             </p>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 md:gap-12">
             <div>
-              <p className="text-sm font-semibold text-zinc-950">Navigate</p>
+              <p className="text-sm font-semibold text-zinc-950">{footer.navigate}</p>
               <div className="mt-4 grid gap-3">
-                {siteConfig.nav.map((item) => (
+                {[
+                  { label: nav.home, href: href("") || "/" },
+                  { label: nav.services, href: anchorHref("#services") },
+                  { label: nav.projects, href: href("/projects") },
+                  { label: nav.pricing, href: anchorHref("#pricing") },
+                  { label: nav.faq, href: anchorHref("#faq") },
+                  { label: nav.contact, href: href("/contact") },
+                ].map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
@@ -40,37 +63,37 @@ export function Footer() {
               </div>
             </div>
             <div>
-              <p className="text-sm font-semibold text-zinc-950">Contact</p>
+              <p className="text-sm font-semibold text-zinc-950">{footer.contact}</p>
               <div className="mt-4 grid gap-3">
                 <Link
-                  href="/contact"
+                  href={href("/contact")}
                   className="text-sm font-semibold text-zinc-950 transition-colors hover:text-emerald-800"
                 >
-                  Book a quick call
+                  {footer.bookCall}
                 </Link>
                 <Link
-                  href="/contact"
+                  href={href("/contact")}
                   className="text-sm text-zinc-600 transition-colors hover:text-zinc-950"
                 >
-                  Contact
+                  {footer.contact}
                 </Link>
                 <Link
-                  href="/privacy"
+                  href={href("/privacy")}
                   className="text-sm text-zinc-600 transition-colors hover:text-zinc-950"
                 >
-                  Privacy Policy
+                  {footer.privacy}
                 </Link>
                 <Link
-                  href="/terms"
+                  href={href("/terms")}
                   className="text-sm text-zinc-600 transition-colors hover:text-zinc-950"
                 >
-                  Terms of Service
+                  {footer.terms}
                 </Link>
                 <Link
-                  href="/start"
+                  href={href("/start")}
                   className="text-sm text-zinc-600 transition-colors hover:text-zinc-950"
                 >
-                  Project Start Checklist
+                  {footer.start}
                 </Link>
                 <Link
                   href={`mailto:${siteConfig.email}`}
@@ -88,9 +111,9 @@ export function Footer() {
 
         <div className="flex flex-col gap-2 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+            © {new Date().getFullYear()} {siteConfig.name}. {footer.rights}
           </p>
-          <p>Built for clarity, speed, and long-term growth.</p>
+          <p>{footer.built}</p>
         </div>
       </div>
     </footer>

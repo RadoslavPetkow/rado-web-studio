@@ -16,6 +16,37 @@ The public site now includes:
 - Free consultation language in the hero, contact page, pricing section, projects page, and footer.
 - Clearer client portal copy explaining that the portal is used after a project is approved to track progress, status updates, and communication.
 
+## Public Internationalization
+
+The public marketing site supports English, Bulgarian, and Italian for small
+business visitors in Bulgaria and Europe.
+
+Localized public routes:
+
+- `/en`, `/bg`, `/it`
+- `/en/projects`, `/bg/projects`, `/it/projects`
+- `/en/contact`, `/bg/contact`, `/it/contact`
+- `/en/start`, `/bg/start`, `/it/start`
+- `/en/privacy`, `/bg/privacy`, `/it/privacy`
+- `/en/terms`, `/bg/terms`, `/it/terms`
+
+The existing non-localized public routes still work in English. Auth, client
+dashboard, admin dashboard, and portal routes remain English for now.
+
+Translation files live in:
+
+- `src/i18n/locales.ts`
+- `src/i18n/dictionaries/en.ts`
+- `src/i18n/dictionaries/bg.ts`
+- `src/i18n/dictionaries/it.ts`
+- `src/i18n/get-dictionary.ts`
+
+The language switcher is shown on public pages and preserves the current page
+when switching language, for example `/en/projects` → `/bg/projects`. The
+contact form labels, options, validation messages, CTA, trust note, pricing,
+FAQ, demo project cards, navigation, footer, privacy, terms, and start checklist
+copy are localized.
+
 ## Local Setup
 
 Install dependencies:

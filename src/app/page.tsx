@@ -40,7 +40,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { siteConfig } from "@/config/site";
+import { en } from "@/i18n/dictionaries/en";
+import type { Dictionary } from "@/i18n/get-dictionary";
+import type { Locale } from "@/i18n/locales";
+import { defaultLocale, localizedPath } from "@/i18n/locales";
 
 const serviceIcons = {
   monitor: MonitorSmartphone,
@@ -51,65 +54,47 @@ const serviceIcons = {
   compass: Compass,
 };
 
-const priceFactors = [
-  {
-    title: "Number of pages",
-    description: "A focused landing page is simpler than a full website with several service pages.",
-    icon: Layers3,
-  },
-  {
-    title: "Design complexity",
-    description: "More custom sections, visual polish, and layout detail can increase the scope.",
-    icon: Sparkles,
-  },
-  {
-    title: "Forms and integrations",
-    description: "Contact forms, maps, analytics, booking tools, and third-party services affect setup time.",
-    icon: Plug,
-  },
-  {
-    title: "Portal or dashboard features",
-    description: "Login areas, admin views, project tracking, and client systems are custom software work.",
-    icon: LayoutDashboard,
-  },
-  {
-    title: "AI automations",
-    description: "Chatbots, follow-up flows, and internal automations are quoted around the workflow.",
-    icon: Bot,
-  },
-  {
-    title: "Support after launch",
-    description: "Maintenance, improvements, monitoring, and updates can be handled monthly.",
-    icon: LifeBuoy,
-  },
-  {
-    title: "Timeline urgency",
-    description: "Very fast timelines may require tighter scope or priority scheduling.",
-    icon: CalendarClock,
-  },
-];
+type PublicPageProps = {
+  dictionary?: Dictionary;
+  locale?: Locale;
+  localized?: boolean;
+};
 
 export default function Home() {
+  return <HomePage />;
+}
+
+export function HomePage({
+  dictionary = en,
+  locale = defaultLocale,
+  localized = false,
+}: PublicPageProps) {
   return (
     <div className="min-h-screen bg-zinc-50 text-zinc-950">
-      <Navbar />
+      <Navbar dictionary={dictionary} locale={locale} localized={localized} showLanguageSwitcher />
       <main>
-        <HeroSection />
-        <ValuePointsSection />
-        <ServicesSection />
-        <ProcessSection />
-        <DemoProjectsSection />
-        <PricingSection />
-        <WhyChooseSection />
-        <FaqSection />
-        <ContactSection />
+        <HeroSection dictionary={dictionary} locale={locale} localized={localized} />
+        <ValuePointsSection dictionary={dictionary} />
+        <ServicesSection dictionary={dictionary} />
+        <ProcessSection dictionary={dictionary} locale={locale} localized={localized} />
+        <DemoProjectsSection dictionary={dictionary} locale={locale} localized={localized} />
+        <PricingSection dictionary={dictionary} locale={locale} localized={localized} />
+        <WhyChooseSection dictionary={dictionary} />
+        <FaqSection dictionary={dictionary} />
+        <ContactSection dictionary={dictionary} locale={locale} localized={localized} />
       </main>
-      <Footer />
+      <Footer dictionary={dictionary} locale={locale} localized={localized} />
     </div>
   );
 }
 
-function HeroSection() {
+function getHref(locale: Locale, localized: boolean, path: string) {
+  return localized ? localizedPath(locale, path) : path;
+}
+
+function HeroSection({ dictionary, locale, localized }: Required<PublicPageProps>) {
+  const hero = dictionary.home.hero;
+
   return (
     <section className="relative overflow-hidden border-b border-zinc-200 bg-white">
       <div className="absolute inset-x-0 top-0 h-80 bg-[radial-gradient(circle_at_50%_0%,rgba(16,185,129,0.16),transparent_55%)]" />
@@ -119,21 +104,18 @@ function HeroSection() {
             variant="outline"
             className="mb-6 border-emerald-900/15 bg-emerald-50 text-emerald-900"
           >
-            Modern websites for small businesses in Bulgaria and Europe
+            {hero.badge}
           </Badge>
           <h1 className="max-w-4xl text-5xl font-semibold tracking-tight text-zinc-950 sm:text-6xl lg:text-7xl">
-            Professional websites and digital systems built for trust, speed,
-            and customer inquiries.
+            {hero.title}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-600">
-            {siteConfig.name} builds modern, fast, mobile-friendly websites and
-            practical digital systems for small businesses that want a stronger
-            online presence without unnecessary agency overhead.
+            {hero.description}
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg" className="h-12 rounded-lg bg-zinc-950">
-              <TrackedLink href="/contact" eventName="hero_cta_click">
-                Request a free consultation
+              <TrackedLink href={getHref(locale, localized, "/contact")} eventName="hero_cta_click">
+                {hero.primaryCta}
                 <ArrowRight className="size-4" />
               </TrackedLink>
             </Button>
@@ -144,16 +126,16 @@ function HeroSection() {
               className="h-12 rounded-lg border-zinc-300 bg-white"
             >
               <TrackedLink
-                href="/projects"
+                href={getHref(locale, localized, "/projects")}
                 eventName="secondary_hero_cta_click"
               >
-                View demo projects
+                {hero.secondaryCta}
               </TrackedLink>
             </Button>
           </div>
           <p className="mt-4 flex items-center gap-2 text-sm font-medium text-zinc-500">
             <PhoneCall className="size-4 text-emerald-700" />
-            Start with a free project review before any paid work begins.
+            {hero.note}
           </p>
         </FadeIn>
 
@@ -162,19 +144,14 @@ function HeroSection() {
             <div className="rounded-xl border border-zinc-200 bg-zinc-950 p-5 text-white">
               <div className="flex items-center justify-between gap-4">
                 <div>
-                  <p className="text-sm text-zinc-400">Studio focus</p>
-                  <p className="mt-1 text-xl font-semibold">Small business launch stack</p>
+                  <p className="text-sm text-zinc-400">{hero.studioFocus}</p>
+                  <p className="mt-1 text-xl font-semibold">{hero.stackTitle}</p>
                 </div>
                 <Workflow className="size-6 text-emerald-300" />
               </div>
 
               <div className="mt-8 grid gap-3">
-                {[
-                  "Clear services and contact flow",
-                  "Fast mobile-first website",
-                  "Forms, maps, SEO basics, deployment",
-                  "Room for portals and custom systems",
-                ].map((item) => (
+                {hero.stackItems.map((item) => (
                   <div
                     key={item}
                     className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 p-4"
@@ -190,11 +167,11 @@ function HeroSection() {
               <div className="mt-8 grid grid-cols-2 gap-3">
                 <div className="rounded-lg bg-white p-4 text-zinc-950">
                   <p className="text-3xl font-semibold">€249+</p>
-                  <p className="mt-1 text-sm text-zinc-600">Accessible starting point</p>
+                  <p className="mt-1 text-sm text-zinc-600">{hero.priceLabel}</p>
                 </div>
                 <div className="rounded-lg bg-emerald-300 p-4 text-emerald-950">
                   <p className="text-3xl font-semibold">Pro</p>
-                  <p className="mt-1 text-sm text-emerald-950/75">Premium execution, focused scope</p>
+                  <p className="mt-1 text-sm text-emerald-950/75">{hero.proLabel}</p>
                 </div>
               </div>
             </div>
@@ -205,11 +182,11 @@ function HeroSection() {
   );
 }
 
-function ValuePointsSection() {
+function ValuePointsSection({ dictionary }: { dictionary: Dictionary }) {
   return (
     <section className="bg-white py-6">
       <div className="mx-auto grid w-full max-w-7xl gap-3 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
-        {siteConfig.valuePoints.map((point) => (
+        {dictionary.home.valuePoints.map((point) => (
           <div
             key={point}
             className="flex items-center gap-3 rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-3"
@@ -223,18 +200,20 @@ function ValuePointsSection() {
   );
 }
 
-function ServicesSection() {
+function ServicesSection({ dictionary }: { dictionary: Dictionary }) {
+  const heading = dictionary.home.servicesHeading;
+
   return (
     <section id="services" className="scroll-mt-24 px-4 py-24 sm:px-6 lg:px-8">
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading
-          eyebrow="Services"
-          title="Websites, stores, and systems that make your business easier to trust."
-          description="The goal is not to add technology for its own sake. It is to build the right digital pieces so customers understand what you do, why they should trust you, and how to contact or buy from you."
+          eyebrow={heading.eyebrow}
+          title={heading.title}
+          description={heading.description}
         />
 
         <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {siteConfig.services.map((service, index) => {
+          {dictionary.services.map((service, index) => {
             const Icon = serviceIcons[service.icon as keyof typeof serviceIcons];
 
             return (
@@ -259,18 +238,21 @@ function ServicesSection() {
   );
 }
 
-function ProcessSection() {
+function ProcessSection({ dictionary, locale, localized }: Required<PublicPageProps>) {
+  const heading = dictionary.home.processHeading;
+  const ctas = dictionary.home.processCtas;
+
   return (
     <section id="process" className="scroll-mt-24 bg-white px-4 py-24 sm:px-6 lg:px-8">
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading
-          eyebrow="How I work"
-          title="From first request to project launch."
-          description="The workflow is designed to make the next step clear before any paid work begins. First we confirm fit and scope, then approved projects move into a client portal workspace for organized updates and communication."
+          eyebrow={heading.eyebrow}
+          title={heading.title}
+          description={heading.description}
         />
 
         <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {siteConfig.process.map((item, index) => (
+          {dictionary.process.map((item, index) => (
             <FadeIn key={item.step} delay={index * 0.04}>
               <Card className="h-full rounded-lg border-zinc-200 bg-zinc-50 p-2">
                 <CardHeader>
@@ -290,7 +272,7 @@ function ProcessSection() {
         <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:justify-center">
           <Button asChild size="lg" className="h-12 rounded-lg bg-zinc-950">
             <TrackedLink
-              href="/contact"
+              href={getHref(locale, localized, "/contact")}
               eventName="process_cta_click"
               eventProperties={{
                 location: "homepage_process",
@@ -298,7 +280,7 @@ function ProcessSection() {
                 destination: "/contact",
               }}
             >
-              Start with a request
+              {ctas.request}
               <ArrowRight className="size-4" />
             </TrackedLink>
           </Button>
@@ -309,7 +291,7 @@ function ProcessSection() {
             className="h-12 rounded-lg bg-white"
           >
             <TrackedLink
-              href="/start"
+              href={getHref(locale, localized, "/start")}
               eventName="process_cta_click"
               eventProperties={{
                 location: "homepage_process",
@@ -317,7 +299,7 @@ function ProcessSection() {
                 destination: "/start",
               }}
             >
-              See what to prepare
+              {ctas.prepare}
             </TrackedLink>
           </Button>
         </div>
@@ -326,21 +308,23 @@ function ProcessSection() {
   );
 }
 
-function DemoProjectsSection() {
+function DemoProjectsSection({ dictionary, locale, localized }: Required<PublicPageProps>) {
+  const heading = dictionary.home.projectsHeading;
+
   return (
     <section id="projects" className="scroll-mt-24 px-4 py-24 sm:px-6 lg:px-8">
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading
-          eyebrow="Demo projects"
-          title="Visual examples for real small business situations."
-          description="These demo concepts are not fake client case studies. They show how the website could look, what problem it solves, and how the right call to action helps visitors contact the business faster."
+          eyebrow={heading.eyebrow}
+          title={heading.title}
+          description={heading.description}
         />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {siteConfig.demoProjects.map((project, index) => (
+          {dictionary.demoProjects.map((project, index) => (
             <FadeIn key={project.title} delay={index * 0.04}>
               <Card className="h-full overflow-hidden rounded-2xl border-zinc-200 bg-white p-2 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-zinc-950/5">
-                <ProjectMockup project={project} />
+                <ProjectMockup project={project} labels={dictionary.projectMockup} />
                 <CardHeader>
                   <Badge variant="secondary" className="mb-4 w-fit rounded-lg bg-zinc-100">
                     {project.industry}
@@ -353,11 +337,11 @@ function DemoProjectsSection() {
                 <CardContent className="grid gap-5">
                   <div className="grid gap-3 text-sm leading-6">
                     <div>
-                      <p className="font-semibold text-zinc-950">Problem</p>
+                      <p className="font-semibold text-zinc-950">{dictionary.projectsPage.problem}</p>
                       <p className="mt-1 text-zinc-600">{project.problem}</p>
                     </div>
                     <div>
-                      <p className="font-semibold text-zinc-950">Solution</p>
+                      <p className="font-semibold text-zinc-950">{dictionary.projectsPage.solution}</p>
                       <p className="mt-1 text-zinc-600">{project.solution}</p>
                     </div>
                   </div>
@@ -380,8 +364,8 @@ function DemoProjectsSection() {
             size="lg"
             className="h-12 rounded-lg bg-zinc-950"
           >
-            <Link href="/projects">
-              View all demo projects
+            <Link href={getHref(locale, localized, "/projects")}>
+              {heading.viewAll}
               <ArrowRight className="size-4" />
             </Link>
           </Button>
@@ -391,22 +375,30 @@ function DemoProjectsSection() {
   );
 }
 
-function PricingSection() {
+function PricingSection({ dictionary, locale, localized }: Required<PublicPageProps>) {
+  const heading = dictionary.home.pricingHeading;
+  const clarity = dictionary.home.priceClarity;
+  const maintenance = dictionary.home.maintenanceHeading;
+  const icons = [Layers3, Sparkles, Plug, LayoutDashboard, Bot, LifeBuoy, CalendarClock];
+
   return (
     <section id="pricing" className="scroll-mt-24 bg-white px-4 py-24 sm:px-6 lg:px-8">
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading
-          eyebrow="Pricing preview"
-          title="Structured packages with clear starting prices in EUR."
-          description="Accessible compared to a larger agency, but still serious, polished, and built around business results. Final scope is confirmed after a short consultation."
+          eyebrow={heading.eyebrow}
+          title={heading.title}
+          description={heading.description}
         />
 
         <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {siteConfig.pricing.map((plan, index) => (
+          {dictionary.pricing.map((plan, index) => {
+            const isFeatured = "featured" in plan && plan.featured;
+
+            return (
             <FadeIn key={plan.name} delay={index * 0.04}>
               <Card
                 className={`h-full rounded-lg p-2 shadow-sm ${
-                  plan.featured
+                  isFeatured
                     ? "border-zinc-950 bg-zinc-950 text-white shadow-xl shadow-zinc-950/15"
                     : "border-zinc-200 bg-zinc-50"
                 }`}
@@ -414,26 +406,28 @@ function PricingSection() {
                 <CardHeader>
                   <div className="flex items-center justify-between gap-4">
                     <CardTitle className="text-xl">{plan.name}</CardTitle>
-                    {plan.featured ? (
+                    {isFeatured ? (
                       <Badge className="rounded-lg bg-emerald-300 text-emerald-950">
-                        Recommended
+                        {dictionary.home.maintenanceHeading.practical === "Practical choice"
+                          ? "Recommended"
+                          : dictionary.home.maintenanceHeading.practical}
                       </Badge>
                     ) : null}
                   </div>
                   <p className="mt-4 text-3xl font-semibold">{plan.price}</p>
                   <CardDescription
-                    className={plan.featured ? "text-zinc-300" : undefined}
+                    className={isFeatured ? "text-zinc-300" : undefined}
                   >
                     {plan.description}
                   </CardDescription>
                   <p
                     className={`mt-4 rounded-lg border p-3 text-sm leading-6 ${
-                      plan.featured
+                      isFeatured
                         ? "border-white/10 bg-white/5 text-zinc-200"
                         : "border-zinc-200 bg-white text-zinc-600"
                     }`}
                   >
-                    Best for: {plan.bestFor}
+                    {locale === "bg" ? "Подходящо за" : locale === "it" ? "Ideale per" : "Best for"}: {plan.bestFor}
                   </p>
                 </CardHeader>
                 <CardContent>
@@ -442,10 +436,10 @@ function PricingSection() {
                       <li key={feature} className="flex gap-3 text-sm">
                         <Check
                           className={`mt-0.5 size-4 shrink-0 ${
-                            plan.featured ? "text-emerald-300" : "text-emerald-700"
+                            isFeatured ? "text-emerald-300" : "text-emerald-700"
                           }`}
                         />
-                        <span className={plan.featured ? "text-zinc-100" : "text-zinc-700"}>
+                        <span className={isFeatured ? "text-zinc-100" : "text-zinc-700"}>
                           {feature}
                         </span>
                       </li>
@@ -455,31 +449,31 @@ function PricingSection() {
                 <CardContent>
                   <Button
                     asChild
-                    variant={plan.featured ? "secondary" : "outline"}
+                    variant={isFeatured ? "secondary" : "outline"}
                     className={
-                      plan.featured
+                      isFeatured
                         ? "h-11 w-full rounded-lg bg-white text-zinc-950 hover:bg-zinc-100"
                         : "h-11 w-full rounded-lg bg-white"
                     }
                   >
                     <TrackedLink
-                      href={`/contact?package=${encodeURIComponent(plan.name)}`}
+                      href={`${getHref(locale, localized, "/contact")}?package=${encodeURIComponent(plan.name)}`}
                       eventName="pricing_package_cta_click"
                       eventProperties={{ package: plan.name }}
                     >
-                      Ask about {plan.name}
+                      {heading.askAbout} {plan.name}
                       <ArrowRight className="size-4" />
                     </TrackedLink>
                   </Button>
                 </CardContent>
               </Card>
             </FadeIn>
-          ))}
+            );
+          })}
         </div>
 
         <div className="mt-10 rounded-2xl border border-zinc-200 bg-zinc-50 p-5 text-sm leading-6 text-zinc-600">
-          Domain, hosting, paid tools, and third-party services are not
-          included in the base price. I help you choose and configure them.
+          {heading.includedNote}
         </div>
 
         <div className="mt-8 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
@@ -489,30 +483,28 @@ function PricingSection() {
                 variant="outline"
                 className="border-emerald-900/15 bg-emerald-50 text-emerald-900"
               >
-                Pricing clarity
+                {clarity.eyebrow}
               </Badge>
               <h3 className="mt-4 text-2xl font-semibold tracking-tight">
-                What affects the final price?
+                {clarity.title}
               </h3>
               <p className="mt-3 text-sm leading-6 text-zinc-600">
-                The starting prices give you a realistic baseline. After a short
-                free project review, I confirm the scope clearly so you know
-                what is included before the project starts.
+                {clarity.description}
               </p>
               <Button asChild className="mt-5 h-11 rounded-lg bg-zinc-950">
                 <TrackedLink
-                  href="/contact"
+                  href={getHref(locale, localized, "/contact")}
                   eventName="pricing_package_cta_click"
                   eventProperties={{ package: "Free project review" }}
                 >
-                  Start with a free project review
+                  {clarity.cta}
                   <ArrowRight className="size-4" />
                 </TrackedLink>
               </Button>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
-              {priceFactors.map((factor) => {
-                const Icon = factor.icon;
+              {clarity.factors.map((factor, index) => {
+                const Icon = icons[index] ?? Layers3;
 
                 return (
                   <div
@@ -536,16 +528,19 @@ function PricingSection() {
         <div className="mt-16">
           <SectionHeading
             eyebrow="Monthly care"
-            title="Maintenance plans after launch."
-            description="For businesses that want small updates, support, monitoring, and steady improvements without starting a new project every time."
+            title={maintenance.title}
+            description={maintenance.description}
           />
 
           <div className="mt-10 grid gap-4 lg:grid-cols-3">
-            {siteConfig.maintenancePlans.map((plan, index) => (
+            {dictionary.maintenancePlans.map((plan, index) => {
+              const isFeatured = "featured" in plan && plan.featured;
+
+              return (
               <FadeIn key={plan.name} delay={index * 0.04}>
                 <Card
                   className={`h-full rounded-lg p-2 shadow-sm ${
-                    plan.featured
+                    isFeatured
                       ? "border-emerald-700 bg-white shadow-xl shadow-emerald-950/10"
                       : "border-zinc-200 bg-zinc-50"
                   }`}
@@ -553,9 +548,9 @@ function PricingSection() {
                   <CardHeader>
                     <div className="flex items-center justify-between gap-4">
                       <CardTitle className="text-xl">{plan.name}</CardTitle>
-                      {plan.featured ? (
+                      {isFeatured ? (
                         <Badge className="rounded-lg bg-emerald-100 text-emerald-900">
-                          Practical choice
+                          {maintenance.practical}
                         </Badge>
                       ) : null}
                     </div>
@@ -574,7 +569,8 @@ function PricingSection() {
                   </CardContent>
                 </Card>
               </FadeIn>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
@@ -582,17 +578,19 @@ function PricingSection() {
   );
 }
 
-function WhyChooseSection() {
+function WhyChooseSection({ dictionary }: { dictionary: Dictionary }) {
+  const heading = dictionary.home.why;
+
   return (
     <section className="px-4 py-24 sm:px-6 lg:px-8">
       <div className="mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
         <SectionHeading
-          eyebrow="Why choose Rado Web Studio"
-          title="A focused web studio for small businesses that need serious execution."
-          description="You get the clarity and care of a direct developer relationship, with modern technical capability across websites, deployment, forms, dashboards, databases, and future client portals."
+          eyebrow={heading.eyebrow}
+          title={heading.title}
+          description={heading.description}
         />
         <div className="grid gap-4 sm:grid-cols-2">
-          {siteConfig.reasons.map((reason, index) => (
+          {dictionary.reasons.map((reason, index) => (
             <FadeIn key={reason} delay={index * 0.04}>
               <div className="rounded-lg border border-zinc-200 bg-white p-6 shadow-sm">
                 <Bot className="mb-5 size-6 text-emerald-700" />
@@ -606,17 +604,19 @@ function WhyChooseSection() {
   );
 }
 
-function FaqSection() {
+function FaqSection({ dictionary }: { dictionary: Dictionary }) {
+  const heading = dictionary.home.faq;
+
   return (
     <section id="faq" className="scroll-mt-24 bg-white px-4 py-24 sm:px-6 lg:px-8">
       <div className="mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-[0.8fr_1.2fr]">
         <SectionHeading
-          eyebrow="FAQ"
-          title="Common pricing and project questions."
-          description="Clear answers about website costs, timelines, support, and what is included before we agree on scope."
+          eyebrow={heading.eyebrow}
+          title={heading.title}
+          description={heading.description}
         />
         <Accordion type="single" collapsible className="rounded-lg border border-zinc-200 bg-zinc-50 p-4">
-          {siteConfig.faqs.map((item) => (
+          {dictionary.faqs.map((item) => (
             <AccordionItem key={item.question} value={item.question}>
               <AccordionTrigger className="text-base">
                 {item.question}
@@ -632,37 +632,37 @@ function FaqSection() {
   );
 }
 
-function ContactSection() {
+function ContactSection({ dictionary, locale, localized }: Required<PublicPageProps>) {
+  const contact = dictionary.home.contact;
+
   return (
     <section id="contact" className="scroll-mt-24 px-4 py-24 sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
         <FadeIn>
           <div className="rounded-2xl bg-zinc-950 px-6 py-10 text-white sm:px-10">
             <Badge className="mb-5 rounded-lg bg-emerald-300 text-emerald-950">
-              Request a project
+              {contact.badge}
             </Badge>
             <h2 className="max-w-3xl text-3xl font-semibold tracking-tight sm:text-5xl">
-              Start with a free project review and a realistic next step.
+              {contact.title}
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-300 sm:text-lg">
-              Use the form to share your business type, service need, budget,
-              and timeline. I will suggest a realistic scope, starting price,
-              and next step based on what will help your business most.
+              {contact.description}
             </p>
             <Button
               asChild
               size="lg"
               className="mt-8 h-12 rounded-lg bg-white text-zinc-950 hover:bg-zinc-100"
             >
-              <Link href="/contact">
-                Open dedicated contact page
+              <Link href={getHref(locale, localized, "/contact")}>
+                {contact.cta}
                 <ArrowRight className="size-4" />
               </Link>
             </Button>
           </div>
         </FadeIn>
         <FadeIn delay={0.08}>
-          <ContactForm />
+          <ContactForm dictionary={dictionary} locale={locale} localized={localized} />
         </FadeIn>
       </div>
     </section>

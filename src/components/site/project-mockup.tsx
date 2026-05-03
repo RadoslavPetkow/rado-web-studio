@@ -1,13 +1,17 @@
 import { CalendarDays, Check, Dumbbell, MapPin, Scissors, Utensils } from "lucide-react";
 
+import { en } from "@/i18n/dictionaries/en";
+import type { Dictionary } from "@/i18n/get-dictionary";
+
 type ProjectMockupProps = {
   project: {
     title: string;
     industry: string;
-    features: string[];
+    features: readonly string[];
     resultPromise: string;
     slug: string;
   };
+  labels?: Dictionary["projectMockup"];
 };
 
 const mockupStyles = {
@@ -17,8 +21,8 @@ const mockupStyles = {
     text: "text-emerald-900",
     border: "border-emerald-200",
     icon: Scissors,
-    primary: "Book appointment",
-    stat: "Open today",
+    primaryKey: "bookAppointment",
+    statKey: "openToday",
   },
   "fitness-coach-landing-page": {
     accent: "bg-sky-400",
@@ -26,8 +30,8 @@ const mockupStyles = {
     text: "text-sky-900",
     border: "border-sky-200",
     icon: Dumbbell,
-    primary: "Start coaching",
-    stat: "Online plan",
+    primaryKey: "startCoaching",
+    statKey: "onlinePlan",
   },
   "restaurant-website": {
     accent: "bg-rose-400",
@@ -35,12 +39,12 @@ const mockupStyles = {
     text: "text-rose-900",
     border: "border-rose-200",
     icon: Utensils,
-    primary: "Reserve table",
-    stat: "Menu ready",
+    primaryKey: "reserveTable",
+    statKey: "menuReady",
   },
-};
+} as const;
 
-export function ProjectMockup({ project }: ProjectMockupProps) {
+export function ProjectMockup({ project, labels = en.projectMockup }: ProjectMockupProps) {
   const style =
     mockupStyles[project.slug as keyof typeof mockupStyles] ??
     mockupStyles["barber-studio-website"];
@@ -80,10 +84,10 @@ export function ProjectMockup({ project }: ProjectMockupProps) {
             <div className="mt-2 h-2 w-4/5 rounded-full bg-white" />
             <div className="mt-4 flex flex-wrap gap-2">
               <span className="rounded-md bg-zinc-950 px-3 py-2 text-[10px] font-semibold text-white">
-                {style.primary}
+                {labels[style.primaryKey]}
               </span>
               <span className="rounded-md border border-zinc-200 bg-white px-3 py-2 text-[10px] font-semibold text-zinc-700">
-                View services
+                {labels.viewServices}
               </span>
             </div>
           </div>
@@ -92,13 +96,13 @@ export function ProjectMockup({ project }: ProjectMockupProps) {
             <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-3">
               <div className="flex items-center gap-2 text-xs font-semibold text-zinc-800">
                 <CalendarDays className="size-3.5 text-emerald-700" />
-                {style.stat}
+                {labels[style.statKey]}
               </div>
             </div>
             <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-3">
               <div className="flex items-center gap-2 text-xs font-semibold text-zinc-800">
                 <MapPin className="size-3.5 text-emerald-700" />
-                Maps + contact
+                {labels.mapsContact}
               </div>
             </div>
           </div>

@@ -20,6 +20,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { en } from "@/i18n/dictionaries/en";
+import type { Dictionary } from "@/i18n/get-dictionary";
+import type { Locale } from "@/i18n/locales";
+import { defaultLocale, localizedPath } from "@/i18n/locales";
 
 export const metadata: Metadata = {
   title: "Project Start Checklist",
@@ -41,82 +45,25 @@ export const metadata: Metadata = {
   },
 };
 
-const checklistSections = [
-  {
-    title: "Business information",
-    description:
-      "The basics that explain what your business does, who it helps, and how customers can reach you.",
-    items: [
-      "Business name",
-      "Short business description",
-      "Main services/products",
-      "Target customers",
-      "Location if relevant",
-      "Contact details",
-    ],
-  },
-  {
-    title: "Brand assets",
-    description:
-      "Useful visual material that helps the website feel consistent and credible from the first version.",
-    items: [
-      "Logo",
-      "Brand colors",
-      "Fonts if available",
-      "Photos/images",
-      "Social media links",
-    ],
-  },
-  {
-    title: "Website content",
-    description:
-      "The words and sections that help visitors understand your offer and decide to contact you.",
-    items: [
-      "Homepage text",
-      "Services/pricing text",
-      "About section",
-      "FAQ",
-      "Contact details",
-      "Legal pages if needed",
-    ],
-  },
-  {
-    title: "Access and technical details",
-    description:
-      "Existing accounts and links that can make setup, migration, SEO, and deployment smoother.",
-    items: [
-      "Existing domain",
-      "Hosting access if available",
-      "Existing website link",
-      "Google Maps link",
-      "Analytics/Search Console access if relevant",
-    ],
-  },
-  {
-    title: "Launch preparation",
-    description:
-      "Final checks before the project goes live and becomes visible to real customers.",
-    items: [
-      "Final content approval",
-      "Mobile review",
-      "Form testing",
-      "SEO basics check",
-      "Domain/deployment check",
-    ],
-  },
-];
-
-const compactRequestFlow = [
-  "Submit a request",
-  "Clarify fit and scope",
-  "Create portal account",
-  "Track progress in the project workspace",
-];
-
 export default function StartPage() {
+  return <StartPageContent />;
+}
+
+export function StartPageContent({
+  dictionary = en,
+  locale = defaultLocale,
+  localized = false,
+}: {
+  dictionary?: Dictionary;
+  locale?: Locale;
+  localized?: boolean;
+}) {
+  const copy = dictionary.startPage;
+  const href = (path: string) => (localized ? localizedPath(locale, path) : path);
+
   return (
     <div className="min-h-screen bg-zinc-50 text-zinc-950">
-      <Navbar />
+      <Navbar dictionary={dictionary} locale={locale} localized={localized} showLanguageSwitcher />
       <main>
         <section className="border-b border-zinc-200 bg-white px-4 py-20 sm:px-6 lg:px-8">
           <FadeIn className="mx-auto w-full max-w-5xl">
@@ -124,20 +71,18 @@ export default function StartPage() {
               variant="outline"
               className="mb-5 border-emerald-900/15 bg-emerald-50 text-emerald-900"
             >
-              Project Start Checklist
+              {copy.badge}
             </Badge>
             <h1 className="max-w-4xl text-5xl font-semibold tracking-tight sm:text-6xl">
-              Prepare the right details before your project starts.
+              {copy.title}
             </h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-zinc-600">
-              A little preparation makes a website, automation, or custom
-              software project much clearer. This checklist shows what is
-              useful to collect before we agree the final scope and start work.
+              {copy.description}
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg" className="h-12 rounded-lg bg-zinc-950">
-                <Link href="/contact">
-                  Start a project
+                <Link href={href("/contact")}>
+                  {copy.primaryCta}
                   <ArrowRight className="size-4" />
                 </Link>
               </Button>
@@ -147,7 +92,7 @@ export default function StartPage() {
                 variant="outline"
                 className="h-12 rounded-lg border-zinc-300 bg-white"
               >
-                <Link href="/projects">View demo projects</Link>
+                <Link href={href("/projects")}>{copy.secondaryCta}</Link>
               </Button>
             </div>
           </FadeIn>
@@ -159,19 +104,16 @@ export default function StartPage() {
               <Card className="rounded-2xl border-zinc-200 bg-zinc-950 p-2 text-white shadow-xl shadow-zinc-950/10">
                 <CardHeader>
                   <ClipboardCheck className="size-6 text-emerald-300" />
-                  <CardTitle>Before we start</CardTitle>
+                  <CardTitle>{copy.beforeTitle}</CardTitle>
                   <CardDescription className="max-w-3xl text-zinc-300">
-                    Before any paid work begins, we clarify scope, timeline,
-                    expectations, communication, and what the first version
-                    should achieve. The goal is to avoid vague work, rushed
-                    decisions, and surprises later in the project.
+                    {copy.beforeDescription}
                   </CardDescription>
                 </CardHeader>
               </Card>
             </FadeIn>
 
             <div className="grid gap-5 lg:grid-cols-2">
-              {checklistSections.map((section, index) => (
+              {copy.sections.map((section, index) => (
                 <FadeIn key={section.title} delay={index * 0.04}>
                   <ChecklistCard
                     title={section.title}
@@ -187,18 +129,13 @@ export default function StartPage() {
                 <Card className="h-full rounded-2xl border-zinc-200 bg-white p-2 shadow-sm">
                   <CardHeader>
                     <MessageSquareText className="size-6 text-emerald-700" />
-                    <CardTitle>Feedback and revisions</CardTitle>
+                    <CardTitle>{copy.feedbackTitle}</CardTitle>
                     <CardDescription className="leading-6">
-                      Clear feedback helps the project move faster. Useful
-                      feedback explains what should change, why it matters, and
-                      whether it affects content, design, functionality, or
-                      business goals.
+                      {copy.feedbackDescription}
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="text-sm leading-7 text-zinc-600">
-                    Revision rounds should be agreed before work starts, so the
-                    project has a clear review process and enough room for
-                    improvements without turning into an undefined scope.
+                    {copy.feedbackBody}
                   </CardContent>
                 </Card>
               </FadeIn>
@@ -207,20 +144,18 @@ export default function StartPage() {
                 <Card className="h-full rounded-2xl border-emerald-200 bg-emerald-50 p-2 shadow-sm">
                   <CardHeader>
                     <Rocket className="size-6 text-emerald-800" />
-                    <CardTitle>Ready to start?</CardTitle>
+                    <CardTitle>{copy.readyTitle}</CardTitle>
                     <CardDescription className="leading-6 text-emerald-950/75">
-                      You do not need to have everything perfect before
-                      reaching out. If some details are missing, we can identify
-                      what is needed during the first project conversation.
+                      {copy.readyDescription}
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="grid gap-5">
                     <div className="rounded-xl border border-emerald-200 bg-white p-4">
                       <p className="text-sm font-semibold text-emerald-950">
-                        How the request becomes a portal project
+                        {copy.flowTitle}
                       </p>
                       <div className="mt-4 grid gap-3">
-                        {compactRequestFlow.map((item, index) => (
+                        {copy.flow.map((item, index) => (
                           <div key={item} className="flex gap-3 text-sm">
                             <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-xs font-semibold text-emerald-900">
                               {index + 1}
@@ -230,14 +165,13 @@ export default function StartPage() {
                         ))}
                       </div>
                       <p className="mt-4 text-sm leading-6 text-zinc-600">
-                        The portal is used only for approved projects, so first
-                        we confirm that the project is a good fit.
+                        {copy.portalNote}
                       </p>
                     </div>
                     <div className="flex flex-col gap-3 sm:flex-row">
                       <Button asChild className="h-11 rounded-lg bg-zinc-950">
-                        <Link href="/contact">
-                          Start a project
+                        <Link href={href("/contact")}>
+                          {copy.primaryCta}
                           <ArrowRight className="size-4" />
                         </Link>
                       </Button>
@@ -246,7 +180,7 @@ export default function StartPage() {
                         variant="outline"
                         className="h-11 rounded-lg bg-white"
                       >
-                        <Link href="/projects">View demo projects</Link>
+                        <Link href={href("/projects")}>{copy.secondaryCta}</Link>
                       </Button>
                     </div>
                   </CardContent>
@@ -256,7 +190,7 @@ export default function StartPage() {
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer dictionary={dictionary} locale={locale} localized={localized} />
     </div>
   );
 }
@@ -268,7 +202,7 @@ function ChecklistCard({
 }: {
   title: string;
   description: string;
-  items: string[];
+  items: readonly string[];
 }) {
   return (
     <Card className="h-full rounded-2xl border-zinc-200 bg-white p-2 shadow-sm">
