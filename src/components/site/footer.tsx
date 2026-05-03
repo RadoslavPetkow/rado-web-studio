@@ -44,6 +44,12 @@ export function Footer() {
               <div className="mt-4 grid gap-3">
                 <Link
                   href="/contact"
+                  className="text-sm font-semibold text-zinc-950 transition-colors hover:text-emerald-800"
+                >
+                  Book a quick call
+                </Link>
+                <Link
+                  href="/contact"
                   className="text-sm text-zinc-600 transition-colors hover:text-zinc-950"
                 >
                   Contact

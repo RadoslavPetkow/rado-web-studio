@@ -3,12 +3,17 @@ import {
   ArrowRight,
   BadgeCheck,
   Bot,
+  CalendarClock,
   Check,
   Code2,
   Compass,
+  Layers3,
+  LifeBuoy,
   LayoutDashboard,
   MessagesSquare,
   MonitorSmartphone,
+  PhoneCall,
+  Plug,
   Sparkles,
   Workflow,
 } from "lucide-react";
@@ -17,6 +22,7 @@ import { ContactForm } from "@/components/site/contact-form";
 import { FadeIn } from "@/components/site/fade-in";
 import { Footer } from "@/components/site/footer";
 import { Navbar } from "@/components/site/navbar";
+import { ProjectMockup } from "@/components/site/project-mockup";
 import { SectionHeading } from "@/components/site/section-heading";
 import { TrackedLink } from "@/components/site/tracked-link";
 import {
@@ -44,6 +50,44 @@ const serviceIcons = {
   code: Code2,
   compass: Compass,
 };
+
+const priceFactors = [
+  {
+    title: "Number of pages",
+    description: "A focused landing page is simpler than a full website with several service pages.",
+    icon: Layers3,
+  },
+  {
+    title: "Design complexity",
+    description: "More custom sections, visual polish, and layout detail can increase the scope.",
+    icon: Sparkles,
+  },
+  {
+    title: "Forms and integrations",
+    description: "Contact forms, maps, analytics, booking tools, and third-party services affect setup time.",
+    icon: Plug,
+  },
+  {
+    title: "Portal or dashboard features",
+    description: "Login areas, admin views, project tracking, and client systems are custom software work.",
+    icon: LayoutDashboard,
+  },
+  {
+    title: "AI automations",
+    description: "Chatbots, follow-up flows, and internal automations are quoted around the workflow.",
+    icon: Bot,
+  },
+  {
+    title: "Support after launch",
+    description: "Maintenance, improvements, monitoring, and updates can be handled monthly.",
+    icon: LifeBuoy,
+  },
+  {
+    title: "Timeline urgency",
+    description: "Very fast timelines may require tighter scope or priority scheduling.",
+    icon: CalendarClock,
+  },
+];
 
 export default function Home() {
   return (
@@ -89,7 +133,7 @@ function HeroSection() {
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg" className="h-12 rounded-lg bg-zinc-950">
               <TrackedLink href="/contact" eventName="hero_cta_click">
-                Start a project
+                Request a free consultation
                 <ArrowRight className="size-4" />
               </TrackedLink>
             </Button>
@@ -107,6 +151,10 @@ function HeroSection() {
               </TrackedLink>
             </Button>
           </div>
+          <p className="mt-4 flex items-center gap-2 text-sm font-medium text-zinc-500">
+            <PhoneCall className="size-4 text-emerald-700" />
+            Start with a free project review before any paid work begins.
+          </p>
         </FadeIn>
 
         <FadeIn delay={0.1} className="relative z-10">
@@ -218,7 +266,7 @@ function ProcessSection() {
         <SectionHeading
           eyebrow="How I work"
           title="From first request to project launch."
-          description="The workflow is designed to make the next step clear before any paid work begins. First we confirm fit and scope, then approved projects move into a client portal workspace."
+          description="The workflow is designed to make the next step clear before any paid work begins. First we confirm fit and scope, then approved projects move into a client portal workspace for organized updates and communication."
         />
 
         <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -284,16 +332,17 @@ function DemoProjectsSection() {
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading
           eyebrow="Demo projects"
-          title="Project directions built around real small business problems."
-          description="These example projects show how a focused website or landing page can help visitors understand, trust, and contact a business faster."
+          title="Visual examples for real small business situations."
+          description="These demo concepts are not fake client case studies. They show how the website could look, what problem it solves, and how the right call to action helps visitors contact the business faster."
         />
 
-        <div className="mt-12 grid gap-4 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {siteConfig.demoProjects.map((project, index) => (
             <FadeIn key={project.title} delay={index * 0.04}>
-              <Card className="h-full rounded-lg border-zinc-200 bg-white p-2 shadow-sm">
+              <Card className="h-full overflow-hidden rounded-2xl border-zinc-200 bg-white p-2 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-zinc-950/5">
+                <ProjectMockup project={project} />
                 <CardHeader>
-                  <Badge variant="secondary" className="mb-4 w-fit rounded-lg">
+                  <Badge variant="secondary" className="mb-4 w-fit rounded-lg bg-zinc-100">
                     {project.industry}
                   </Badge>
                   <CardTitle className="text-xl">{project.title}</CardTitle>
@@ -301,7 +350,17 @@ function DemoProjectsSection() {
                     {project.resultPromise}
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="grid gap-5">
+                  <div className="grid gap-3 text-sm leading-6">
+                    <div>
+                      <p className="font-semibold text-zinc-950">Problem</p>
+                      <p className="mt-1 text-zinc-600">{project.problem}</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-zinc-950">Solution</p>
+                      <p className="mt-1 text-zinc-600">{project.solution}</p>
+                    </div>
+                  </div>
                   <ul className="grid gap-2 text-sm text-zinc-600">
                     {project.features.slice(0, 3).map((feature) => (
                       <li key={feature} className="flex gap-2">
@@ -318,9 +377,8 @@ function DemoProjectsSection() {
         <div className="mt-10 flex justify-center">
           <Button
             asChild
-            variant="outline"
             size="lg"
-            className="h-12 rounded-lg bg-white"
+            className="h-12 rounded-lg bg-zinc-950"
           >
             <Link href="/projects">
               View all demo projects
@@ -422,6 +480,57 @@ function PricingSection() {
         <div className="mt-10 rounded-2xl border border-zinc-200 bg-zinc-50 p-5 text-sm leading-6 text-zinc-600">
           Domain, hosting, paid tools, and third-party services are not
           included in the base price. I help you choose and configure them.
+        </div>
+
+        <div className="mt-8 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
+          <div className="grid gap-6 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
+            <div>
+              <Badge
+                variant="outline"
+                className="border-emerald-900/15 bg-emerald-50 text-emerald-900"
+              >
+                Pricing clarity
+              </Badge>
+              <h3 className="mt-4 text-2xl font-semibold tracking-tight">
+                What affects the final price?
+              </h3>
+              <p className="mt-3 text-sm leading-6 text-zinc-600">
+                The starting prices give you a realistic baseline. After a short
+                free project review, I confirm the scope clearly so you know
+                what is included before the project starts.
+              </p>
+              <Button asChild className="mt-5 h-11 rounded-lg bg-zinc-950">
+                <TrackedLink
+                  href="/contact"
+                  eventName="pricing_package_cta_click"
+                  eventProperties={{ package: "Free project review" }}
+                >
+                  Start with a free project review
+                  <ArrowRight className="size-4" />
+                </TrackedLink>
+              </Button>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {priceFactors.map((factor) => {
+                const Icon = factor.icon;
+
+                return (
+                  <div
+                    key={factor.title}
+                    className="rounded-lg border border-zinc-200 bg-zinc-50 p-4"
+                  >
+                    <Icon className="size-5 text-emerald-700" />
+                    <p className="mt-3 text-sm font-semibold text-zinc-950">
+                      {factor.title}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-zinc-600">
+                      {factor.description}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
         <div className="mt-16">
@@ -533,8 +642,7 @@ function ContactSection() {
               Request a project
             </Badge>
             <h2 className="max-w-3xl text-3xl font-semibold tracking-tight sm:text-5xl">
-              Tell me what your business needs to look more professional and
-              receive better inquiries.
+              Start with a free project review and a realistic next step.
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-300 sm:text-lg">
               Use the form to share your business type, service need, budget,

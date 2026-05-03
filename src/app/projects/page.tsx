@@ -4,6 +4,7 @@ import { ArrowRight, Check, Lightbulb, Target } from "lucide-react";
 import { FadeIn } from "@/components/site/fade-in";
 import { Footer } from "@/components/site/footer";
 import { Navbar } from "@/components/site/navbar";
+import { ProjectMockup } from "@/components/site/project-mockup";
 import { TrackedLink } from "@/components/site/tracked-link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -54,9 +55,24 @@ export default function ProjectsPage() {
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-600">
               These are demo concepts, not client case studies yet. They show
-              how a business website can become clearer, easier to trust, and
-              easier to act on.
+              how a business website can look, what problem it solves, and why
+              the call to action matters for real inquiries.
             </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button asChild size="lg" className="h-12 rounded-lg bg-zinc-950">
+                <TrackedLink
+                  href="/contact"
+                  eventName="project_card_cta_click"
+                  eventProperties={{
+                    project: "Demo projects overview",
+                    industry: "All examples",
+                  }}
+                >
+                  Request a free consultation
+                  <ArrowRight className="size-4" />
+                </TrackedLink>
+              </Button>
+            </div>
           </FadeIn>
         </section>
 
@@ -64,8 +80,9 @@ export default function ProjectsPage() {
           <div className="mx-auto grid w-full max-w-7xl gap-5">
             {siteConfig.demoProjects.map((project, index) => (
               <FadeIn key={project.slug} delay={index * 0.04}>
-                <Card className="rounded-2xl border-zinc-200 bg-white p-2 shadow-sm">
-                  <CardHeader className="gap-5 lg:grid lg:grid-cols-[0.8fr_1.2fr]">
+                <Card className="overflow-hidden rounded-2xl border-zinc-200 bg-white p-2 shadow-sm">
+                  <CardHeader className="gap-6 xl:grid xl:grid-cols-[0.9fr_1.1fr] xl:items-start">
+                    <ProjectMockup project={project} />
                     <div>
                       <Badge variant="secondary" className="mb-4 rounded-lg">
                         {project.industry}
@@ -76,18 +93,18 @@ export default function ProjectsPage() {
                       <CardDescription className="mt-4 text-base leading-7">
                         {project.resultPromise}
                       </CardDescription>
-                    </div>
-                    <div className="grid gap-4 sm:grid-cols-2">
-                      <InfoBlock
-                        icon="problem"
-                        title="Problem"
-                        description={project.problem}
-                      />
-                      <InfoBlock
-                        icon="solution"
-                        title="Solution"
-                        description={project.solution}
-                      />
+                      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                        <InfoBlock
+                          icon="problem"
+                          title="Problem"
+                          description={project.problem}
+                        />
+                        <InfoBlock
+                          icon="solution"
+                          title="Solution"
+                          description={project.solution}
+                        />
+                      </div>
                     </div>
                   </CardHeader>
                   <CardContent>

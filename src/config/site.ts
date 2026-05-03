@@ -34,7 +34,7 @@ export const siteConfig = {
     {
       title: "Client Portals and Dashboards",
       description:
-        "Login systems, client dashboards, admin panels, project tracking, messaging, and business workflows for companies that need more than a website.",
+        "Approved projects can use a client portal to track progress, view status updates, keep messages organized, and support custom dashboard workflows when needed.",
       icon: "messages",
     },
     {
@@ -79,7 +79,7 @@ export const siteConfig = {
       step: "04",
       title: "Portal",
       description:
-        "Approved projects get a client portal workspace for project details, messages, status, and progress.",
+        "Approved projects get a client portal workspace for project details, messages, status updates, and organized communication.",
     },
     {
       step: "05",
@@ -326,6 +326,11 @@ export const siteConfig = {
       question: "Can you build something more complex than a website?",
       answer:
         "Yes. I can build custom web apps, client portals, dashboards, login systems, admin panels, databases, file upload systems, messaging systems, and automation tools. These projects start from €1499 and are quoted individually.",
+    },
+    {
+      question: "Do I need a client portal before starting?",
+      answer:
+        "No. The client portal is used after a project is approved. It helps clients track progress, view status updates, and keep communication organized. The first step is still a simple request and free project review.",
     },
     {
       question: "Do you guarantee more clients?",

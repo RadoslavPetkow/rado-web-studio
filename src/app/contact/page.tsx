@@ -55,7 +55,7 @@ export default function ContactPage() {
                 Project request
               </Badge>
               <h1 className="max-w-4xl text-5xl font-semibold tracking-tight sm:text-6xl">
-                Tell me what your business needs online.
+                Start with a free project review.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-600">
                 Share your business context, the service you need, and what a
@@ -82,7 +82,9 @@ export default function ContactPage() {
                   </ul>
                   <div className="mt-5 rounded-lg border border-white/10 bg-white/5 p-4 text-sm leading-6 text-zinc-200">
                     The portal is used only for approved projects, so first we
-                    confirm that the project is a good fit.
+                    confirm that the project is a good fit. It helps clients
+                    track progress, view status updates, and keep communication
+                    organized after approval.
                   </div>
                 </CardContent>
               </Card>
@@ -106,6 +108,10 @@ export default function ContactPage() {
                   tools, and third-party services are handled separately, and I
                   can help choose and configure them.
                 </p>
+                <p className="mt-4 rounded-lg border border-emerald-900/10 bg-emerald-50 p-3 text-sm leading-6 text-emerald-950">
+                  You can use this as a free consultation request. I will review
+                  the project direction before suggesting a paid scope.
+                </p>
                 <Link
                   href={`mailto:${siteConfig.email}`}
                   className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-zinc-950"
@@ -128,7 +134,9 @@ export default function ContactPage() {
                 <p>
                   The first step is a simple request. After we confirm the
                   project is a good fit, the client portal becomes the project
-                  workspace for details, messages, progress, and review.
+                  workspace for details, messages, progress, and review. The
+                  portal is a support and trust feature for approved projects,
+                  not something you need before sending a request.
                 </p>
                 <div className="grid gap-2 rounded-xl border border-zinc-200 bg-zinc-50 p-4">
                   {["Request", "Clarify", "Approve", "Portal workspace"].map(

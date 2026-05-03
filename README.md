@@ -4,6 +4,18 @@ Premium marketing website and early client portal foundation for Rado Web Studio
 
 This version includes the public marketing site, Supabase Auth foundation, protected client/admin dashboards, converted project management, simple project messages, privacy/terms pages, and database/RLS schema. Payments, file uploads, realtime, and notifications are intentionally not included yet.
 
+## Survey-Driven Public Website Improvements
+
+Early feedback showed that visitors understood the offer, but wanted clearer
+demo examples, more pricing context, and an easier way to start a conversation.
+The public site now includes:
+
+- More visual demo project cards with mini website-style mockups for the barber, fitness coach, and restaurant examples.
+- Clearer problem, solution, feature, and result-promise presentation on the homepage and `/projects`.
+- A pricing clarity section explaining what affects the final price, including pages, design complexity, integrations, portal/dashboard features, AI automations, support, and timeline urgency.
+- Free consultation language in the hero, contact page, pricing section, projects page, and footer.
+- Clearer client portal copy explaining that the portal is used after a project is approved to track progress, status updates, and communication.
+
 ## Local Setup
 
 Install dependencies:
