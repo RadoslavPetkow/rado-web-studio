@@ -82,6 +82,8 @@ export const it = {
       ],
       priceLabel: "Punto di partenza accessibile",
       proLabel: "Esecuzione premium, ambito chiaro",
+      processStatValue: "6 fasi",
+      processStatLabel: "Dalla richiesta al lancio",
     },
     valuePoints: [
       "Pensato per fiducia e richieste",

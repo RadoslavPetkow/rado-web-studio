@@ -198,8 +198,8 @@ function HeroSection({ dictionary, locale, localized }: Required<PublicPageProps
 
               <div className="mt-8 grid grid-cols-2 gap-3">
                 <div className="rounded-2xl border border-white/10 bg-white p-4 text-zinc-950">
-                  <p className="text-3xl font-semibold">6</p>
-                  <p className="mt-1 text-sm text-zinc-600">{dictionary.home.processHeading.eyebrow}</p>
+                  <p className="text-3xl font-semibold">{hero.processStatValue}</p>
+                  <p className="mt-1 text-sm text-zinc-600">{hero.processStatLabel}</p>
                 </div>
                 <div className="rounded-2xl bg-emerald-300 p-4 text-emerald-950">
                   <p className="text-3xl font-semibold">MVP</p>
@@ -217,11 +217,11 @@ function HeroSection({ dictionary, locale, localized }: Required<PublicPageProps
 function ValuePointsSection({ dictionary }: { dictionary: Dictionary }) {
   return (
     <section className="bg-zinc-950 px-4 pb-10 sm:px-6 lg:px-8">
-      <div className="mx-auto grid w-full max-w-7xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {dictionary.home.valuePoints.map((point) => (
           <div
             key={point}
-            className="flex min-h-16 items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-3 text-center text-white shadow-lg shadow-zinc-950/10"
+            className="flex min-h-18 items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-4 text-center text-white shadow-lg shadow-zinc-950/10"
           >
             <BadgeCheck className="size-5 shrink-0 text-emerald-300" />
             <span className="text-sm font-medium leading-5 text-zinc-200">{point}</span>

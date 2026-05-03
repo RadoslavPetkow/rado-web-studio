@@ -82,6 +82,8 @@ export const bg = {
       ],
       priceLabel: "Достъпна начална точка",
       proLabel: "Премиум изпълнение с ясен обхват",
+      processStatValue: "6 стъпки",
+      processStatLabel: "От запитване до старт",
     },
     valuePoints: [
       "Създадено за доверие и запитвания",

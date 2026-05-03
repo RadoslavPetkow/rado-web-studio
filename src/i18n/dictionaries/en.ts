@@ -76,6 +76,8 @@ export const en = {
       ],
       priceLabel: "Accessible starting point",
       proLabel: "Premium execution, focused scope",
+      processStatValue: "6 steps",
+      processStatLabel: "From request to launch",
     },
     valuePoints: [
       "Built for trust and inquiries",
