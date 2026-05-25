@@ -5,32 +5,32 @@ export const it = {
   ...en,
   metadata: {
     home: {
-      title: "Rado Web Studio | Siti web e sistemi digitali per piccole imprese",
+      title: "Zoro WebStudio di Radoslav Petkov | Siti per attivita locali",
       description:
-        "Siti moderni, veloci e mobile-friendly per piccole imprese che vogliono più fiducia, più richieste e una presenza online più professionale.",
+        "Siti moderni per ristoranti, caffe, negozi e attivita locali, pensati per una presentazione piu chiara e un contatto piu semplice.",
     },
     projects: {
-      title: "Progetti demo | Rado Web Studio",
+      title: "Siti demo live | Zoro WebStudio",
       description:
-        "Esempi pratici di siti per attività locali, coach fitness e ristoranti.",
+        "Scopri siti demo live per un cinema, un'attivita food e un ristorante.",
     },
     contact: {
-      title: "Richiedi un progetto | Rado Web Studio",
+      title: "Revisione gratuita del sito | Zoro WebStudio",
       description:
-        "Richiedi un sito aziendale, landing page, negozio online, portale clienti o software su misura.",
+        "Richiedi un sito per il tuo ristorante, negozio, servizio locale o piccola impresa.",
     },
     start: {
-      title: "Checklist di avvio progetto | Rado Web Studio",
+      title: "Checklist di avvio progetto | Zoro WebStudio",
       description:
         "Una checklist pratica per preparare informazioni, contenuti, accessi e controlli prima di iniziare.",
     },
     privacy: {
-      title: "Privacy Policy | Rado Web Studio",
+      title: "Privacy Policy | Zoro WebStudio",
       description:
-        "Come Rado Web Studio usa dati di richieste, account, progetti e messaggi.",
+        "Come Zoro WebStudio usa dati di richieste, account, progetti e messaggi.",
     },
     terms: {
-      title: "Termini di servizio | Rado Web Studio",
+      title: "Termini di servizio | Zoro WebStudio",
       description:
         "Termini semplici per servizi digitali, ambito del progetto, comunicazione e lavoro a pagamento.",
     },
@@ -45,15 +45,15 @@ export const it = {
     login: "Login",
     dashboard: "Portale",
     admin: "Admin",
-    cta: "Consulenza gratuita",
+    cta: "Revisione gratuita",
     mobileCta: "Contatto",
   },
   footer: {
     description:
-      "Siti moderni, automazioni AI, chatbot, sistemi clienti e basi software su misura per aziende in crescita.",
+      "Siti veloci, puliti e mobile-friendly per ristoranti, caffe, negozi e attivita locali.",
     navigate: "Navigazione",
     contact: "Contatto",
-    bookCall: "Prenota una breve chiamata",
+    bookCall: "Richiedi revisione gratuita",
     privacy: "Privacy Policy",
     terms: "Termini di servizio",
     start: "Checklist di avvio progetto",
@@ -66,19 +66,19 @@ export const it = {
       ...en.home.hero,
       badge: "Siti moderni per piccole imprese in Bulgaria e in Europa",
       title:
-        "Siti professionali e sistemi digitali pensati per fiducia, velocità e richieste clienti.",
+        "Siti moderni per ristoranti, caffe, negozi e attivita locali.",
       description:
-        "Rado Web Studio crea siti moderni, veloci e mobile-friendly e sistemi digitali pratici per piccole imprese che vogliono una presenza online più forte senza costi inutili da grande agenzia.",
-      primaryCta: "Richiedi una consulenza gratuita",
-      secondaryCta: "Vedi progetti demo",
-      note: "Inizia con una revisione gratuita del progetto prima di qualsiasi lavoro a pagamento.",
+        "Creo siti veloci, puliti e mobile-friendly che aiutano i clienti a capire l'attivita, fidarsi piu rapidamente e contattare, prenotare o ordinare con facilita.",
+      primaryCta: "Richiedi revisione gratuita",
+      secondaryCta: "Vedi siti demo",
+      note: "Ambito e prezzo iniziale chiari prima di qualsiasi lavoro a pagamento.",
       studioFocus: "Focus dello studio",
-      stackTitle: "Base di lancio per piccole imprese",
+      stackTitle: "Elementi essenziali per un'attivita locale",
       stackItems: [
-        "Servizi chiari e flusso di contatto semplice",
+        "Menu, servizi o prodotti presentati chiaramente",
         "Sito veloce e mobile-first",
-        "Form, mappe, SEO base, pubblicazione",
-        "Spazio per portali e sistemi su misura",
+        "Contatto, prenotazione, chiamata o ordine",
+        "Mappe, SEO base, analytics e pubblicazione",
       ],
       priceLabel: "Punto di partenza accessibile",
       proLabel: "Esecuzione premium, ambito chiaro",
@@ -89,13 +89,13 @@ export const it = {
       "Pensato per fiducia e richieste",
       "Siti veloci mobile-first",
       "Servizi presentati in modo chiaro",
-      "Pronto per sistemi digitali futuri",
+      "Chiamate, prenotazioni o ordini chiari",
     ],
     servicesHeading: {
       eyebrow: "Servizi",
-      title: "Siti, negozi e sistemi che rendono la tua attività più credibile.",
+      title: "Servizi web costruiti attorno a come scelgono i clienti locali.",
       description:
-        "L'obiettivo non è aggiungere tecnologia senza motivo. L'obiettivo è costruire i pezzi digitali giusti, così i clienti capiscono cosa fai, perché fidarsi e come contattarti.",
+        "Un sito utile rende facili da trovare le informazioni importanti: cosa offri, dove sei, quando sei aperto e come fare il prossimo passo.",
     },
     processHeading: {
       eyebrow: "Come lavoro",
@@ -108,17 +108,17 @@ export const it = {
       prepare: "Cosa preparare",
     },
     projectsHeading: {
-      eyebrow: "Progetti demo",
-      title: "Esempi visuali per situazioni reali di piccole imprese.",
+      eyebrow: "Siti demo live",
+      title: "Apri demo reali per food, ristorazione e attivita locali.",
       description:
-        "Questi concept non sono finte testimonianze. Mostrano come può apparire il sito, quale problema risolve e come una CTA chiara aiuta il visitatore a contattare l'attività.",
-      viewAll: "Vedi tutti i progetti demo",
+        "Sono siti concept live che puoi aprire e verificare. Mostrano il livello di presentazione, la struttura mobile e le azioni per i clienti.",
+      viewAll: "Vedi tutte le demo live",
     },
     pricingHeading: {
       eyebrow: "Prezzi",
       title: "Pacchetti strutturati con prezzi di partenza in EUR.",
       description:
-        "Più accessibile di una grande agenzia, ma serio, curato e orientato ai risultati di business. L'ambito finale viene confermato dopo una breve consulenza.",
+        "Tre punti di partenza pratici per piccole attivita. L'ambito finale viene confermato dopo una revisione gratuita del sito o dell'idea.",
       includedNote:
         "Dominio, hosting, strumenti a pagamento e servizi di terze parti non sono inclusi nel prezzo base. Ti aiuto a sceglierli e configurarli.",
       askAbout: "Chiedi info su",
@@ -128,7 +128,7 @@ export const it = {
       title: "Cosa influenza il prezzo finale?",
       description:
         "I prezzi di partenza danno una base realistica. Dopo una breve revisione gratuita, confermo l'ambito in modo chiaro prima dell'inizio.",
-      cta: "Inizia con una revisione gratuita",
+      cta: "Richiedi revisione gratuita",
       factors: [
         {
           title: "Numero di pagine",
@@ -168,10 +168,10 @@ export const it = {
       practical: "Scelta pratica",
     },
     why: {
-      eyebrow: "Perché Rado Web Studio",
-      title: "Uno studio web focalizzato per piccole imprese che vogliono un'esecuzione seria.",
+      eyebrow: "Perche Zoro WebStudio",
+      title: "Un partner web pratico per attivita locali.",
       description:
-        "Hai un rapporto diretto con uno sviluppatore moderno, capace di gestire siti, form, deployment, dashboard, database e futuri portali clienti.",
+        "Ambito chiaro, comunicazione diretta, design mobile-first e una base tecnica che cresce solo quando serve alla tua attivita.",
     },
     faq: {
       eyebrow: "FAQ",
@@ -183,39 +183,53 @@ export const it = {
       badge: "Richiesta progetto",
       title: "Inizia con una revisione gratuita e un prossimo passo realistico.",
       description:
-        "Usa il form per condividere tipo di attività, servizio, budget e timeline. Ti proporrò un ambito realistico, prezzo di partenza e prossimo passo.",
-      cta: "Apri la pagina contatti",
+        "Raccontami la tua attivita, la presenza online attuale e cosa devono fare i clienti. Rispondero con una direzione mirata e un ambito iniziale realistico.",
+      cta: "Richiedi revisione gratuita",
+    },
+    about: {
+      eyebrow: "Chi sono",
+      title: "Zoro WebStudio di Radoslav Petkov.",
+      description:
+        "Lavoro direttamente con piccole imprese che vogliono un sito professionale senza un processo d'agenzia complicato. Mi concentro su design chiaro, uso da mobile, pubblicazione affidabile e un contatto o ordine piu semplice.",
+      points: [
+        "Siti moderni Next.js progettati per clienti da mobile",
+        "Comunicazione diretta dalla prima revisione al lancio",
+        "Form, mappe, analytics, pubblicazione e integrazioni pratiche",
+        "Possibilita di aggiungere ecommerce o sistemi custom quando servono davvero",
+      ],
+      signature: "Radoslav Petkov",
+      role: "Sviluppatore web e fondatore, Zoro WebStudio",
     },
   },
   services: [
     {
-      title: "Siti aziendali e landing page",
+      title: "Siti per attivita locali",
       description:
-        "Siti moderni e landing focalizzate che presentano l'attività chiaramente, caricano velocemente e aiutano i visitatori a contattarti.",
+        "Siti moderni per ristoranti, caffe, barbieri, saloni, palestre, negozi e servizi, con le informazioni che i clienti cercano.",
       icon: "monitor",
     },
     {
-      title: "Negozi online",
+      title: "Menu, prodotti e negozi online",
       description:
-        "Setup puliti per piccole imprese con prodotti, categorie, carrello, checkout e una base affidabile per vendere online.",
+        "Presentazione chiara di menu o prodotti, con ecommerce quando i clienti devono esplorare e acquistare online.",
       icon: "sparkles",
     },
     {
-      title: "Portali clienti e dashboard",
+      title: "Contatti, prenotazioni e ordini",
       description:
-        "I progetti approvati possono usare un portale per seguire progressi, stati e messaggi, con workflow su misura quando serve.",
+        "Call to action, form, mappe, prenotazioni e percorsi di ordine semplici da usare da telefono.",
       icon: "messages",
     },
     {
-      title: "Automazioni AI e chatbot",
+      title: "Redesign e miglioramento siti",
       description:
-        "Automazioni pratiche, chatbot e workflow interni per richieste, domande clienti, follow-up e attività ripetitive.",
+        "Una versione piu chiara, veloce e professionale di un sito esistente o di una presenza solo social.",
       icon: "layout",
     },
     {
-      title: "Web app su misura",
+      title: "Funzioni avanzate quando servono",
       description:
-        "Software focalizzato per operations, gestione clienti, strumenti interni, database e workflow che i builder standard non risolvono bene.",
+        "Ecommerce, booking, form custom, dashboard o automazioni vengono quotati solo quando sostengono una reale esigenza di business.",
       icon: "code",
     },
     {
@@ -229,12 +243,12 @@ export const it = {
     {
       step: "01",
       title: "Richiesta",
-      description: "Invii una richiesta con contesto, servizio, timeline e obiettivi.",
+      description: "Invii una breve richiesta con tipo di attivita, presenza online attuale e obiettivo del sito.",
     },
     {
       step: "02",
       title: "Revisione",
-      description: "Rivedo obiettivi, bisogni e cosa deve ottenere la prima versione.",
+      description: "Valuto cosa devono trovare i clienti e quale azione deve risultare piu semplice.",
     },
     {
       step: "03",
@@ -244,7 +258,7 @@ export const it = {
     {
       step: "04",
       title: "Portale",
-      description: "I progetti approvati ricevono uno spazio per dettagli, messaggi e stati.",
+      description: "I progetti approvati possono usare uno spazio privato per dettagli, messaggi e aggiornamenti.",
     },
     {
       step: "05",
@@ -259,158 +273,125 @@ export const it = {
   ],
   demoProjects: [
     {
-      title: "Sito per Barber Studio",
-      industry: "Attività locale di servizi",
+      title: "Cinema Demo",
+      industry: "Cinema locale ed eventi",
       problem:
-        "Un barber studio deve apparire premium online, spiegare i servizi e rendere facile prenotare dal telefono.",
+        "I visitatori devono trovare film, orari, biglietti e posizione velocemente, senza cercare tra i post social.",
       solution:
-        "Un sito one-page o piccolo sito con servizi, posizione, CTA di prenotazione e visual che costruiscono fiducia.",
+        "Un concept per cinema con programmi in evidenza, informazioni biglietti, calendario settimanale e azioni mobile chiare.",
       features: [
-        "CTA prenotazione mobile",
-        "Struttura servizi e prezzi",
-        "Google Maps e orari",
-        "Layout pronto per gallery",
+        "Programma giornaliero e settimanale",
+        "Sezione prezzi biglietti",
+        "Link posizione e navigazione",
+        "Percorso CTA per prenotazione",
       ],
-      idealFor: "Barbieri, saloni, beauty studio e servizi su appuntamento.",
+      idealFor: "Cinema, luoghi culturali, spazi eventi e intrattenimento locale.",
       resultPromise:
-        "Trasforma traffico locale e social in più richieste grazie a una prima impressione curata.",
-      slug: "barber-studio-website",
+        "Una demo live che mostra come programma e biglietti possono essere piu semplici da trovare su telefono.",
+      slug: "cinema-demo",
+      href: "https://cinema-demo-tau.vercel.app/",
+      image: "/demos/cinema-demo.png",
     },
     {
-      title: "Landing page per fitness coach",
-      industry: "Coaching e personal brand",
+      title: "Sofia Cheese Steak",
+      industry: "Street food e takeaway",
       problem:
-        "Un coach ha bisogno di una pagina chiara che spieghi l'offerta, risponda ai dubbi e raccolga lead.",
+        "Un'attivita food deve far capire menu, appetibilita e percorso d'ordine in pochi secondi.",
       solution:
-        "Landing focalizzata con posizionamento, programma, FAQ e flusso di richiesta.",
+        "Una demo food mirata con menu forte, azioni mobile per ordinare e dettagli della posizione.",
       features: [
-        "Sezioni offerta e programma",
-        "CTA per richieste",
-        "FAQ e obiezioni",
-        "Flusso mobile ottimizzato",
+        "Hero e prodotti principali",
+        "Layout focalizzato sul menu",
+        "CTA ordine o contatto",
+        "Presentazione mobile-first",
       ],
-      idealFor: "Fitness coach, consulenti, educatori e professionisti individuali.",
+      idealFor: "Takeaway, street food, caffe, panetterie e locali fast-casual.",
       resultPromise:
-        "Dà ai visitatori un motivo chiaro per contattarti invece di restare con domande.",
-      slug: "fitness-coach-landing-page",
+        "Una demo live focalizzata sul rendere l'offerta chiara prima dell'ordine.",
+      slug: "sofia-cheese-steak",
+      href: "https://sofia-cheese-steak.vercel.app/",
+      image: "/demos/sofia-cheese-steak.png",
     },
     {
-      title: "Sito per ristorante",
-      industry: "Ristorazione e food",
+      title: "Restaurant Oasis",
+      industry: "Ristorante e ospitalita",
       problem:
-        "Un ristorante deve mostrare rapidamente menu, orari, posizione, prenotazioni e atmosfera.",
+        "Un ristorante deve comunicare atmosfera mantenendo menu, contatto, posizione e prenotazione facili da raggiungere.",
       solution:
-        "Sito pulito con struttura menu, CTA prenotazione, posizione e sezioni visuali.",
+        "Una demo premium con presentazione visuale, informazioni pratiche per gli ospiti e un chiaro invito alla prenotazione.",
       features: [
-        "Struttura pronta per menu",
-        "CTA prenota e chiama",
-        "Posizione e orari",
-        "Sezione eventi",
+        "Hero di presentazione del ristorante",
+        "Sezioni menu e offerta",
+        "Percorso prenotazione o contatto",
+        "Layout responsive per ospitalita",
       ],
-      idealFor: "Ristoranti, caffè, panetterie, bar e locali.",
+      idealFor: "Ristoranti, caffe, bistrot, bar e locali di ospitalita.",
       resultPromise:
-        "Aiuta gli ospiti a decidere più velocemente e a contattare senza frizione.",
-      slug: "restaurant-website",
+        "Una demo live che mostra una prima impressione online curata per gli ospiti.",
+      slug: "restaurant-oasis",
+      href: "https://restaurant-oasis-demo.vercel.app/",
+      image: "/demos/restaurant-oasis.png",
     },
   ],
-  projectMockup: {
-    bookAppointment: "Prenota",
-    startCoaching: "Inizia coaching",
-    reserveTable: "Prenota tavolo",
-    viewServices: "Vedi servizi",
-    openToday: "Aperto oggi",
-    onlinePlan: "Piano online",
-    menuReady: "Menu pronto",
-    mapsContact: "Mappa + contatto",
-  },
   projectsPage: {
-    badge: "Progetti demo",
-    title: "Esempi premium per bisogni reali di piccole imprese.",
+    badge: "Siti demo live",
+    title: "Guarda siti demo reali costruiti per situazioni di attivita locali.",
     description:
-      "Sono concept demo, non case study clienti. Mostrano come può apparire il sito, quale problema risolve e perché la CTA conta.",
-    cta: "Richiedi una consulenza gratuita",
-    problem: "Problema",
+      "Sono realizzazioni demo live, non case study di clienti o risultati promessi. Apri ogni sito per vedere qualita visuale, struttura mobile e azioni per i clienti.",
+    cta: "Richiedi revisione gratuita",
+    problem: "Problema risolto",
     solution: "Soluzione",
-    keyFeatures: "Funzioni principali",
+    keyFeatures: "Sezioni e funzioni incluse",
     idealFor: "Ideale per",
-    cardCta: "Voglio qualcosa di simile",
+    cardCta: "Vedi demo live",
+    requestCta: "Richiedi un sito simile",
   },
   pricing: [
     {
-      name: "Starter Landing Page",
+      name: "Starter Website",
       price: "Da €249",
       description:
-        "Un sito professionale one-page per presentare l'attività chiaramente e trasformare visite in richieste.",
+        "Un sito pulito one-page che offre a un'attivita locale un punto di partenza professionale online.",
       bestFor:
-        "Barbieri, saloni, autolavaggi, coach, piccoli negozi, insegnanti privati e servizi locali.",
+        "Attivita locali nuove o piccole che necessitano di una presenza chiara e mobile-friendly.",
       features: [
-        "1 landing page professionale",
-        "Design moderno su misura",
-        "Layout mobile-friendly",
-        "Hero, servizi, chi siamo, offerta/prezzi, testimonianze, contatto",
-        "Form contatto e Google Maps",
-        "SEO base, velocità e pubblicazione",
+        "Una pagina web focalizzata",
+        "Panoramica servizi o menu",
+        "Pulsante contatto e form richiesta",
+        "Mappa, orari e contatti",
+        "Design mobile-friendly",
+        "SEO base e pubblicazione",
       ],
     },
     {
       name: "Business Website",
       price: "Da €399",
       description:
-        "Un sito aziendale completo per apparire più professionali, spiegare i servizi e ricevere più richieste.",
-      bestFor: "Consigliato per piccole imprese che hanno bisogno di una presenza online più completa.",
+        "Un sito piu completo per attivita che vogliono pagine chiare, fiducia maggiore e contatti piu semplici.",
+      bestFor: "Consigliato per ristoranti, negozi, saloni, servizi e attivita locali in crescita.",
       features: [
-        "3-5 pagine: home, servizi, chi siamo, gallery/portfolio, contatto",
-        "Form contatto e Google Maps",
-        "Design mobile-friendly",
-        "Presentazione chiara dei servizi",
-        "SEO base",
-        "Pubblicazione online",
+        "Tre-cinque pagine",
+        "Servizi, menu, gallery oppure offerte",
+        "CTA per contatto, chiamata, prenotazione o richiesta",
+        "Google Maps e dettagli dell'attivita",
+        "Performance mobile e SEO base",
+        "Pubblicazione e setup analytics",
       ],
       featured: true,
     },
     {
-      name: "Pro Business Website",
-      price: "Da €599",
+      name: "Advanced Website / Online Store",
+      price: "Da €699+",
       description:
-        "Sito più avanzato con struttura più forte, più pagine, analytics e spazio per crescere.",
-      bestFor: "Aziende che vogliono più struttura, analytics e presenza digitale più seria.",
+        "Un sito piu avanzato o piccolo negozio online quando l'offerta richiede prodotti, ordini, integrazioni o una struttura piu personalizzata.",
+      bestFor: "Attivita che vendono prodotti online o richiedono un sito piu ampio e su misura.",
       features: [
-        "5-8 pagine con design più dettagliato",
-        "Presentazione servizi più forte",
-        "Blog o news",
-        "Struttura SEO migliore",
+        "Struttura pagine e contenuti avanzata",
+        "Catalogo prodotti o base ecommerce",
+        "Integrazione carrello/pagamento quando concordata",
         "Analytics e ottimizzazione performance",
-        "Più revisioni e possibile admin/content setup semplice",
-      ],
-    },
-    {
-      name: "Online Store",
-      price: "Da €999",
-      description:
-        "Setup pratico per iniziare a vendere prodotti online con un sistema pulito e affidabile.",
-      bestFor: "Piccole imprese che vogliono vendere prodotti online.",
-      features: [
-        "Pagine prodotto e categorie",
-        "Carrello e checkout",
-        "Integrazione pagamento dove possibile",
-        "Gestione base del negozio",
-        "Design mobile-friendly",
-        "SEO base e pubblicazione",
-      ],
-    },
-    {
-      name: "Custom Web App / Client Portal",
-      price: "Da €1499",
-      description:
-        "Software su misura per aziende che hanno bisogno di più di un sito: portali, dashboard, strumenti interni, automazioni e piattaforme clienti.",
-      bestFor: "Aziende che hanno bisogno di login, dashboard, database, messaggi, workflow o strumenti interni.",
-      features: [
-        "Sistema login, dashboard cliente e admin",
-        "Messaggi cliente, upload file e project tracking",
-        "Database e workflow su misura",
-        "Strumenti interni",
-        "AI o automazioni dove utili",
-        "Preventivo su misura dopo breve consulenza",
+        "Integrazioni custom quotate chiaramente",
+        "Preventivo finale dopo revisione gratuita",
       ],
     },
   ],
@@ -436,16 +417,16 @@ export const it = {
     },
   ],
   reasons: [
-    "Hai uno sviluppatore moderno e focalizzato che può gestire design, frontend, form, deployment, basi backend e portali clienti.",
-    "La prima versione resta chiara e realistica, così l'attività può lanciare in modo professionale senza costi inutili.",
-    "Ogni sezione è pensata per fiducia, velocità, mobile experience e richieste clienti.",
-    "La base tecnica può crescere verso login, dashboard, database, automazioni e workflow su misura.",
+    "Lavori direttamente con Radoslav Petkov, dalla prima revisione del sito alla realizzazione e al lancio.",
+    "L'ambito resta pratico: le pagine e le azioni di cui i tuoi clienti hanno davvero bisogno.",
+    "Ogni realizzazione e pensata per mobile, velocita, fiducia e un contatto o ordine piu facile.",
+    "Il sito puo crescere in futuro con ecommerce o funzioni custom, quando l'attivita ne ha davvero bisogno.",
   ],
   faqs: [
     {
       question: "Quanto costa un sito?",
       answer:
-        "I siti per piccole imprese partono di solito da €249 per una landing page. Un sito aziendale più completo parte di solito da €399. Siti più avanzati, ecommerce e sistemi su misura vengono quotati individualmente.",
+        "Uno Starter Website parte da €249. Un Business Website piu completo parte da €399. Siti avanzati e negozi online partono da €699+ e vengono quotati dopo una breve revisione delle pagine e funzioni necessarie.",
     },
     {
       question: "Dominio e hosting sono inclusi?",
@@ -465,7 +446,7 @@ export const it = {
     {
       question: "Puoi creare qualcosa di più complesso di un sito?",
       answer:
-        "Sì. Posso creare web app, portali clienti, dashboard, login, admin panel, database, file upload, messaggi e automazioni. Questi progetti partono da €1499.",
+        "Si. Se l'attivita ha poi bisogno di ecommerce, booking, portale clienti, dashboard o automazioni, posso definire quel lavoro avanzato dopo aver compreso il processo.",
     },
     {
       question: "Serve un portale clienti prima di iniziare?",
@@ -484,31 +465,27 @@ export const it = {
       email: "Email",
       businessName: "Nome attività",
       businessType: "Tipo di attività",
+      websiteOrSocial: "Sito attuale o Instagram/Facebook",
       serviceNeeded: "Servizio richiesto",
       budgetRange: "Budget",
-      timeline: "Timeline",
       message: "Messaggio",
     },
     placeholders: {
-      businessType: "Ristorante, barber shop, coach...",
+      businessType: "Ristorante, caffe, negozio, salone, servizio locale...",
+      websiteOrSocial: "Link al sito o profilo, se disponibile",
       serviceNeeded: "Scegli un servizio",
       budgetRange: "Scegli un budget",
-      timeline: "Scegli una timeline",
       message:
-        "Raccontami cosa vuoi costruire, cosa non funziona oggi e cosa dovrebbe ottenere la prima versione.",
+        "Cosa offri e cosa vorresti che i clienti facessero piu facilmente tramite il sito?",
     },
     services: [
       "Sito aziendale",
-      "Landing page",
-      "Negozio online",
-      "Automazione AI",
-      "Chatbot",
-      "Software su misura",
+      "Sito iniziale one-page",
+      "Sito avanzato / negozio online",
       "Redesign sito",
-      "Consulenza",
+      "Non sono ancora sicuro",
     ],
     budgets: ["Sotto €300", "€300-€700", "€700-€1500", "€1500+", "Non sono sicuro"],
-    timelines: ["Il prima possibile", "Questo mese", "1-2 mesi", "Flessibile"],
     errors: {
       required: "è obbligatorio.",
       invalidEmail: "Inserisci un indirizzo email valido.",
@@ -519,13 +496,13 @@ export const it = {
       "Il tuo client email dovrebbe aprirsi con la richiesta pronta. Invia quell'email per completare la richiesta.",
     trust:
       "Le informazioni vengono usate solo per valutare e rispondere alla richiesta. Niente spam, nessuna vendita di dati.",
-    submit: "Invia richiesta",
+    submit: "Richiedi revisione gratuita",
   },
   contactPage: {
-    badge: "Richiesta progetto",
+    badge: "Revisione gratuita del sito",
     title: "Inizia con una revisione gratuita del progetto.",
     description:
-      "Condividi il contesto della tua attività, il servizio richiesto e cosa dovrebbe ottenere la prima versione. Ti suggerirò ambito, prezzo iniziale e prossimo passo.",
+      "Condividi la tua attivita, il sito o profilo social attuale e cosa devono fare i clienti piu facilmente. Ti suggeriro un ambito mirato, prezzo iniziale e prossimo passo.",
     flowTitle: "Cosa succede dopo la richiesta?",
     flow: [
       "Rivedo la tua richiesta.",
@@ -540,7 +517,7 @@ export const it = {
       "Il portale si usa solo per progetti approvati. Prima confermiamo che il progetto sia adatto. Poi aiuta a seguire progressi, stati e comunicazione.",
     emailTitle: "Preferisci email?",
     emailDescription:
-      "Puoi anche inviare i dettagli direttamente. Includi attività, servizio, budget, timeline e cosa vuoi ottenere. Dominio, hosting, strumenti a pagamento e servizi esterni sono gestiti separatamente.",
+      "Puoi inviare direttamente nome dell'attivita, link al sito o profilo social, cosa devono fare i clienti e budget indicativo. Dominio, hosting, strumenti a pagamento e servizi esterni sono gestiti separatamente.",
     consultationNote:
       "Puoi usarla come richiesta di consulenza gratuita. Prima rivedo la direzione, poi propongo un ambito a pagamento.",
     portalTitle: "Prima richiesta, poi portale",
@@ -554,7 +531,7 @@ export const it = {
     description:
       "Un po' di preparazione rende un sito, automazione o software su misura molto più chiaro. Questa checklist mostra cosa raccogliere prima di definire l'ambito.",
     primaryCta: "Inizia un progetto",
-    secondaryCta: "Vedi progetti demo",
+    secondaryCta: "Vedi siti demo",
     beforeTitle: "Prima di iniziare",
     beforeDescription:
       "Prima del lavoro a pagamento chiariamo ambito, tempi, aspettative, comunicazione e cosa deve ottenere la prima versione.",
@@ -601,7 +578,7 @@ export const it = {
     badge: "Privacy Policy",
     title: "Informazioni chiare sulla privacy per clienti e visitatori.",
     description:
-      "Questa pagina spiega quali informazioni Rado Web Studio può raccogliere, perché vengono usate e come contattarmi.",
+      "Questa pagina spiega quali informazioni Zoro WebStudio può raccogliere, perché vengono usate e come contattarmi.",
     noteTitle: "Policy semplice per fase iniziale",
     note: "Questa è una privacy policy semplice per un sito business e portale clienti in fase iniziale. È scritta per chiarezza e non è consulenza legale.",
     questionsTitle: "Domande sulla privacy?",
@@ -610,7 +587,7 @@ export const it = {
       {
         title: "Informazioni raccolte dal form contatti",
         body: [
-          "Quando invii una richiesta, il sito può raccogliere nome, email, nome attività, tipo attività, servizio, budget, timeline e messaggio.",
+          "Quando invii una richiesta di revisione, il sito puo raccogliere nome, email, nome e tipo di attivita, link al sito o profilo social attuale, servizio richiesto, budget e messaggio.",
           "Queste informazioni vengono usate per valutare la richiesta e rispondere con possibili prossimi passi.",
         ],
       },
@@ -632,7 +609,7 @@ export const it = {
         title: "Come vengono usati i dati",
         body: [
           "I dati vengono usati per rispondere, gestire account, organizzare lavoro, comunicare progressi e migliorare sito e portale.",
-          "Rado Web Studio non vende dati personali.",
+          "Zoro WebStudio non vende dati personali.",
         ],
       },
       {
@@ -649,7 +626,7 @@ export const it = {
     badge: "Termini di servizio",
     title: "Termini semplici per richieste e lavoro digitale.",
     description:
-      "Questi termini spiegano come Rado Web Studio gestisce ambito, comunicazione, responsabilità e lavoro a pagamento.",
+      "Questi termini spiegano come Zoro WebStudio gestisce ambito, comunicazione, responsabilità e lavoro a pagamento.",
     noteTitle: "Termini in linguaggio semplice",
     note: "Questa pagina è scritta per chiarezza e non è consulenza legale. Per lavoro pagato possono esserci accordi separati.",
     questionsTitle: "Domande sui termini?",
@@ -658,7 +635,7 @@ export const it = {
       {
         title: "Servizi offerti",
         body: [
-          "Rado Web Studio offre design e sviluppo siti, landing page, ecommerce, portali clienti, dashboard, admin panel, web app, automazioni e servizi digitali collegati.",
+          "Zoro WebStudio offre design e sviluppo siti, landing page, ecommerce, portali clienti, dashboard, admin panel, web app, automazioni e servizi digitali collegati.",
           "Servizio, consegne, prezzo e timeline dipendono dall'ambito concordato.",
         ],
       },
@@ -693,7 +670,7 @@ export const it = {
       {
         title: "Limitazione di responsabilità",
         body: [
-          "Rado Web Studio lavora per soluzioni affidabili, ma nessun sito o software può garantire vendite, ranking, traffico o servizio continuo.",
+          "Zoro WebStudio lavora per soluzioni affidabili, ma nessun sito o software può garantire vendite, ranking, traffico o servizio continuo.",
           "Lo studio non è responsabile per perdite indirette, profitti mancati, disservizi esterni o problemi causati da informazioni mancanti.",
         ],
       },

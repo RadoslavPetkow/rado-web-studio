@@ -24,7 +24,7 @@ import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "Project Details",
-  description: "Private Rado Web Studio project details.",
+  description: "Private Zoro WebStudio project details.",
   robots: {
     index: false,
     follow: false,
@@ -77,7 +77,7 @@ export default async function ProjectDetailsPage({
 
       return {
         id: item.id,
-        senderLabel: isCurrentUser ? "You" : "Rado Web Studio",
+        senderLabel: isCurrentUser ? "You" : "Zoro WebStudio",
         message: item.message,
         createdAt: item.created_at,
         isCurrentUser,

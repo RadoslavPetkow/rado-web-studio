@@ -22,20 +22,20 @@ import { defaultLocale } from "@/i18n/locales";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "Privacy Policy for Rado Web Studio, including contact requests, client portal accounts, project data, and messages.",
+    "Privacy Policy for Zoro WebStudio, including contact requests, client portal accounts, project data, and messages.",
   alternates: {
     canonical: "/privacy",
   },
   openGraph: {
-    title: "Privacy Policy | Rado Web Studio",
+    title: "Privacy Policy | Zoro WebStudio",
     description:
-      "How Rado Web Studio collects and uses contact request, account, project, and message data.",
+      "How Zoro WebStudio collects and uses contact request, account, project, and message data.",
     url: "/privacy",
   },
   twitter: {
-    title: "Privacy Policy | Rado Web Studio",
+    title: "Privacy Policy | Zoro WebStudio",
     description:
-      "How Rado Web Studio handles contact requests, account data, project data, and messages.",
+      "How Zoro WebStudio handles contact requests, account data, project data, and messages.",
   },
 };
 

@@ -1,19 +1,19 @@
-# Rado Web Studio
+# Zoro WebStudio by Radoslav Petkov
 
-Premium marketing website and early client portal foundation for Rado Web Studio, built with Next.js App Router, TypeScript, Tailwind CSS, shadcn/ui, Lucide React, Framer Motion, Supabase, Vercel Analytics, and Speed Insights.
+Production-focused website and early client portal foundation for Zoro WebStudio by Radoslav Petkov, built with Next.js App Router, TypeScript, Tailwind CSS, shadcn/ui, Lucide React, Framer Motion, Supabase, Vercel Analytics, and Speed Insights.
 
 This version includes the public marketing site, Supabase Auth foundation, protected client/admin dashboards, converted project management, simple project messages, privacy/terms pages, and database/RLS schema. Payments, file uploads, realtime, and notifications are intentionally not included yet.
 
-## Survey-Driven Public Website Improvements
+## Public Business Website
 
-Early feedback showed that visitors understood the offer, but wanted clearer
-demo examples, more pricing context, and an easier way to start a conversation.
-The public site now includes:
+The public site positions Zoro WebStudio as Radoslav Petkov's personal web
+studio for restaurants, cafes, shops, salons and local businesses. It includes:
 
-- More visual demo project cards with mini website-style mockups for the barber, fitness coach, and restaurant examples.
-- Clearer problem, solution, feature, and result-promise presentation on the homepage and `/projects`.
-- A pricing clarity section explaining what affects the final price, including pages, design complexity, integrations, portal/dashboard features, AI automations, support, and timeline urgency.
-- Free consultation language in the hero, contact page, pricing section, projects page, and footer.
+- Live demo cards and captured previews for Cinema Demo, Sofia Cheese Steak and Restaurant Oasis, each linking to the deployed demo.
+- An About section introducing Radoslav Petkov and the direct working relationship.
+- Three clear website packages: Starter Website from EUR 249, Business Website from EUR 399, and Advanced Website / Online Store from EUR 699+.
+- A lead-focused contact form that requests the current website or social profile and offers a free website review.
+- Clear `View demo websites` and `Request free website review` actions throughout the public flow.
 - Clearer client portal copy explaining that the portal is used after a project is approved to track progress, status updates, and communication.
 
 ## Public Internationalization
@@ -85,11 +85,14 @@ Use these variables locally and in Vercel:
 NEXT_PUBLIC_FORMSPREE_ENDPOINT=https://formspree.io/f/your-form-id
 NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+NEXT_PUBLIC_SITE_URL=https://your-production-domain.example
 ```
 
 If `NEXT_PUBLIC_FORMSPREE_ENDPOINT` is missing, the contact form falls back to a prefilled email draft to `radigoig@gmail.com`.
 
 If Supabase variables are missing, the public marketing site still works, while portal routes show a setup notice or redirect only after Supabase is configured.
+
+Set `NEXT_PUBLIC_SITE_URL` to the final Zoro WebStudio domain so canonical links, robots, and sitemap URLs use the correct public address.
 
 ## Supabase Setup
 
@@ -146,7 +149,7 @@ When a request is converted:
 - The project is assigned to the matching profile id.
 - The project title is based on the requested service and business name.
 - The service type and budget range come from the request.
-- The description includes the original message, business type, timeline, and contact email.
+- The description includes the original message, business type, current website or social profile link when supplied, and contact email.
 - The new project starts with status `new`.
 
 ## Admin Project Management
@@ -205,7 +208,7 @@ Clients can:
 
 - View messages for projects assigned to their own account.
 - Send messages only on their own projects.
-- See admin replies labeled as `Rado Web Studio`.
+- See admin replies labeled as `Zoro WebStudio`.
 
 Admins can:
 
@@ -250,9 +253,10 @@ Recommended path:
 3. Confirm the framework preset is Next.js.
 4. Add Supabase environment variables.
 5. Add `NEXT_PUBLIC_FORMSPREE_ENDPOINT` if using Formspree.
-6. Deploy a Preview build.
-7. Test the Preview URL using `LAUNCH_CHECKLIST.md`.
-8. Promote or deploy to Production after checks pass.
+6. Add `NEXT_PUBLIC_SITE_URL` with the final public domain.
+7. Deploy a Preview build.
+8. Test the Preview URL using `LAUNCH_CHECKLIST.md`.
+9. Promote or deploy to Production after checks pass.
 
 CLI path:
 
@@ -310,11 +314,11 @@ These pages are written in simple English for an early-stage business website an
 
 ## Survey-Driven Visual Polish
 
-The public marketing site was visually redesigned after early feedback that the first version felt too plain. The updated public UI uses stronger light/dark section contrast, a darker premium navigation/footer, richer hero visuals, more polished demo project mockups, deeper pricing cards, and stronger CTA areas while keeping the copy, multilingual routes, contact flow, and portal functionality intact.
+The public marketing site was visually redesigned after early feedback that the first version felt too plain. The updated public UI uses stronger light/dark section contrast, a darker premium navigation/footer, richer hero visuals, live demo screenshots, clearer pricing cards, and stronger CTA areas while keeping the multilingual routes, contact flow, and portal functionality intact.
 
-The redesign focuses on making Rado Web Studio feel like a serious modern digital studio: clean and readable, but with more depth, hierarchy, and agency-style presentation.
+The redesign focuses on making Zoro WebStudio feel like a serious modern digital studio: clean and readable, but with more depth, hierarchy, and agency-style presentation.
 
-A follow-up UI polish pass fixed hero and project mockup overlap issues, tightened trust badge alignment, improved the contact form surface and field focus states, and refined navbar/language switcher hover states so the public site feels more stable across desktop, tablet, and mobile.
+A follow-up UI polish pass fixed hero overlap issues, tightened trust badge alignment, improved the contact form surface and field focus states, refined navbar/language switcher hover states, and replaced synthetic mockups with live demo previews.
 
 ## Production Testing Checklist
 

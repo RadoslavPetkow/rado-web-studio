@@ -31,9 +31,9 @@ type FormValues = {
   email: string;
   businessName: string;
   businessType: string;
+  websiteOrSocial: string;
   serviceNeeded: string;
   budgetRange: string;
-  timeline: string;
   message: string;
 };
 
@@ -44,9 +44,9 @@ const initialValues: FormValues = {
   email: "",
   businessName: "",
   businessType: "",
+  websiteOrSocial: "",
   serviceNeeded: "",
   budgetRange: "",
-  timeline: "",
   message: "",
 };
 
@@ -57,7 +57,6 @@ const requiredFields: Array<keyof FormValues> = [
   "businessType",
   "serviceNeeded",
   "budgetRange",
-  "timeline",
   "message",
 ];
 
@@ -85,15 +84,15 @@ export function ContactForm({
   const formspreeEndpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
 
   const mailtoHref = useMemo(() => {
-    const subject = `Project request from ${values.fullName || "Rado Web Studio website"}`;
+    const subject = `Project request from ${values.fullName || "Zoro WebStudio website"}`;
     const body = [
       `${formCopy.fields.fullName}: ${values.fullName}`,
       `${formCopy.fields.email}: ${values.email}`,
       `${formCopy.fields.businessName}: ${values.businessName}`,
       `${formCopy.fields.businessType}: ${values.businessType}`,
+      `${formCopy.fields.websiteOrSocial}: ${values.websiteOrSocial || "-"}`,
       `${formCopy.fields.serviceNeeded}: ${values.serviceNeeded}`,
       `${formCopy.fields.budgetRange}: ${values.budgetRange}`,
-      `${formCopy.fields.timeline}: ${values.timeline}`,
       "",
       `${formCopy.fields.message}:`,
       values.message,
@@ -144,13 +143,12 @@ export function ContactForm({
 
     setStatus("loading");
     setStatusMessage("");
-    await saveProjectRequest(values);
+    await saveProjectRequest(values, formCopy.fields.websiteOrSocial);
 
     if (!formspreeEndpoint) {
       trackEvent("contact_form_mailto_fallback_used", {
         service: values.serviceNeeded,
         budget: values.budgetRange,
-        timeline: values.timeline,
       });
       window.location.href = mailtoHref;
       setStatus("success");
@@ -180,7 +178,6 @@ export function ContactForm({
       trackEvent("contact_form_submitted_successfully", {
         service: values.serviceNeeded,
         budget: values.budgetRange,
-        timeline: values.timeline,
       });
       router.push(localized ? localizedPath(locale, "/thank-you") : "/thank-you");
     } catch {
@@ -232,6 +229,14 @@ export function ContactForm({
           onChange={(value) => updateField("businessType", value)}
           placeholder={formCopy.placeholders.businessType}
         />
+        <TextField
+          id="websiteOrSocial"
+          label={formCopy.fields.websiteOrSocial}
+          value={values.websiteOrSocial}
+          onChange={(value) => updateField("websiteOrSocial", value)}
+          placeholder={formCopy.placeholders.websiteOrSocial}
+          className="md:col-span-2"
+        />
         <SelectField
           id="serviceNeeded"
           label={formCopy.fields.serviceNeeded}
@@ -249,15 +254,6 @@ export function ContactForm({
           placeholder={formCopy.placeholders.budgetRange}
           options={formCopy.budgets}
           onChange={(value) => updateField("budgetRange", value)}
-        />
-        <SelectField
-          id="timeline"
-          label={formCopy.fields.timeline}
-          value={values.timeline}
-          error={errors.timeline}
-          placeholder={formCopy.placeholders.timeline}
-          options={formCopy.timelines}
-          onChange={(value) => updateField("timeline", value)}
         />
       </div>
 
@@ -318,7 +314,7 @@ export function ContactForm({
   );
 }
 
-async function saveProjectRequest(values: FormValues) {
+async function saveProjectRequest(values: FormValues, websiteOrSocialLabel: string) {
   if (!isSupabaseConfigured()) {
     return;
   }
@@ -337,8 +333,10 @@ async function saveProjectRequest(values: FormValues) {
       business_type: values.businessType,
       service_needed: values.serviceNeeded,
       budget_range: values.budgetRange,
-      timeline: values.timeline,
-      message: values.message,
+      timeline: null,
+      message: values.websiteOrSocial
+        ? `${websiteOrSocialLabel}: ${values.websiteOrSocial}\n\n${values.message}`
+        : values.message,
     });
   } catch {
     // The visible request flow still works through Formspree or mailto.
@@ -354,6 +352,7 @@ type TextFieldProps = {
   type?: string;
   placeholder?: string;
   autoComplete?: string;
+  className?: string;
 };
 
 function TextField({
@@ -365,9 +364,10 @@ function TextField({
   type = "text",
   placeholder,
   autoComplete,
+  className,
 }: TextFieldProps) {
   return (
-    <div className="grid gap-2.5">
+    <div className={cn("grid gap-2.5", className)}>
       <Label htmlFor={id} className="text-sm font-semibold text-zinc-800">
         {label}
       </Label>

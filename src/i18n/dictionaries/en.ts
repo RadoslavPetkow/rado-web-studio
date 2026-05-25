@@ -1,34 +1,34 @@
 export const en = {
   metadata: {
     home: {
-      title: "Rado Web Studio | Websites and Digital Systems for Small Businesses",
+      title: "Zoro WebStudio by Radoslav Petkov | Websites for Local Businesses",
       description:
-        "Modern, fast, mobile-friendly websites and digital systems for small businesses that want more trust, more inquiries, and a stronger online presence.",
+        "Modern websites for restaurants, cafes, shops, and local businesses, built to help customers understand, trust, and contact the business more easily.",
     },
     projects: {
-      title: "Demo Projects | Rado Web Studio",
+      title: "Live Demo Websites | Zoro WebStudio",
       description:
-        "Premium demo project directions for local service websites, fitness landing pages, and restaurant websites.",
+        "View live website demos by Zoro WebStudio for a cinema, food business, and restaurant.",
     },
     contact: {
-      title: "Request a Project | Rado Web Studio",
+      title: "Request a Free Website Review | Zoro WebStudio",
       description:
-        "Request a business website, landing page, online store, client portal, or custom software project from Rado Web Studio.",
+        "Request a free website review for your restaurant, shop, local service, or small business.",
     },
     start: {
-      title: "Project Start Checklist | Rado Web Studio",
+      title: "Project Start Checklist | Zoro WebStudio",
       description:
         "A practical checklist for preparing business information, brand assets, website content, access details, feedback, and launch steps.",
     },
     privacy: {
-      title: "Privacy Policy | Rado Web Studio",
+      title: "Privacy Policy | Zoro WebStudio",
       description:
-        "How Rado Web Studio collects and uses contact request, account, project, and message data.",
+        "How Zoro WebStudio collects and uses contact request, account, project, and message data.",
     },
     terms: {
-      title: "Terms of Service | Rado Web Studio",
+      title: "Terms of Service | Zoro WebStudio",
       description:
-        "Simple terms for Rado Web Studio services, project scope, communication, responsibilities, and paid work.",
+        "Simple terms for Zoro WebStudio services, project scope, communication, responsibilities, and paid work.",
     },
   },
   nav: {
@@ -41,15 +41,15 @@ export const en = {
     login: "Login",
     dashboard: "Dashboard",
     admin: "Admin",
-    cta: "Free consultation",
+    cta: "Free website review",
     mobileCta: "Contact",
   },
   footer: {
     description:
-      "Modern websites, AI automations, chatbots, client systems, and custom software foundations for growing businesses.",
+      "Fast, clean, mobile-friendly websites for restaurants, cafes, shops, and local businesses.",
     navigate: "Navigate",
     contact: "Contact",
-    bookCall: "Book a quick call",
+    bookCall: "Request free website review",
     privacy: "Privacy Policy",
     terms: "Terms of Service",
     start: "Project Start Checklist",
@@ -60,19 +60,19 @@ export const en = {
     hero: {
       badge: "Modern websites for small businesses in Bulgaria and Europe",
       title:
-        "Professional websites and digital systems built for trust, speed, and customer inquiries.",
+        "Modern websites for restaurants, cafes, shops, and local businesses.",
       description:
-        "Rado Web Studio builds modern, fast, mobile-friendly websites and practical digital systems for small businesses that want a stronger online presence without unnecessary agency overhead.",
-      primaryCta: "Request a free consultation",
-      secondaryCta: "View demo projects",
-      note: "Start with a free project review before any paid work begins.",
+        "I build fast, clean, mobile-friendly websites that help customers understand your business, trust it faster, and contact, reserve, or order more easily.",
+      primaryCta: "Request free website review",
+      secondaryCta: "View demo websites",
+      note: "Clear scope and starting price before any paid work begins.",
       studioFocus: "Studio focus",
-      stackTitle: "Small business launch stack",
+      stackTitle: "Local business website essentials",
       stackItems: [
-        "Clear services and contact flow",
+        "Clear menu, services, or product presentation",
         "Fast mobile-first website",
-        "Forms, maps, SEO basics, deployment",
-        "Room for portals and custom systems",
+        "Contact, reserve, call, or order actions",
+        "Maps, SEO basics, analytics, deployment",
       ],
       priceLabel: "Accessible starting point",
       proLabel: "Premium execution, focused scope",
@@ -83,13 +83,13 @@ export const en = {
       "Built for trust and inquiries",
       "Fast mobile-first websites",
       "Clear service presentation",
-      "Future-ready digital systems",
+      "Clear calls, bookings, or orders",
     ],
     servicesHeading: {
       eyebrow: "Services",
-      title: "Websites, stores, and systems that make your business easier to trust.",
+      title: "Website services built around how local customers decide.",
       description:
-        "The goal is not to add technology for its own sake. It is to build the right digital pieces so customers understand what you do, why they should trust you, and how to contact or buy from you.",
+        "A useful business website makes the important information easy to find: what you offer, where you are, when you are open, and how a customer can take the next step.",
     },
     processHeading: {
       eyebrow: "How I work",
@@ -102,17 +102,17 @@ export const en = {
       prepare: "See what to prepare",
     },
     projectsHeading: {
-      eyebrow: "Demo projects",
-      title: "Visual examples for real small business situations.",
+      eyebrow: "Live demo websites",
+      title: "Open real demos for food, hospitality, and local venues.",
       description:
-        "These demo concepts are not fake client case studies. They show how the website could look, what problem it solves, and how the right call to action helps visitors contact the business faster.",
-      viewAll: "View all demo projects",
+        "These are live concept websites you can open and inspect. They show the standard of presentation, mobile structure, and customer actions I can build.",
+      viewAll: "View all live demos",
     },
     pricingHeading: {
       eyebrow: "Pricing preview",
       title: "Structured packages with clear starting prices in EUR.",
       description:
-        "Accessible compared to a larger agency, but still serious, polished, and built around business results. Final scope is confirmed after a short consultation.",
+        "Three practical starting points for small businesses. Final scope is confirmed after a free website review, with no inflated promises.",
       includedNote:
         "Domain, hosting, paid tools, and third-party services are not included in the base price. I help you choose and configure them.",
       askAbout: "Ask about",
@@ -122,7 +122,7 @@ export const en = {
       title: "What affects the final price?",
       description:
         "The starting prices give you a realistic baseline. After a short free project review, I confirm the scope clearly so you know what is included before the project starts.",
-      cta: "Start with a free project review",
+      cta: "Request free website review",
       factors: [
         {
           title: "Number of pages",
@@ -169,10 +169,10 @@ export const en = {
       practical: "Practical choice",
     },
     why: {
-      eyebrow: "Why choose Rado Web Studio",
-      title: "A focused web studio for small businesses that need serious execution.",
+      eyebrow: "Why work with Zoro WebStudio",
+      title: "A practical website partner for local businesses.",
       description:
-        "You get the clarity and care of a direct developer relationship, with modern technical capability across websites, deployment, forms, dashboards, databases, and future client portals.",
+        "Clear scope, direct communication, mobile-first design, and a technical foundation that can grow only when your business needs it.",
     },
     faq: {
       eyebrow: "FAQ",
@@ -182,41 +182,55 @@ export const en = {
     },
     contact: {
       badge: "Request a project",
-      title: "Start with a free project review and a realistic next step.",
+      title: "Get a clear recommendation for your business website.",
       description:
-        "Use the form to share your business type, service need, budget, and timeline. I will suggest a realistic scope, starting price, and next step based on what will help your business most.",
-      cta: "Open dedicated contact page",
+        "Tell me about your business, your current online presence, and what customers need to do next. I will reply with a focused website direction and realistic starting scope.",
+      cta: "Request free website review",
+    },
+    about: {
+      eyebrow: "About",
+      title: "Zoro WebStudio by Radoslav Petkov.",
+      description:
+        "I work directly with small businesses that need a professional website without a complicated agency process. My focus is clear design, mobile usability, reliable deployment, and a site that makes contacting or ordering easier.",
+      points: [
+        "Modern Next.js websites designed for mobile customers",
+        "Direct communication from first review to launch",
+        "Forms, maps, analytics, deployment, and practical integrations",
+        "Room to add an online store or custom system when it is genuinely needed",
+      ],
+      signature: "Radoslav Petkov",
+      role: "Web developer and founder, Zoro WebStudio",
     },
   },
   services: [
     {
-      title: "Business Websites and Landing Pages",
+      title: "Local Business Websites",
       description:
-        "Modern websites and focused landing pages that present your business clearly, load fast, and help visitors contact you with confidence.",
+        "Modern sites for restaurants, cafes, barbers, salons, gyms, shops, and services, with the details customers need before they contact you.",
       icon: "monitor",
     },
     {
-      title: "Online Stores",
+      title: "Menus, Products and Online Stores",
       description:
-        "Clean store setups for small businesses that want product pages, categories, cart, checkout, and a reliable path to online sales.",
+        "Clear menu or product presentation, with an online store setup when customers need to browse and buy online.",
       icon: "sparkles",
     },
     {
-      title: "Client Portals and Dashboards",
+      title: "Contact, Booking and Ordering Flows",
       description:
-        "Approved projects can use a client portal to track progress, view status updates, keep messages organized, and support custom dashboard workflows when needed.",
+        "Calls to action, forms, location maps, reservations, and ordering paths made simple on mobile devices.",
       icon: "messages",
     },
     {
-      title: "AI Automations and Chatbots",
+      title: "Website Redesign and Improvement",
       description:
-        "Practical automations, chatbots, and internal workflows that help with lead handling, customer questions, follow-ups, and repetitive tasks.",
+        "A clearer, faster, more professional version of an existing website or social-only online presence.",
       icon: "layout",
     },
     {
-      title: "Custom Web Apps",
+      title: "Advanced Features When Needed",
       description:
-        "Focused software for operations, customer management, internal tools, databases, and workflows that standard website builders cannot solve well.",
+        "Stores, booking integrations, custom forms, dashboards, or automations quoted only when they support a real business need.",
       icon: "code",
     },
     {
@@ -231,13 +245,13 @@ export const en = {
       step: "01",
       title: "Request",
       description:
-        "You send a project request with your business context, service need, timeline, and goals.",
+        "You send a short request with your business type, current online presence, and website goal.",
     },
     {
       step: "02",
       title: "Review",
       description:
-        "I review your business goals, current needs, and what the first useful version should achieve.",
+        "I review what customers need to see and which next action should be easiest for them.",
     },
     {
       step: "03",
@@ -249,7 +263,7 @@ export const en = {
       step: "04",
       title: "Portal",
       description:
-        "Approved projects get a client portal workspace for project details, messages, status updates, and organized communication.",
+        "Approved projects can use a private workspace for details, messages, and progress updates.",
     },
     {
       step: "05",
@@ -266,161 +280,127 @@ export const en = {
   ],
   demoProjects: [
     {
-      title: "Barber Studio Website",
-      industry: "Local service business",
+      title: "Cinema Demo",
+      industry: "Local cinema and events",
       problem:
-        "A barber studio needs to look premium online, explain services clearly, and make booking feel easy from a phone.",
+        "Visitors need to see films, times, ticket information, and location quickly without searching through social posts.",
       solution:
-        "A sharp one-page or small multi-page website with service sections, location details, booking CTA, and trust-building visuals.",
+        "A cinema website concept with programme highlights, ticket information, weekly schedule, and clear mobile actions.",
       features: [
-        "Mobile-first booking CTA",
-        "Service and price structure",
-        "Google Maps and opening hours",
-        "Gallery-ready layout",
+        "Daily and weekly programme",
+        "Ticket pricing section",
+        "Location and navigation links",
+        "Reservation-oriented CTA flow",
       ],
-      idealFor: "Barbers, salons, beauty studios, and local appointment-based services.",
+      idealFor: "Cinemas, cultural venues, event spaces, and local entertainment businesses.",
       resultPromise:
-        "Turn local search and social traffic into more booking inquiries with a polished first impression.",
-      slug: "barber-studio-website",
+        "A live demo showing how programme and ticket information can become easier to find on a phone.",
+      slug: "cinema-demo",
+      href: "https://cinema-demo-tau.vercel.app/",
+      image: "/demos/cinema-demo.png",
     },
     {
-      title: "Fitness Coach Landing Page",
-      industry: "Coaching and personal brand",
+      title: "Sofia Cheese Steak",
+      industry: "Street food and takeaway",
       problem:
-        "A coach needs a focused offer page that explains the transformation, handles objections, and captures qualified leads.",
+        "A food business needs customers to understand the menu, appetite appeal, and ordering path within seconds.",
       solution:
-        "A conversion-focused landing page with clear positioning, offer breakdown, proof placeholders, FAQs, and request flow.",
+        "A focused food website demo with strong menu presentation, mobile-first ordering actions, and location details.",
       features: [
-        "Offer and program sections",
-        "Lead capture CTA",
-        "FAQ and objection handling",
-        "Mobile-optimized sales flow",
+        "Hero and signature products",
+        "Menu-focused layout",
+        "Order/contact CTA",
+        "Mobile-first presentation",
       ],
-      idealFor: "Fitness coaches, consultants, educators, and solo service providers.",
+      idealFor: "Takeaways, street food brands, cafes, bakeries, and fast-casual venues.",
       resultPromise:
-        "Give visitors a clear reason to inquire instead of leaving your social profile with unanswered questions.",
-      slug: "fitness-coach-landing-page",
+        "A live demo focused on making the offer easy to understand before a customer orders.",
+      slug: "sofia-cheese-steak",
+      href: "https://sofia-cheese-steak.vercel.app/",
+      image: "/demos/sofia-cheese-steak.png",
     },
     {
-      title: "Restaurant Website",
-      industry: "Hospitality and food",
+      title: "Restaurant Oasis",
+      industry: "Restaurant and hospitality",
       problem:
-        "A restaurant needs guests to quickly find the menu, hours, location, reservation options, and the feel of the place.",
+        "A restaurant needs to communicate atmosphere while keeping menu, contact, location, and reservation actions easy to reach.",
       solution:
-        "A clean restaurant website with menu structure, reservation CTA, location details, and visual sections for atmosphere.",
+        "A premium restaurant demo with visual presentation, practical guest information, and clear reservation intent.",
       features: [
-        "Menu-ready page structure",
-        "Reservation and call CTA",
-        "Location and hours block",
-        "Event or private booking section",
+        "Restaurant hero presentation",
+        "Menu and offer sections",
+        "Reservation/contact path",
+        "Responsive hospitality layout",
       ],
-      idealFor: "Restaurants, cafes, bakeries, bars, and hospitality venues.",
+      idealFor: "Restaurants, cafes, bistros, bars, and hospitality venues.",
       resultPromise:
-        "Help guests decide faster, visit with confidence, and contact the business without friction.",
-      slug: "restaurant-website",
+        "A live demo showing a polished online first impression for restaurant guests.",
+      slug: "restaurant-oasis",
+      href: "https://restaurant-oasis-demo.vercel.app/",
+      image: "/demos/restaurant-oasis.png",
     },
   ],
-  projectMockup: {
-    bookAppointment: "Book appointment",
-    startCoaching: "Start coaching",
-    reserveTable: "Reserve table",
-    viewServices: "View services",
-    openToday: "Open today",
-    onlinePlan: "Online plan",
-    menuReady: "Menu ready",
-    mapsContact: "Maps + contact",
-  },
   projectsPage: {
-    badge: "Demo project directions",
-    title: "Premium examples for real small business needs.",
+    badge: "Live demo websites",
+    title: "See real website demos built for local business situations.",
     description:
-      "These are demo concepts, not client case studies yet. They show how a business website can look, what problem it solves, and why the call to action matters for real inquiries.",
-    cta: "Request a free consultation",
-    problem: "Problem",
+      "These are live demo builds, not client case studies or promised results. Open each website to see the visual quality, mobile structure, and customer-facing actions.",
+    cta: "Request free website review",
+    problem: "Problem solved",
     solution: "Solution",
-    keyFeatures: "Key features",
+    keyFeatures: "Included sections and features",
     idealFor: "Ideal for",
-    cardCta: "I want something similar",
+    cardCta: "View live demo",
+    requestCta: "Request something similar",
   },
   pricing: [
     {
-      name: "Starter Landing Page",
+      name: "Starter Website",
       price: "From €249",
       description:
-        "A clean and professional one-page website designed to present your business clearly and turn visitors into inquiries.",
+        "A clean one-page website that gives a local business a professional online starting point.",
       bestFor:
-        "Barbers, beauty salons, car washes, fitness coaches, small shops, private teachers, and local service providers.",
+        "New or small local businesses that need a clear mobile-friendly presence.",
       features: [
-        "1 professional landing page",
-        "Modern custom design",
-        "Mobile-friendly layout",
-        "Hero, services, about, offer/pricing, testimonials, contact",
-        "Contact form and Google Maps integration",
-        "Basic SEO setup, fast loading speed, and online deployment",
+        "One focused website page",
+        "Services or menu overview",
+        "Contact button and inquiry form",
+        "Map, hours, and contact information",
+        "Mobile-friendly design",
+        "Basic SEO setup and deployment",
       ],
     },
     {
       name: "Business Website",
       price: "From €399",
       description:
-        "A complete business website for companies that want to look more professional, explain their services clearly, and receive more customer inquiries.",
+        "A fuller website for businesses that need clear pages, stronger trust, and easier customer contact.",
       bestFor:
-        "Recommended for small businesses that need a more complete online presence.",
+        "Recommended for restaurants, shops, salons, services, and growing local businesses.",
       features: [
-        "3-5 pages: homepage, services, about, gallery/portfolio, contact",
-        "Contact form and Google Maps",
-        "Mobile-friendly design",
-        "Clear service presentation",
-        "Basic SEO setup",
-        "Online deployment",
+        "Three to five pages",
+        "Services, menu, gallery, or offers",
+        "Contact, call, reservation, or enquiry CTA",
+        "Google Maps and business details",
+        "Mobile performance and SEO basics",
+        "Deployment and analytics setup",
       ],
       featured: true,
     },
     {
-      name: "Pro Business Website",
-      price: "From €599",
+      name: "Advanced Website / Online Store",
+      price: "From €699+",
       description:
-        "A more advanced business website for companies that want stronger presentation, better structure, and a more serious digital presence.",
+        "A more advanced website or small online store when your offer needs products, ordering, integrations, or more custom structure.",
       bestFor:
-        "Businesses that want more pages, stronger structure, analytics, and room for growth.",
+        "Businesses selling products online or needing a larger, more tailored website.",
       features: [
-        "5-8 pages with more detailed design",
-        "Stronger service presentation",
-        "Blog or news section",
-        "Better SEO structure",
-        "Analytics setup and performance optimization",
-        "More revisions and optional simple admin/content management setup",
-      ],
-    },
-    {
-      name: "Online Store",
-      price: "From €999",
-      description:
-        "A practical online store setup for businesses that want to start selling products online with a clean and reliable system.",
-      bestFor: "Small businesses that want to sell products online.",
-      features: [
-        "Product pages and product categories",
-        "Shopping cart and checkout setup",
-        "Payment provider integration where possible",
-        "Basic store management",
-        "Mobile-friendly design",
-        "Basic SEO setup and online deployment",
-      ],
-    },
-    {
-      name: "Custom Web App / Client Portal",
-      price: "From €1499",
-      description:
-        "Custom software for businesses that need more than a website: portals, dashboards, internal tools, automation systems, and client management platforms.",
-      bestFor:
-        "Businesses that need login, dashboards, databases, messaging, workflows, or internal tools.",
-      features: [
-        "Login system, client dashboard, and admin dashboard",
-        "Client messaging, file uploads, and project tracking",
-        "Database and custom workflows",
-        "Internal business tools",
-        "AI or automation features where relevant",
-        "Custom quote after a short consultation",
+        "Advanced page structure and content sections",
+        "Product catalogue or online store foundation",
+        "Cart/payment integration when agreed",
+        "Analytics and performance optimization",
+        "Custom integrations quoted clearly",
+        "Final quote after a free website review",
       ],
     },
   ],
@@ -463,16 +443,16 @@ export const en = {
     },
   ],
   reasons: [
-    "You get a focused modern developer who can handle design, frontend, forms, deployment, backend foundations, and client portal direction.",
-    "The first version stays clear and realistic, so your business can launch professionally without unnecessary agency overhead.",
-    "Every section is written and designed around trust, speed, mobile experience, and customer inquiries.",
-    "The technical foundation can grow into logins, dashboards, databases, automations, and custom workflows when the business needs it.",
+    "You work directly with Radoslav Petkov, from the first website review through build and launch.",
+    "The scope stays practical: the pages and actions your customers actually need, presented clearly.",
+    "Every build is designed for mobile usability, speed, trust, and an easier contact or order path.",
+    "The website can grow into a store or custom functionality later, when the business truly needs it.",
   ],
   faqs: [
     {
       question: "How much does a website cost?",
       answer:
-        "Small business websites usually start from €249 for a landing page. A more complete business website usually starts from €399. More advanced websites, online stores, and custom systems are quoted individually depending on the number of pages and features.",
+        "A Starter Website begins from €249. A fuller Business Website begins from €399. Advanced websites and online stores begin from €699+ and are quoted after a short review of the required pages and features.",
     },
     {
       question: "Are domain and hosting included?",
@@ -492,7 +472,7 @@ export const en = {
     {
       question: "Can you build something more complex than a website?",
       answer:
-        "Yes. I can build custom web apps, client portals, dashboards, login systems, admin panels, databases, file upload systems, messaging systems, and automation tools. These projects start from €1499 and are quoted individually.",
+        "Yes. If a business later needs an online store, booking integration, client portal, dashboard, or automation, I can scope that as advanced custom work after understanding the workflow.",
     },
     {
       question: "Do I need a client portal before starting?",
@@ -511,28 +491,25 @@ export const en = {
       email: "Email",
       businessName: "Business name",
       businessType: "Business type",
+      websiteOrSocial: "Current website or Instagram/Facebook",
       serviceNeeded: "Service needed",
       budgetRange: "Budget range",
-      timeline: "Timeline",
       message: "Message",
     },
     placeholders: {
-      businessType: "Restaurant, barber shop, coach...",
+      businessType: "Restaurant, cafe, shop, salon, local service...",
+      websiteOrSocial: "Website or social page link (optional)",
       serviceNeeded: "Choose a service",
       budgetRange: "Choose a budget",
-      timeline: "Choose a timeline",
       message:
-        "Tell me what you want to build, what is not working today, and what a successful first version would do for your business.",
+        "What should customers find or do more easily online? Tell me what is missing today.",
     },
     services: [
       "Business website",
-      "Landing page",
-      "Online store",
-      "AI automation",
-      "Chatbot",
-      "Custom software",
+      "Starter one-page website",
+      "Advanced website / online store",
       "Website redesign",
-      "Consulting",
+      "Not sure yet",
     ],
     budgets: [
       "Under €300",
@@ -540,12 +517,6 @@ export const en = {
       "€700-€1500",
       "€1500+",
       "Not sure yet",
-    ],
-    timelines: [
-      "As soon as possible",
-      "This month",
-      "1-2 months",
-      "Flexible",
     ],
     errors: {
       required: "is required.",
@@ -557,17 +528,17 @@ export const en = {
       "Your email client should open with the request details ready to send. Please send that email to complete the request.",
     trust:
       "Your information is used only to review and respond to your request. No spam, no selling of data.",
-    submit: "Send request",
+    submit: "Request free website review",
   },
   contactPage: {
-    badge: "Project request",
-    title: "Start with a free project review.",
+    badge: "Free website review",
+    title: "Request a free website review.",
     description:
-      "Share your business context, the service you need, and what a successful first version should accomplish. I will suggest a focused scope, realistic starting price, and next step.",
+      "Share your business and current website or social page. I will review what customers need to find more easily and reply with a focused website direction.",
     flowTitle: "What happens after you submit a request?",
     flow: [
       "I review your request.",
-      "I reply with questions or a suggested direction.",
+      "I reply with a suggested direction or focused questions.",
       "We clarify scope, timeline and expectations.",
       "If the project moves forward, you create a client portal account.",
       "I create your project workspace.",
@@ -578,7 +549,7 @@ export const en = {
       "The portal is used only for approved projects, so first we confirm that the project is a good fit. It helps clients track progress, view status updates, and keep communication organized after approval.",
     emailTitle: "Prefer email?",
     emailDescription:
-      "You can also send the project details directly. Include your business, service needed, budget range, timeline, and what you want the first version to achieve. Domain, hosting, paid tools, and third-party services are handled separately, and I can help choose and configure them.",
+      "You can also send your business name, website or social link, what customers need to do next, and approximate budget directly by email.",
     consultationNote:
       "You can use this as a free consultation request. I will review the project direction before suggesting a paid scope.",
     portalTitle: "Request first, portal after approval",
@@ -592,7 +563,7 @@ export const en = {
     description:
       "A little preparation makes a website, automation, or custom software project much clearer. This checklist shows what is useful to collect before we agree the final scope and start work.",
     primaryCta: "Start a project",
-    secondaryCta: "View demo projects",
+    secondaryCta: "View demo websites",
     beforeTitle: "Before we start",
     beforeDescription:
       "Before any paid work begins, we clarify scope, timeline, expectations, communication, and what the first version should achieve. The goal is to avoid vague work, rushed decisions, and surprises later in the project.",
@@ -676,7 +647,7 @@ export const en = {
     badge: "Privacy Policy",
     title: "Clear privacy information for clients and visitors.",
     description:
-      "This page explains what information Rado Web Studio may collect, why it is used, and how to get in touch about privacy questions.",
+      "This page explains what information Zoro WebStudio may collect, why it is used, and how to get in touch about privacy questions.",
     noteTitle: "Simple early-stage policy",
     note:
       "This is a simple privacy policy for an early-stage business website and client portal. It is written for clarity and is not legal advice.",
@@ -686,7 +657,7 @@ export const en = {
       {
         title: "Information collected through the contact form",
         body: [
-          "When you send a project request, the website may collect your name, email address, business name, business type, service needed, budget range, timeline, and message.",
+          "When you send a website review request, the website may collect your name, email address, business name, business type, current website or social page link, service needed, budget range, and message.",
           "This information is used to review your request, understand your business needs, and respond with possible next steps.",
         ],
       },
@@ -701,14 +672,14 @@ export const en = {
         title: "Project and message data",
         body: [
           "For active projects, the client portal may store project titles, descriptions, service type, budget range, status, timestamps, and project messages.",
-          "Messages are saved so the client and Rado Web Studio can keep project communication in one place.",
+          "Messages are saved so the client and Zoro WebStudio can keep project communication in one place.",
         ],
       },
       {
         title: "How the data is used",
         body: [
           "The data is used to respond to inquiries, manage client accounts, organize project work, communicate about project progress, and improve the website and client portal experience.",
-          "Rado Web Studio does not sell your personal data.",
+          "Zoro WebStudio does not sell your personal data.",
         ],
       },
       {
@@ -728,7 +699,7 @@ export const en = {
     badge: "Terms of Service",
     title: "Simple terms for project requests and digital service work.",
     description:
-      "These terms explain how Rado Web Studio handles project scope, communication, responsibilities, and paid work at this early MVP stage.",
+      "These terms explain how Zoro WebStudio handles project scope, communication, responsibilities, and paid work at this early MVP stage.",
     noteTitle: "Plain-English terms",
     note:
       "This page is written for clarity and is not legal advice. Formal agreements may be handled separately for paid client work.",
@@ -738,7 +709,7 @@ export const en = {
       {
         title: "Services offered",
         body: [
-          "Rado Web Studio offers website design and development, landing pages, online stores, client portals, dashboards, admin panels, custom web apps, automations, and related digital services.",
+          "Zoro WebStudio offers website design and development, landing pages, online stores, client portals, dashboards, admin panels, custom web apps, automations, and related digital services.",
           "The exact service, deliverables, price, and timeline depend on the agreed project scope.",
         ],
       },
@@ -773,8 +744,8 @@ export const en = {
       {
         title: "Limitation of liability",
         body: [
-          "Rado Web Studio works to build reliable, professional digital solutions, but no website or software can guarantee sales, rankings, traffic, or uninterrupted service.",
-          "In simple terms, Rado Web Studio is not responsible for indirect losses, lost profits, third-party service outages, or issues caused by incorrect information, missing client input, or external tools outside direct control.",
+          "Zoro WebStudio works to build reliable, professional digital solutions, but no website or software can guarantee sales, rankings, traffic, or uninterrupted service.",
+          "In simple terms, Zoro WebStudio is not responsible for indirect losses, lost profits, third-party service outages, or issues caused by incorrect information, missing client input, or external tools outside direct control.",
         ],
       },
       {

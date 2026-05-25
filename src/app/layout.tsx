@@ -20,14 +20,17 @@ const siteUrl = new URL(siteConfig.url);
 export const metadata: Metadata = {
   metadataBase: siteUrl,
   title: {
-    default: `${siteConfig.name} | Websites and Digital Systems for Small Businesses`,
+    default: `${siteConfig.name} ${siteConfig.subtitle} | Websites for Local Businesses`,
     template: `%s | ${siteConfig.name}`,
   },
   description:
-    "Rado Web Studio builds modern, fast, mobile-friendly websites and digital systems for small businesses that want more trust, more inquiries, and a professional online presence.",
+    "Zoro WebStudio by Radoslav Petkov builds modern, fast, mobile-friendly websites for restaurants, cafes, shops, and local businesses.",
   keywords: [
-    "Rado Web Studio",
+    "Zoro WebStudio",
+    "Radoslav Petkov",
     "small business websites",
+    "restaurant website design",
+    "local business website",
     "landing page design",
     "website development Bulgaria",
     "business website Europe",
@@ -38,14 +41,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  authors: [{ name: siteConfig.name }],
-  creator: siteConfig.name,
+  authors: [{ name: `${siteConfig.name} ${siteConfig.subtitle}` }],
+  creator: `${siteConfig.name} ${siteConfig.subtitle}`,
   publisher: siteConfig.name,
   category: "Digital services",
   openGraph: {
-    title: `${siteConfig.name} | Websites and Digital Systems for Small Businesses`,
+    title: `${siteConfig.name} ${siteConfig.subtitle} | Websites for Local Businesses`,
     description:
-      "Modern websites, online stores, client portals, and custom web systems built for trust, speed, and customer inquiries.",
+      "Fast, clean, mobile-friendly websites that help local businesses look professional and make customer contact easier.",
     url: "/",
     type: "website",
     locale: "en_US",
@@ -53,9 +56,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | Websites and Digital Systems for Small Businesses`,
+    title: `${siteConfig.name} ${siteConfig.subtitle} | Websites for Local Businesses`,
     description:
-      "Modern websites, online stores, client portals, and custom software for small businesses.",
+      "Modern websites for restaurants, cafes, shops, and local businesses.",
   },
 };
 

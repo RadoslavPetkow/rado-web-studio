@@ -17,7 +17,7 @@ export function createLocalizedMetadata(
   const url = localizedPath(locale, path);
 
   return {
-    title: metadata.title,
+    title: { absolute: metadata.title },
     description: metadata.description,
     alternates: {
       canonical: url,

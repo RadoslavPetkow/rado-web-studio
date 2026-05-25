@@ -29,10 +29,11 @@ export function Footer({
           <div className="max-w-md">
             <div className="flex items-center gap-3">
               <span className="flex size-9 items-center justify-center rounded-lg bg-emerald-300 text-sm font-semibold text-emerald-950">
-                RW
+                ZW
               </span>
-              <span className="font-semibold tracking-tight text-white">
-                {siteConfig.name}
+              <span className="grid">
+                <span className="font-semibold text-white">{siteConfig.name}</span>
+                <span className="text-xs text-zinc-400">{siteConfig.subtitle}</span>
               </span>
             </div>
             <p className="mt-4 text-sm leading-6 text-zinc-400">
@@ -111,7 +112,7 @@ export function Footer({
 
         <div className="flex flex-col gap-2 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} {siteConfig.name}. {footer.rights}
+            © {new Date().getFullYear()} {siteConfig.name} {siteConfig.subtitle}. {footer.rights}
           </p>
           <p>{footer.built}</p>
         </div>

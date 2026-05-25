@@ -1,4 +1,4 @@
-# Rado Web Studio Launch Checklist
+# Zoro WebStudio Launch Checklist
 
 Use this before sharing the site with real prospects or sending a production link to clients.
 
@@ -23,6 +23,7 @@ Use this before sharing the site with real prospects or sending a production lin
 - [ ] Add `NEXT_PUBLIC_FORMSPREE_ENDPOINT` if using Formspree.
 - [ ] Add `NEXT_PUBLIC_SUPABASE_URL`.
 - [ ] Add `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
+- [ ] Add `NEXT_PUBLIC_SITE_URL` with the final Zoro WebStudio public domain.
 - [ ] Add the same environment variable in Vercel for Preview and Production.
 - [ ] Redeploy after changing Vercel environment variables.
 

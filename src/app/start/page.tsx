@@ -28,18 +28,18 @@ import { defaultLocale, localizedPath } from "@/i18n/locales";
 export const metadata: Metadata = {
   title: "Project Start Checklist",
   description:
-    "A practical checklist for preparing business information, brand assets, website content, access details, feedback, and launch steps before starting a Rado Web Studio project.",
+    "A practical checklist for preparing business information, brand assets, website content, access details, feedback, and launch steps before starting a Zoro WebStudio project.",
   alternates: {
     canonical: "/start",
   },
   openGraph: {
-    title: "Project Start Checklist | Rado Web Studio",
+    title: "Project Start Checklist | Zoro WebStudio",
     description:
       "Prepare the key business details, content, assets, access, and launch checks before starting a website, automation, or custom software project.",
     url: "/start",
   },
   twitter: {
-    title: "Project Start Checklist | Rado Web Studio",
+    title: "Project Start Checklist | Zoro WebStudio",
     description:
       "A simple preparation checklist for website, automation, and custom software projects.",
   },

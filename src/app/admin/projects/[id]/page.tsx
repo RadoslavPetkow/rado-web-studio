@@ -28,7 +28,7 @@ import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "Manage Project",
-  description: "Admin project management for Rado Web Studio.",
+  description: "Admin project management for Zoro WebStudio.",
   robots: {
     index: false,
     follow: false,
@@ -334,7 +334,7 @@ function getAdminSenderLabel({
   isCurrentUser: boolean;
 }) {
   if (sender?.role === "admin") {
-    return isCurrentUser ? "You / Admin" : "Rado Web Studio / Admin";
+    return isCurrentUser ? "You / Admin" : "Zoro WebStudio / Admin";
   }
 
   return sender?.full_name || sender?.email || "Client";

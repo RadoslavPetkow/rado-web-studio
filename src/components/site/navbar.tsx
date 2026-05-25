@@ -38,11 +38,14 @@ export async function Navbar({
           className="flex items-center gap-3 rounded-xl outline-none transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-emerald-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
           aria-label={nav.home}
         >
-          <span className="flex size-9 items-center justify-center rounded-lg bg-white text-sm font-semibold text-zinc-950 shadow-sm shadow-emerald-300/20">
-            RW
+          <span className="flex size-9 items-center justify-center rounded-lg bg-emerald-300 text-sm font-semibold text-emerald-950 shadow-sm shadow-emerald-300/20">
+            ZW
           </span>
-          <span className="hidden text-sm font-semibold tracking-tight text-white sm:inline sm:text-base">
-            {siteConfig.name}
+          <span className="hidden sm:grid">
+            <span className="text-sm font-semibold text-white sm:text-base">
+              {siteConfig.name}
+            </span>
+            <span className="text-[11px] font-medium text-zinc-400">{siteConfig.subtitle}</span>
           </span>
         </Link>
 
@@ -92,22 +95,13 @@ export async function Navbar({
               <LogoutButton />
             </>
           ) : (
-            <>
-              <Button
-                asChild
-                variant="outline"
-                className="hidden h-10 rounded-lg border-white/15 bg-white/10 text-white shadow-sm transition-all hover:border-emerald-300/35 hover:bg-white/15 hover:text-white focus-visible:ring-emerald-300/70 focus-visible:ring-offset-zinc-950 sm:inline-flex"
-              >
-                <Link href="/login">{nav.login}</Link>
-              </Button>
-              <Button asChild className="h-10 rounded-lg bg-emerald-300 text-emerald-950 shadow-lg shadow-emerald-950/20 transition-all hover:-translate-y-0.5 hover:bg-emerald-200 hover:shadow-emerald-950/30 focus-visible:ring-emerald-300/70 focus-visible:ring-offset-zinc-950">
+            <Button asChild className="h-10 rounded-lg bg-emerald-300 text-emerald-950 shadow-lg shadow-emerald-950/20 transition-all hover:-translate-y-0.5 hover:bg-emerald-200 hover:shadow-emerald-950/30 focus-visible:ring-emerald-300/70 focus-visible:ring-offset-zinc-950">
                 <TrackedLink href={href("/contact")} eventName="navbar_contact_cta_click">
                   <span className="hidden sm:inline">{nav.cta}</span>
                   <span className="sm:hidden">{nav.mobileCta}</span>
                   <ArrowRight className="size-4" />
                 </TrackedLink>
               </Button>
-            </>
           )}
         </div>
       </nav>

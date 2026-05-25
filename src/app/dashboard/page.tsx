@@ -29,7 +29,7 @@ import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "Dashboard",
-  description: "Private Rado Web Studio client dashboard.",
+  description: "Private Zoro WebStudio client dashboard.",
   robots: {
     index: false,
     follow: false,

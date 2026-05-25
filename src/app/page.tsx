@@ -7,6 +7,7 @@ import {
   Check,
   Code2,
   Compass,
+  ExternalLink,
   Layers3,
   LifeBuoy,
   LayoutDashboard,
@@ -21,8 +22,8 @@ import {
 import { ContactForm } from "@/components/site/contact-form";
 import { FadeIn } from "@/components/site/fade-in";
 import { Footer } from "@/components/site/footer";
+import { LiveDemoPreview } from "@/components/site/live-demo-preview";
 import { Navbar } from "@/components/site/navbar";
-import { ProjectMockup } from "@/components/site/project-mockup";
 import { SectionHeading } from "@/components/site/section-heading";
 import { TrackedLink } from "@/components/site/tracked-link";
 import {
@@ -40,6 +41,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { siteConfig } from "@/config/site";
 import { en } from "@/i18n/dictionaries/en";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import type { Locale } from "@/i18n/locales";
@@ -76,6 +78,7 @@ export function HomePage({
         <HeroSection dictionary={dictionary} locale={locale} localized={localized} />
         <ValuePointsSection dictionary={dictionary} />
         <ServicesSection dictionary={dictionary} />
+        <AboutSection dictionary={dictionary} />
         <ProcessSection dictionary={dictionary} locale={locale} localized={localized} />
         <DemoProjectsSection dictionary={dictionary} locale={locale} localized={localized} />
         <PricingSection dictionary={dictionary} locale={locale} localized={localized} />
@@ -104,8 +107,11 @@ function HeroSection({ dictionary, locale, localized }: Required<PublicPageProps
     <section className="relative overflow-hidden border-b border-white/10 bg-zinc-950 text-white">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(16,185,129,0.24),transparent_32%),radial-gradient(circle_at_88%_8%,rgba(14,165,233,0.16),transparent_32%),linear-gradient(135deg,#09090b_0%,#18181b_48%,#064e3b_130%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.045)_1px,transparent_1px)] bg-[size:54px_54px] opacity-40" />
-      <div className="mx-auto grid min-h-[calc(100vh-4rem)] w-full max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8 xl:gap-16">
+      <div className="mx-auto grid w-full max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[1.02fr_0.98fr] lg:px-8 lg:py-20 xl:gap-16 xl:py-24">
         <FadeIn className="relative z-10">
+          <p className="mb-5 text-sm font-semibold text-emerald-200">
+            {siteConfig.name} {siteConfig.subtitle}
+          </p>
           <Badge
             variant="outline"
             className="mb-6 border-white/10 bg-white/10 text-emerald-200"
@@ -270,6 +276,46 @@ function ServicesSection({ dictionary }: { dictionary: Dictionary }) {
   );
 }
 
+function AboutSection({ dictionary }: { dictionary: Dictionary }) {
+  const about = dictionary.home.about;
+
+  return (
+    <section className="bg-white px-4 py-24 sm:px-6 lg:px-8 lg:py-28">
+      <div className="mx-auto grid w-full max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+        <FadeIn>
+          <SectionHeading
+            eyebrow={about.eyebrow}
+            title={about.title}
+            description={about.description}
+          />
+          <div className="mt-7 flex items-center gap-4">
+            <span className="flex size-12 items-center justify-center rounded-xl bg-zinc-950 text-sm font-semibold text-emerald-200">
+              RP
+            </span>
+            <div>
+              <p className="font-semibold text-zinc-950">{about.signature}</p>
+              <p className="text-sm text-zinc-500">{about.role}</p>
+            </div>
+          </div>
+        </FadeIn>
+        <FadeIn delay={0.08}>
+          <div className="grid gap-4 rounded-3xl border border-emerald-950/10 bg-[linear-gradient(135deg,#f4f4f5_0%,#ecfdf5_100%)] p-5 shadow-xl shadow-zinc-950/5 sm:grid-cols-2 sm:p-7">
+            {about.points.map((point) => (
+              <div
+                key={point}
+                className="flex gap-3 rounded-2xl border border-white bg-white/80 p-5 text-sm leading-6 text-zinc-700 shadow-sm"
+              >
+                <BadgeCheck className="mt-0.5 size-5 shrink-0 text-emerald-700" />
+                <span>{point}</span>
+              </div>
+            ))}
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
 function ProcessSection({ dictionary, locale, localized }: Required<PublicPageProps>) {
   const heading = dictionary.home.processHeading;
   const ctas = dictionary.home.processCtas;
@@ -363,7 +409,11 @@ function DemoProjectsSection({ dictionary, locale, localized }: Required<PublicP
           {dictionary.demoProjects.map((project, index) => (
             <FadeIn key={project.title} delay={index * 0.04}>
               <Card className="h-full overflow-hidden rounded-3xl border-white bg-white p-2 shadow-2xl shadow-zinc-950/10 transition-all hover:-translate-y-1 hover:shadow-emerald-950/15">
-                <ProjectMockup project={project} labels={dictionary.projectMockup} />
+                <LiveDemoPreview
+                  project={project}
+                  label={dictionary.projectsPage.cardCta}
+                  compact
+                />
                 <CardHeader>
                   <Badge variant="secondary" className="mb-4 w-fit rounded-lg bg-zinc-100">
                     {project.industry}
@@ -392,6 +442,21 @@ function DemoProjectsSection({ dictionary, locale, localized }: Required<PublicP
                       </li>
                     ))}
                   </ul>
+                  <Button
+                    asChild
+                    className="mt-auto h-11 rounded-lg bg-zinc-950 text-white hover:bg-emerald-900"
+                  >
+                    <TrackedLink
+                      href={project.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      eventName="project_card_cta_click"
+                      eventProperties={{ project: project.title, destination: project.href }}
+                    >
+                      {dictionary.projectsPage.cardCta}
+                      <ExternalLink className="size-4" />
+                    </TrackedLink>
+                  </Button>
                 </CardContent>
               </Card>
             </FadeIn>
@@ -435,7 +500,7 @@ function PricingSection({ dictionary, locale, localized }: Required<PublicPagePr
             const isFeatured = "featured" in plan && plan.featured;
 
             return (
-            <FadeIn key={plan.name} delay={index * 0.04}>
+            <FadeIn key={plan.name} delay={index * 0.04} className="min-w-0">
               <Card
                 className={`h-full rounded-3xl p-2 shadow-xl transition-all hover:-translate-y-1 ${
                   isFeatured
@@ -492,8 +557,8 @@ function PricingSection({ dictionary, locale, localized }: Required<PublicPagePr
                     variant={isFeatured ? "secondary" : "outline"}
                     className={
                       isFeatured
-                        ? "h-11 w-full rounded-lg bg-zinc-950 text-white hover:bg-zinc-800"
-                        : "h-11 w-full rounded-lg border-white/15 bg-white/10 text-white hover:bg-white/15"
+                        ? "h-auto min-h-11 w-full whitespace-normal rounded-lg bg-zinc-950 py-3 text-center text-white hover:bg-zinc-800"
+                        : "h-auto min-h-11 w-full whitespace-normal rounded-lg border-white/15 bg-white/10 py-3 text-center text-white hover:bg-white/15"
                     }
                   >
                     <TrackedLink
@@ -578,7 +643,7 @@ function PricingSection({ dictionary, locale, localized }: Required<PublicPagePr
               const isFeatured = "featured" in plan && plan.featured;
 
               return (
-              <FadeIn key={plan.name} delay={index * 0.04}>
+              <FadeIn key={plan.name} delay={index * 0.04} className="min-w-0">
                 <Card
                   className={`h-full rounded-lg p-2 shadow-sm ${
                     isFeatured
@@ -639,7 +704,7 @@ function WhyChooseSection({ dictionary }: { dictionary: Dictionary }) {
           {dictionary.reasons.map((reason, index) => (
             <FadeIn key={reason} delay={index * 0.04}>
               <div className="h-full rounded-2xl border border-zinc-200 bg-white p-6 shadow-xl shadow-zinc-950/5">
-                <Bot className="mb-5 size-6 text-emerald-700" />
+                <BadgeCheck className="mb-5 size-6 text-emerald-700" />
                 <p className="text-base leading-7 text-zinc-700">{reason}</p>
               </div>
             </FadeIn>

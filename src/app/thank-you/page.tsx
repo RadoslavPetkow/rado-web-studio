@@ -22,7 +22,7 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: "Thank You",
   description:
-    "Your Rado Web Studio project request has been received. Review the next steps and explore demo projects.",
+    "Your Zoro WebStudio website review request has been received. Review the next steps and explore live demos.",
   robots: {
     index: false,
     follow: false,
@@ -36,7 +36,7 @@ const nextSteps = [
   {
     title: "I review your request",
     description:
-      "I look at your business type, goals, service need, timeline, and budget range.",
+      "I look at your business, current online presence, website goal, and budget range.",
     icon: SearchCheck,
   },
   {
@@ -94,7 +94,7 @@ export default function ThankYouPage() {
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
               <Button asChild size="lg" className="h-12 rounded-lg bg-zinc-950">
                 <Link href="/projects">
-                  View demo projects
+                  View demo websites
                   <ArrowRight className="size-4" />
                 </Link>
               </Button>

@@ -11,7 +11,7 @@ import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "Register",
-  description: "Create a Rado Web Studio client portal account.",
+  description: "Create a Zoro WebStudio client portal account.",
   robots: {
     index: false,
     follow: false,

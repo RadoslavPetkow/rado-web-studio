@@ -1,9 +1,11 @@
 export const siteConfig = {
-  name: "Rado Web Studio",
+  name: "Zoro WebStudio",
+  owner: "Radoslav Petkov",
+  subtitle: "by Radoslav Petkov",
   email: "radigoig@gmail.com",
-  url: "https://radowebstudio.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   description:
-    "Modern, fast, mobile-friendly websites and digital systems for small businesses that want more trust, more inquiries, and a stronger online presence.",
+    "Modern websites for restaurants, cafes, shops, and local businesses, built to make customer contact, reservations, and orders easier.",
   nav: [
     { label: "Home", href: "/" },
     { label: "Services", href: "/#services" },
@@ -16,37 +18,37 @@ export const siteConfig = {
     "Built for trust and inquiries",
     "Fast mobile-first websites",
     "Clear service presentation",
-    "Future-ready digital systems",
+    "Clear calls, bookings, or orders",
   ],
   services: [
     {
-      title: "Business Websites and Landing Pages",
+      title: "Local Business Websites",
       description:
-        "Modern websites and focused landing pages that present your business clearly, load fast, and help visitors contact you with confidence.",
+        "Modern sites for restaurants, cafes, shops, salons, gyms, and local services, with clear customer actions.",
       icon: "monitor",
     },
     {
-      title: "Online Stores",
+      title: "Menus, Products and Online Stores",
       description:
-        "Clean store setups for small businesses that want product pages, categories, cart, checkout, and a reliable path to online sales.",
+        "Clear menu or product presentation, with a shop setup when customers need to browse and order online.",
       icon: "sparkles",
     },
     {
-      title: "Client Portals and Dashboards",
+      title: "Contact, Booking and Ordering Flows",
       description:
-        "Approved projects can use a client portal to track progress, view status updates, keep messages organized, and support custom dashboard workflows when needed.",
+        "Forms, maps, reservations, calls, and ordering actions designed to work naturally from a phone.",
       icon: "messages",
     },
     {
-      title: "AI Automations and Chatbots",
+      title: "Website Redesign and Improvement",
       description:
-        "Practical automations, chatbots, and internal workflows that help with lead handling, customer questions, follow-ups, and repetitive tasks.",
+        "A clearer, faster and more professional replacement for an old website or social-only presence.",
       icon: "layout",
     },
     {
-      title: "Custom Web Apps",
+      title: "Advanced Features When Needed",
       description:
-        "Focused software for operations, customer management, internal tools, databases, and workflows that standard website builders cannot solve well.",
+        "Online shops, booking integrations, portals, dashboards or automations quoted around a real business requirement.",
       icon: "code",
     },
     {
@@ -61,13 +63,13 @@ export const siteConfig = {
       step: "01",
       title: "Request",
       description:
-        "You send a project request with your business context, service need, timeline, and goals.",
+        "You send a short request with your business type, current online presence, and website goal.",
     },
     {
       step: "02",
       title: "Review",
       description:
-        "I review your business goals, current needs, and what the first useful version should achieve.",
+        "I review what customers need to see and which action should be easiest for them.",
     },
     {
       step: "03",
@@ -79,7 +81,7 @@ export const siteConfig = {
       step: "04",
       title: "Portal",
       description:
-        "Approved projects get a client portal workspace for project details, messages, status updates, and organized communication.",
+        "Approved projects can use a private workspace for details, messages, and progress updates.",
     },
     {
       step: "05",
@@ -96,139 +98,114 @@ export const siteConfig = {
   ],
   demoProjects: [
     {
-      title: "Barber Studio Website",
-      industry: "Local service business",
+      title: "Cinema Demo",
+      industry: "Local cinema and events",
       problem:
-        "A barber studio needs to look premium online, explain services clearly, and make booking feel easy from a phone.",
+        "Visitors need to see films, times, ticket information, and location quickly without searching through social posts.",
       solution:
-        "A sharp one-page or small multi-page website with service sections, location details, booking CTA, and trust-building visuals.",
+        "A cinema website concept with programme highlights, ticket information, weekly schedule, and clear mobile actions.",
       features: [
-        "Mobile-first booking CTA",
-        "Service and price structure",
-        "Google Maps and opening hours",
-        "Gallery-ready layout",
+        "Daily and weekly programme",
+        "Ticket pricing section",
+        "Location and navigation links",
+        "Reservation-oriented CTA flow",
       ],
-      idealFor: "Barbers, salons, beauty studios, and local appointment-based services.",
+      idealFor: "Cinemas, cultural venues, event spaces, and local entertainment businesses.",
       resultPromise:
-        "Turn local search and social traffic into more booking inquiries with a polished first impression.",
-      slug: "barber-studio-website",
+        "A live demo showing how programme and ticket information can become easier to find on a phone.",
+      slug: "cinema-demo",
+      href: "https://cinema-demo-tau.vercel.app/",
+      image: "/demos/cinema-demo.png",
     },
     {
-      title: "Fitness Coach Landing Page",
-      industry: "Coaching and personal brand",
+      title: "Sofia Cheese Steak",
+      industry: "Street food and takeaway",
       problem:
-        "A coach needs a focused offer page that explains the transformation, handles objections, and captures qualified leads.",
+        "A food business needs customers to understand the menu and ordering path within seconds.",
       solution:
-        "A conversion-focused landing page with clear positioning, offer breakdown, proof placeholders, FAQs, and request flow.",
+        "A food website demo with menu presentation, mobile-first ordering actions, and location details.",
       features: [
-        "Offer and program sections",
-        "Lead capture CTA",
-        "FAQ and objection handling",
-        "Mobile-optimized sales flow",
+        "Hero and signature products",
+        "Menu-focused layout",
+        "Order or contact CTA",
+        "Mobile-first presentation",
       ],
-      idealFor: "Fitness coaches, consultants, educators, and solo service providers.",
+      idealFor: "Takeaways, street food brands, cafes, bakeries, and fast-casual venues.",
       resultPromise:
-        "Give visitors a clear reason to inquire instead of leaving your social profile with unanswered questions.",
-      slug: "fitness-coach-landing-page",
+        "A live demo focused on making the offer easy to understand before a customer orders.",
+      slug: "sofia-cheese-steak",
+      href: "https://sofia-cheese-steak.vercel.app/",
+      image: "/demos/sofia-cheese-steak.png",
     },
     {
-      title: "Restaurant Website",
-      industry: "Hospitality and food",
+      title: "Restaurant Oasis",
+      industry: "Restaurant and hospitality",
       problem:
-        "A restaurant needs guests to quickly find the menu, hours, location, reservation options, and the feel of the place.",
+        "A restaurant needs to communicate atmosphere while menu, location, and reservation actions remain easy to reach.",
       solution:
-        "A clean restaurant website with menu structure, reservation CTA, location details, and visual sections for atmosphere.",
+        "A premium restaurant demo with visual presentation, guest information, and clear reservation intent.",
       features: [
-        "Menu-ready page structure",
-        "Reservation and call CTA",
-        "Location and hours block",
-        "Event or private booking section",
+        "Restaurant hero presentation",
+        "Menu and offer sections",
+        "Reservation or contact path",
+        "Responsive hospitality layout",
       ],
-      idealFor: "Restaurants, cafes, bakeries, bars, and hospitality venues.",
+      idealFor: "Restaurants, cafes, bistros, bars, and hospitality venues.",
       resultPromise:
-        "Help guests decide faster, visit with confidence, and contact the business without friction.",
-      slug: "restaurant-website",
+        "A live demo showing a polished online first impression for restaurant guests.",
+      slug: "restaurant-oasis",
+      href: "https://restaurant-oasis-demo.vercel.app/",
+      image: "/demos/restaurant-oasis.png",
     },
   ],
   pricing: [
     {
-      name: "Starter Landing Page",
+      name: "Starter Website",
       price: "From €249",
       description:
-        "A clean and professional one-page website designed to present your business clearly and turn visitors into inquiries.",
+        "A clean one-page website that gives a local business a professional online starting point.",
       bestFor:
-        "Barbers, beauty salons, car washes, fitness coaches, small shops, private teachers, and local service providers.",
+        "New or small local businesses that need a clear mobile-friendly presence.",
       features: [
-        "1 professional landing page",
-        "Modern custom design",
-        "Mobile-friendly layout",
-        "Hero, services, about, offer/pricing, testimonials, contact",
-        "Contact form and Google Maps integration",
-        "Basic SEO setup, fast loading speed, and online deployment",
+        "One focused website page",
+        "Services or menu overview",
+        "Contact button and inquiry form",
+        "Map, hours, and contact information",
+        "Mobile-friendly design",
+        "Basic SEO setup and deployment",
       ],
     },
     {
       name: "Business Website",
       price: "From €399",
       description:
-        "A complete business website for companies that want to look more professional, explain their services clearly, and receive more customer inquiries.",
+        "A fuller website for businesses that need clear pages, stronger trust, and easier customer contact.",
       bestFor:
-        "Recommended for small businesses that need a more complete online presence.",
+        "Recommended for restaurants, shops, salons, services, and growing local businesses.",
       features: [
-        "3-5 pages: homepage, services, about, gallery/portfolio, contact",
-        "Contact form and Google Maps",
-        "Mobile-friendly design",
-        "Clear service presentation",
-        "Basic SEO setup",
-        "Online deployment",
+        "Three to five pages",
+        "Services, menu, gallery, or offers",
+        "Contact, call, reservation, or enquiry CTA",
+        "Google Maps and business details",
+        "Mobile performance and SEO basics",
+        "Deployment and analytics setup",
       ],
       featured: true,
     },
     {
-      name: "Pro Business Website",
-      price: "From €599",
+      name: "Advanced Website / Online Store",
+      price: "From €699+",
       description:
-        "A more advanced business website for companies that want stronger presentation, better structure, and a more serious digital presence.",
+        "A more advanced website or small online store when your offer needs products, ordering, integrations, or more custom structure.",
       bestFor:
-        "Businesses that want more pages, stronger structure, analytics, and room for growth.",
+        "Businesses selling products online or needing a larger, more tailored website.",
       features: [
-        "5-8 pages with more detailed design",
-        "Stronger service presentation",
-        "Blog or news section",
-        "Better SEO structure",
-        "Analytics setup and performance optimization",
-        "More revisions and optional simple admin/content management setup",
-      ],
-    },
-    {
-      name: "Online Store",
-      price: "From €999",
-      description:
-        "A practical online store setup for businesses that want to start selling products online with a clean and reliable system.",
-      bestFor: "Small businesses that want to sell products online.",
-      features: [
-        "Product pages and product categories",
-        "Shopping cart and checkout setup",
-        "Payment provider integration where possible",
-        "Basic store management",
-        "Mobile-friendly design",
-        "Basic SEO setup and online deployment",
-      ],
-    },
-    {
-      name: "Custom Web App / Client Portal",
-      price: "From €1499",
-      description:
-        "Custom software for businesses that need more than a website — portals, dashboards, internal tools, automation systems, and client management platforms.",
-      bestFor:
-        "Businesses that need login, dashboards, databases, messaging, workflows, or internal tools.",
-      features: [
-        "Login system, client dashboard, and admin dashboard",
-        "Client messaging, file uploads, and project tracking",
-        "Database and custom workflows",
-        "Internal business tools",
-        "AI or automation features where relevant",
-        "Custom quote after a short consultation",
+        "Advanced page structure and content sections",
+        "Product catalogue or online store foundation",
+        "Cart/payment integration when agreed",
+        "Analytics and performance optimization",
+        "Custom integrations quoted clearly",
+        "Final quote after a free website review",
       ],
     },
   ],
@@ -273,13 +250,10 @@ export const siteConfig = {
   formOptions: {
     services: [
       "Business website",
-      "Landing page",
-      "Online store",
-      "AI automation",
-      "Chatbot",
-      "Custom software",
+      "Starter one-page website",
+      "Advanced website / online store",
       "Website redesign",
-      "Consulting",
+      "Not sure yet",
     ],
     budgets: [
       "Under €300",
@@ -288,24 +262,18 @@ export const siteConfig = {
       "€1500+",
       "Not sure yet",
     ],
-    timelines: [
-      "As soon as possible",
-      "This month",
-      "1–2 months",
-      "Flexible",
-    ],
   },
   reasons: [
-    "You get a focused modern developer who can handle design, frontend, forms, deployment, backend foundations, and client portal direction.",
-    "The first version stays clear and realistic, so your business can launch professionally without unnecessary agency overhead.",
-    "Every section is written and designed around trust, speed, mobile experience, and customer inquiries.",
-    "The technical foundation can grow into logins, dashboards, databases, automations, and custom workflows when the business needs it.",
+    "You work directly with Radoslav Petkov, from the first website review through build and launch.",
+    "The scope stays practical: the pages and actions your customers actually need, presented clearly.",
+    "Every build is designed for mobile usability, speed, trust, and an easier contact or order path.",
+    "The website can grow into a store or custom functionality later, when the business truly needs it.",
   ],
   faqs: [
     {
       question: "How much does a website cost?",
       answer:
-        "Small business websites usually start from €249 for a landing page. A more complete business website usually starts from €399. More advanced websites, online stores, and custom systems are quoted individually depending on the number of pages and features.",
+        "A Starter Website begins from €249. A fuller Business Website begins from €399. Advanced websites and online stores begin from €699+ and are quoted after a short review of required pages and features.",
     },
     {
       question: "Are domain and hosting included?",
@@ -325,7 +293,7 @@ export const siteConfig = {
     {
       question: "Can you build something more complex than a website?",
       answer:
-        "Yes. I can build custom web apps, client portals, dashboards, login systems, admin panels, databases, file upload systems, messaging systems, and automation tools. These projects start from €1499 and are quoted individually.",
+        "Yes. If a business later needs an online store, booking integration, client portal, dashboard, or automation, I can scope that as advanced custom work after understanding the workflow.",
     },
     {
       question: "Do I need a client portal before starting?",

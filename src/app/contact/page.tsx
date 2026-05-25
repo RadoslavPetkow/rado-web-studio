@@ -15,22 +15,22 @@ import type { Locale } from "@/i18n/locales";
 import { defaultLocale } from "@/i18n/locales";
 
 export const metadata: Metadata = {
-  title: "Request a Project",
+  title: "Request a Free Website Review",
   description:
-    "Request a professional business website, landing page, online store, client portal, or custom software project from Rado Web Studio.",
+    "Request a free website review for your restaurant, cafe, shop, local service, or small business from Zoro WebStudio.",
   alternates: {
     canonical: "/contact",
   },
   openGraph: {
-    title: "Request a Project | Rado Web Studio",
+    title: "Request a Free Website Review | Zoro WebStudio",
     description:
-      "Share your business goals and request a practical website or digital system scope from Rado Web Studio.",
+      "Share your business and current online presence to receive a practical website direction from Zoro WebStudio.",
     url: "/contact",
   },
   twitter: {
-    title: "Request a Project | Rado Web Studio",
+    title: "Request a Free Website Review | Zoro WebStudio",
     description:
-      "Request a business website, landing page, online store, client portal, or custom software project.",
+      "Request a website review for your local business and discuss a clear next step.",
   },
 };
 

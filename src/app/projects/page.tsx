@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { ArrowRight, Check, Lightbulb, Target } from "lucide-react";
+import { ArrowRight, Check, ExternalLink, Lightbulb, Target } from "lucide-react";
 
 import { FadeIn } from "@/components/site/fade-in";
 import { Footer } from "@/components/site/footer";
+import { LiveDemoPreview } from "@/components/site/live-demo-preview";
 import { Navbar } from "@/components/site/navbar";
-import { ProjectMockup } from "@/components/site/project-mockup";
 import { TrackedLink } from "@/components/site/tracked-link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -21,22 +21,22 @@ import type { Locale } from "@/i18n/locales";
 import { defaultLocale, localizedPath } from "@/i18n/locales";
 
 export const metadata: Metadata = {
-  title: "Demo Projects",
+  title: "Live Demo Websites",
   description:
-    "Demo project directions for small business websites, landing pages, and lead-generation systems from Rado Web Studio.",
+    "View live Zoro WebStudio website demos for a cinema, food business, and restaurant.",
   alternates: {
     canonical: "/projects",
   },
   openGraph: {
-    title: "Demo Projects | Rado Web Studio",
+    title: "Live Demo Websites | Zoro WebStudio",
     description:
-      "Explore practical demo project directions for local service websites, fitness landing pages, and restaurant websites.",
+      "Open live website demos built for local cinema, food, and restaurant scenarios.",
     url: "/projects",
   },
   twitter: {
-    title: "Demo Projects | Rado Web Studio",
+    title: "Live Demo Websites | Zoro WebStudio",
     description:
-      "Premium demo project directions for small business websites and landing pages.",
+      "Live website demos for small local business situations.",
   },
 };
 
@@ -103,7 +103,11 @@ export function ProjectsPageContent({
               <FadeIn key={project.slug} delay={index * 0.04}>
                 <Card className="overflow-hidden rounded-3xl border-white bg-white p-2 shadow-2xl shadow-zinc-950/10">
                   <CardHeader className="gap-6 xl:grid xl:grid-cols-[0.9fr_1.1fr] xl:items-start">
-                    <ProjectMockup project={project} labels={dictionary.projectMockup} />
+                    <LiveDemoPreview
+                      project={project}
+                      label={copy.cardCta}
+                      eager={index === 0}
+                    />
                     <div>
                       <Badge variant="secondary" className="mb-4 rounded-lg">
                         {project.industry}
@@ -149,7 +153,23 @@ export function ProjectsPageContent({
                           {copy.idealFor}: {project.idealFor}
                         </p>
                       </div>
+                      <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
                       <Button asChild className="h-11 rounded-lg bg-zinc-950 shadow-lg shadow-zinc-950/15">
+                        <TrackedLink
+                          href={project.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          eventName="project_card_cta_click"
+                          eventProperties={{
+                            project: project.title,
+                            destination: project.href,
+                          }}
+                        >
+                          {copy.cardCta}
+                          <ExternalLink className="size-4" />
+                        </TrackedLink>
+                      </Button>
+                      <Button asChild variant="outline" className="h-11 rounded-lg">
                         <TrackedLink
                           href={`${href("/contact")}?project=${project.slug}`}
                           eventName="project_card_cta_click"
@@ -158,10 +178,11 @@ export function ProjectsPageContent({
                             industry: project.industry,
                           }}
                         >
-                          {copy.cardCta}
+                          {copy.requestCta}
                           <ArrowRight className="size-4" />
                         </TrackedLink>
                       </Button>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>

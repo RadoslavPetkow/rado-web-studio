@@ -33,7 +33,7 @@ import { formatDateTime, getProjectMessageActivity } from "@/lib/portal-activity
 
 export const metadata: Metadata = {
   title: "Admin",
-  description: "Rado Web Studio admin dashboard foundation.",
+  description: "Zoro WebStudio admin dashboard foundation.",
   robots: {
     index: false,
     follow: false,

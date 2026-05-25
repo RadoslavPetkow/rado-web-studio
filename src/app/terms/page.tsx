@@ -22,20 +22,20 @@ import { defaultLocale } from "@/i18n/locales";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description:
-    "Terms of Service for Rado Web Studio website, project requests, client portal, and digital service work.",
+    "Terms of Service for Zoro WebStudio website, project requests, client portal, and digital service work.",
   alternates: {
     canonical: "/terms",
   },
   openGraph: {
-    title: "Terms of Service | Rado Web Studio",
+    title: "Terms of Service | Zoro WebStudio",
     description:
-      "Simple terms for Rado Web Studio services, project scope, communication, responsibilities, and paid work.",
+      "Simple terms for Zoro WebStudio services, project scope, communication, responsibilities, and paid work.",
     url: "/terms",
   },
   twitter: {
-    title: "Terms of Service | Rado Web Studio",
+    title: "Terms of Service | Zoro WebStudio",
     description:
-      "Simple terms for Rado Web Studio services, project scope, communication, and paid work.",
+      "Simple terms for Zoro WebStudio services, project scope, communication, and paid work.",
   },
 };
 
